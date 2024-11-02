@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-style: solid;
+  border-radius: 1px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left,
+.right {
+  display: flex;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  height: 60px;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentleft,
+.contentright {
+  flex-grow: 1;
+  /* Takes up remaining space */
+  overflow-y: auto;
+  /* Enables scrolling if content overflows */
+  padding: 20px;
+  /* Adds padding inside content */
+  background-color: gray;
+}
+
+.bottomleft {
+  height: 100px;
+  /* Fixed height for footers */
+  background-color: blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
