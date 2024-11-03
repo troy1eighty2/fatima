@@ -16,13 +16,13 @@ function App() {
     <>
       <div className={styles.container}>
         <div className={styles.left}>
-          <ContentLeft className={styles.contentleft}>{ }</ContentLeft>
-          <FooterLeft className={styles.bottomleft}></FooterLeft>
+          <div className={styles.contentleft}><ContentLeft></ContentLeft></div>
+          <div className={styles.footerleft}></div>
         </div>
         <div className={styles.right}>
-          <NavBar className={styles.navbar}></NavBar>
-          <ContentRight className={styles.contentright}></ContentRight>
-          <FooterRight className={styles.bottomright}></FooterRight>
+          <div className={styles.navbar}></div>
+          <div className={styles.contentright}></div>
+          <div className={styles.footerright}></div>
         </div>
       </div>
     </>

@@ -1,16 +1,24 @@
+@font-face {
+  font-family: 'Greenhouse-Regular';
+  src: url('./assets/Greenhouse-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  border-style: solid;
-  border-radius: 1px;
+  font-family: 'Greenhouse-Regular', Georgia, 'Times New Roman', Times, serif;
+  /* border-style: solid; */
+  /* border-radius: 1px; */
 }
 
 .container {
   display: flex;
   height: 100vh;
+  background-color: #FFFEF6;
 }
 
 .left,
@@ -24,13 +32,19 @@
 
 .navbar {
   height: 60px;
-  background-color: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-bottom: 1.5px solid black;
 }
 
-.contentleft,
+.contentleft {
+  border-right: 1.5px solid black;
+  flex-grow: 1;
+  /* Takes up remaining space */
+  overflow-y: auto;
+  /* Enables scrolling if content overflows */
+  padding: 20px;
+  /* Adds padding inside content */
+}
+
 .contentright {
   flex-grow: 1;
   /* Takes up remaining space */
@@ -38,15 +52,22 @@
   /* Enables scrolling if content overflows */
   padding: 20px;
   /* Adds padding inside content */
-  background-color: gray;
 }
 
-.bottomleft {
-  height: 100px;
+.footerleft {
+  border-top: 1.5px solid black;
+  height: 99px;
+  position: absolute;
+  width: 100%;
   /* Fixed height for footers */
-  background-color: blue;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 0;
+}
+
+.footerright {
+  border-top: 1.5px solid black;
+  height: 99px;
+  position: absolute;
+  width: 100%;
+  /* Fixed height for footers */
+  bottom: 0;
 }
