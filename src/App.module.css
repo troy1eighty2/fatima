@@ -10,9 +10,14 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  text-decoration: none;
   font-family: 'Greenhouse-Regular', Georgia, 'Times New Roman', Times, serif;
   /* border-style: solid; */
   /* border-radius: 1px; */
+}
+
+a:visited {
+  color: grey;
 }
 
 .container {
@@ -56,7 +61,7 @@
 
 .footerleft {
   border-top: 1.5px solid black;
-  height: 99px;
+  height: 138px;
   position: absolute;
   width: 100%;
   /* Fixed height for footers */
@@ -65,7 +70,7 @@
 
 .footerright {
   border-top: 1.5px solid black;
-  height: 99px;
+  height: 138px;
   position: absolute;
   width: 100%;
   /* Fixed height for footers */

@@ -1,4 +1,4 @@
-function Checkout() {
+function CheckOut() {
   return <>
     Checkout
   </>

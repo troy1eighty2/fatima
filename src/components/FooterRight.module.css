@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  height: 76px;
+  margin: 35px;
+  align-items: center;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 10px;
+  color: grey;
+  margin: 10px;
+}
+
+.link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 10px;
+  color: grey;
+  margin: 10px;
+}

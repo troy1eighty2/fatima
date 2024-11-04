@@ -1,6 +1,5 @@
 function FooterLeft() {
   return <>
-    Footer Left
   </>
 }
 

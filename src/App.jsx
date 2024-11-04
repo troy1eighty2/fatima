@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
+// random coment
 function App() {
 
   const [leftContent, setLeftContent] = useState();
