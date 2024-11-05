@@ -30,3 +30,7 @@
   color: grey;
   margin: 10px;
 }
+
+.link:visited {
+  color: grey
+}
