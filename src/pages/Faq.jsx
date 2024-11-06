@@ -1,6 +1,10 @@
+import styles from "./Faq.module.css"
 function Faq() {
   return <>
-    Faq
+    {/* database for questions */}
+    <div className={styles.container}>
+      <h1>Frequently Asked Questions</h1>
+    </div>
   </>
 }
 
