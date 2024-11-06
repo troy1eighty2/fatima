@@ -3,12 +3,12 @@ import styles from "./FooterLeft.module.css"
 function FooterLeft() {
   return <>
     <div className={styles.container}>
-      <div className={styles.item1}><Link to="/">Home</Link></div>
-      <div className={styles.item2}><Link to="/contact">Get A Quote</Link></div>
-      <div className={styles.item3}><a href="mailto:troytran000@gmail.com" target="">Email</a></div>
-      <div className={styles.item4}><a href="https://www.instagram.com/jonydoce/" target="_blank">Instagram</a></div>
-      <div className={styles.item5}><Link to="/faq">FAQ's</Link></div>
-    </div>
+      <Link to="/" className={styles.item1}>Home</Link>
+      <Link to="/contact" className={styles.item2}>Get A Quote</Link>
+      <a href="mailto:troytran000@gmail.com" className={styles.item3}>Email</a>
+      <a href="https://www.instagram.com/jonydoce/" target="_blank" className={styles.item4}>Instagram</a>
+      <Link to="/faq" className={styles.item5}>FAQ's</Link>
+    </div >
   </>
 }
 

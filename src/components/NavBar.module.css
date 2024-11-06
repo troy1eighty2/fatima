@@ -1,0 +1,52 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+}
+
+.icons {
+  width: 26px;
+}
+
+.grid1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: solid 1.5px black;
+}
+
+.grid2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: solid 1.5px black;
+}
+
+.grid3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: solid 1.5px black;
+}
+
+.grid4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid1:hover {
+  background-color: #E46635;
+}
+
+.grid2:hover {
+  background-color: #C58EB6;
+}
+
+.grid3:hover {
+  background-color: #F86381;
+}
+
+.grid4:hover {
+  background-color: #E46635;
+}

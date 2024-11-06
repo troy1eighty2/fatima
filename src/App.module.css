@@ -28,11 +28,10 @@ a:visited {
 
 .left,
 .right {
+  height: 100vh;
   display: flex;
   width: 50%;
-  position: relative;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .navbar {
@@ -46,7 +45,6 @@ a:visited {
   /* Takes up remaining space */
   overflow-y: auto;
   /* Enables scrolling if content overflows */
-  padding: 20px;
   /* Adds padding inside content */
 }
 
@@ -55,24 +53,19 @@ a:visited {
   /* Takes up remaining space */
   overflow-y: auto;
   /* Enables scrolling if content overflows */
-  padding: 20px;
+  /* padding: 20px; */
   /* Adds padding inside content */
 }
 
 .footerleft {
   border-top: 1.5px solid black;
   height: 138px;
-  position: absolute;
   width: 100%;
-  /* Fixed height for footers */
-  bottom: 0;
+  flex-shrink: 0;
 }
 
 .footerright {
   border-top: 1.5px solid black;
   height: 138px;
-  position: absolute;
   width: 100%;
-  /* Fixed height for footers */
-  bottom: 0;
 }
