@@ -12,16 +12,38 @@ import HomeRight from "./pages/HomeRight.jsx";
 
 import styles from "./App.module.css";
 
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
 // random coment
 function App() {
 
-  const [leftContent, setLeftContent] = useState();
-  const [rightContent, setRightContent] = useState();
-  const [homeContent, setHomeContent] = useState();
+  const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
+  const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        setLeftContent(<HomeLeft></HomeLeft>);
+        setRightContent(<HomeRight></HomeRight>);
+        break;
+      case "/contact":
+        setLeftContent(<Contact></Contact>);
+        break;
+      case "/shop":
+        setLeftContent(<Shop></Shop>);
+        break;
+      case "/cart":
+        setRightContent(<Cart></Cart>);
+        break;
+      case "/faq":
+        setLeftContent(<Faq></Faq>);
+        break;
+    }
+  }, [location]);
 
   return (
     <>
@@ -32,7 +54,7 @@ function App() {
               <Route path="/" element={<HomeLeft></HomeLeft>}></Route>
               <Route path="/contact" element={<Contact></Contact>}></Route>
               <Route path="/shop" element={<Shop></Shop>}></Route>
-              <Route path="/shop/:productId" element={<Product></Product>}></Route>
+              <Route path="/cart" element={leftContent}></Route>
               <Route path="/faq" element={<Faq></Faq>}></Route>
             </Routes>
           </div>
@@ -47,8 +69,10 @@ function App() {
           <div className={styles.contentright}>
             <Routes>
               <Route path="/" element={<HomeRight></HomeRight>}></Route>
+              <Route path="/contact" element={rightContent}></Route>
+              <Route path="/shop" element={rightContent}></Route>
               <Route path="/cart" element={<Cart></Cart>}></Route>
-              <Route path="/checkout" element={<CheckOut></CheckOut>}></Route>
+              <Route path="/faq" element={rightContent}></Route>
             </Routes>
           </div>
           <div className={styles.footerright}>

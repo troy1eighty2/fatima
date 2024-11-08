@@ -4,7 +4,7 @@ function Faq() {
   return <>
     {/* database for questions */}
     <div className={styles.container}>
-      <h1 className={styles.header}>Frequently Asked Questions</h1>
+      <p className={styles.header}>Frequently Asked Questions</p>
       <Question></Question>
     </div>
   </>
