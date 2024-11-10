@@ -21,6 +21,7 @@ function App() {
 
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
+  const [onContact, setOnContact] = useState(false);
 
   const location = useLocation();
 
@@ -28,7 +29,7 @@ function App() {
     switch (location.pathname) {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);
-        setRightContent(<HomeRight></HomeRight>);
+        setRightContent(<HomeRight ></HomeRight>);
         break;
       case "/contact":
         setLeftContent(<Contact></Contact>);
@@ -68,7 +69,7 @@ function App() {
           </div>
           <div className={styles.contentright}>
             <Routes>
-              <Route path="/" element={<HomeRight></HomeRight>}></Route>
+              <Route path="/" element={<HomeRight content={onContact}></HomeRight>}></Route>
               <Route path="/contact" element={rightContent}></Route>
               <Route path="/shop" element={rightContent}></Route>
               <Route path="/cart" element={<Cart></Cart>}></Route>

@@ -1,0 +1,8 @@
+.logo {
+  height: 122px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
