@@ -1,0 +1,43 @@
+.container {
+  height: 100%;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact {
+  font-size: 16px;
+}
+
+.header {
+
+  font-size: 48px;
+}
+
+form {
+  font-size: 20px;
+  width: 70%;
+}
+
+form>* {
+  margin: 20px;
+}
+
+input {
+  width: 100%;
+  height: 37px;
+}
+
+
+.two {}
+
+.two label {
+  width: 50%;
+}
+
+.two input {
+  width: 50%;
+}
+
+.three {}
