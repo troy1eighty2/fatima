@@ -16,39 +16,50 @@ function Contact() {
   return <>
     <div className={styles.container}>
       <p className={styles.header}>Got an idea? Tell us more!</p>
-      <p className={styles.contact}>IG: @fatima.printed Email: fatima.printed@gmail.com</p>
+      <div className={styles.links}>
+        <p>IG: @fatima.printed</p>
+        <p>Email: fatima.printed@gmail.com</p>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <div className={styles.one}>
+        <div className={styles.question}>
           <label>Your Name</label>
           <input type="text" />
         </div>
         <div className={styles.two}>
-          <label>Email</label>
-          <input type="text" />
-          <label>Phone Number</label>
-          <input type="text" />
+          <div className={styles.question}>
+            <label>Email</label>
+            <input type="text" />
+          </div>
+          <div className={styles.question}>
+            <label>Phone Number</label>
+            <input type="text" />
+          </div>
         </div>
         <div className={styles.three}>
-          <label>Quantity of Items and Garment Style</label><br />
-          <input type="text" />
-          <label>Placement of Print(s)</label><br />
-          <select>
-            <option value="Upper Chest">Upper Chest</option>
-            <option value="Left Chest">Left Chest</option>
-            <option value="Upper Back">Upper Back</option>
-            <option value="Full Back">Full Back</option>
-            <option value="Right Sleeve">Right Sleeve</option>
-            <option value="Left Sleeve">Left Sleeve</option>
-            <option value="Size Tags">Size Tags</option>
-          </select>
+          <div className={styles.question}>
+            <label>Quantity of Items and Garment Style</label>
+            <input type="text" />
+          </div>
+          <div className={styles.question}>
+            <label>Placement of Print(s)</label>
+            <select>
+              <option value="Upper Chest">Upper Chest</option>
+              <option value="Left Chest">Left Chest</option>
+              <option value="Upper Back">Upper Back</option>
+              <option value="Full Back">Full Back</option>
+              <option value="Right Sleeve">Right Sleeve</option>
+              <option value="Left Sleeve">Left Sleeve</option>
+              <option value="Size Tags">Size Tags</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label>Tell Us About your Project</label><br />
+        <div className={styles.tellus}>
+          <label>Tell Us About your Project</label>
           <input type="text" />
         </div>
-        <div>
-          <label>Upload Your Artwork</label><br />
+        <div className={styles.question}>
+          <label>Upload Your Artwork</label>
           <input type="button" />
         </div>
       </form>
