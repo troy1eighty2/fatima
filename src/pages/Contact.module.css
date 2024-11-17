@@ -71,3 +71,21 @@ input {
 .tellus input {
   height: 110px;
 }
+
+textarea {
+  height: 110px;
+  resize: none;
+  width: 100%;
+}
+
+input {
+  font-size: 20px;
+}
+
+textarea {
+  font-size: 20px;
+}
+
+input::placeholder {
+  font-size: 20px;
+}

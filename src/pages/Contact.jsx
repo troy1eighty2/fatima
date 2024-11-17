@@ -7,9 +7,13 @@ function Contact() {
     phone: '',
     quantity: '',
     placement: [],
-    projectDetails: '',
+    details: '',
     artwork: []
   });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
   const handleSubmit = (e) => {
     console.log()
   }
@@ -24,22 +28,22 @@ function Contact() {
       <form onSubmit={handleSubmit}>
         <div className={styles.question}>
           <label>Your Name</label>
-          <input type="text" />
+          <input type="text" name="name" placeholder="First and Last" value={formData.name} onChange={handleChange} />
         </div>
         <div className={styles.two}>
           <div className={styles.question}>
             <label>Email</label>
-            <input type="text" />
+            <input type="text" name="email" placeholder="brainbusterx34@gmail.com" value={formData.email} onChange={handleChange} />
           </div>
           <div className={styles.question}>
             <label>Phone Number</label>
-            <input type="text" />
+            <input type="text" name="phone" placeholder="800-get-print" value={formData.phone} onChange={handleChange} />
           </div>
         </div>
         <div className={styles.three}>
           <div className={styles.question}>
             <label>Quantity of Items and Garment Style</label>
-            <input type="text" />
+            <input type="text" name="quantity" placeholder="12 Shirts, 12 Hoodies, etc." value={formData.quantity} onChange={handleChange} />
           </div>
           <div className={styles.question}>
             <label>Placement of Print(s)</label>
@@ -56,12 +60,13 @@ function Contact() {
         </div>
         <div className={styles.tellus}>
           <label>Tell Us About your Project</label>
-          <input type="text" />
+          <textarea name="details" placeholder="Anything else you'd like for us to know?" value={formData.details} onChange={handleChange}></textarea>
         </div>
         <div className={styles.question}>
           <label>Upload Your Artwork</label>
-          <input type="button" />
+          <input type="button" name="artwork" />
         </div>
+
       </form>
 
     </div>
