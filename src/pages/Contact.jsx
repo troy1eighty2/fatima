@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Contact.module.css";
 import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit.svg";
 import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
+import Dropdown from "../parts/Dropdown";
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +13,12 @@ function Contact() {
     details: '',
     artwork: []
   });
+  const options = [
+    "one",
+    "two",
+    "three",
+    "four"
+  ]
   const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +58,7 @@ function Contact() {
           </div>
           <div className={styles.question}>
             <label>Placement of Print(s)</label>
+            <Dropdown buttonText="-Select All That Apply-" content={options}></Dropdown>
           </div>
         </div>
         <div className={styles.tellus}>
