@@ -24,6 +24,8 @@ form {
   font-size: 20px;
   width: 70%;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 form>* {
@@ -88,4 +90,14 @@ textarea {
 
 input::placeholder {
   font-size: 20px;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.button {
+  width: 110px;
+  align-self: center;
 }

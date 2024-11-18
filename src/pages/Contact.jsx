@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Contact.module.css";
+import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit.svg";
+import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,12 +12,14 @@ function Contact() {
     details: '',
     artwork: []
   });
+  const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
   const handleSubmit = (e) => {
-    console.log()
+    e.preventDefault();
+    console.log(formData)
   }
   return <>
     <div className={styles.container}>
@@ -47,15 +51,6 @@ function Contact() {
           </div>
           <div className={styles.question}>
             <label>Placement of Print(s)</label>
-            <select>
-              <option value="Upper Chest">Upper Chest</option>
-              <option value="Left Chest">Left Chest</option>
-              <option value="Upper Back">Upper Back</option>
-              <option value="Full Back">Full Back</option>
-              <option value="Right Sleeve">Right Sleeve</option>
-              <option value="Left Sleeve">Left Sleeve</option>
-              <option value="Size Tags">Size Tags</option>
-            </select>
           </div>
         </div>
         <div className={styles.tellus}>
@@ -66,6 +61,10 @@ function Contact() {
           <label>Upload Your Artwork</label>
           <input type="button" name="artwork" />
         </div>
+        <button className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
+          <img src={isSubmitHovered ? submithover : submit} />
+        </button>
+
 
       </form>
 
