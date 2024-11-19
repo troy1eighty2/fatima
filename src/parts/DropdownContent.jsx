@@ -4,7 +4,7 @@ function DropdownContent({ open, content }) {
     <div className={`${styles.dropdownContent} ${open ? styles.contentOpen : ""}`}>
       {content.map((item, index) => (
         <div key={index}>
-          {item}
+          <div className={styles.eachblock}>{item}</div>
         </div>
       ))}
     </div>

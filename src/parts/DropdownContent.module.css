@@ -5,3 +5,8 @@
 .contentOpen {
   display: block;
 }
+
+.eachblock {
+  border: solid black 1.5px;
+  height: 37px;
+}
