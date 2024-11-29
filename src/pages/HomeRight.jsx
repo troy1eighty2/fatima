@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import Intro from "../parts/Intro.jsx";
 import Logo from "../parts/Logo.jsx";
 
+import axios from "axios";
+
 function HomeRight() {
   const location = useLocation();
   const [page, setPage] = useState(<Intro></Intro>);
@@ -20,6 +22,8 @@ function HomeRight() {
   return <>
     <div className={styles.container}>
       {page}
+      hey there toDateString();
+
     </div>
 
   </>

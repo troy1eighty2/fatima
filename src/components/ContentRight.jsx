@@ -1,6 +1,7 @@
 function ContentRight() {
   return <>
     Content Right
+    hi
   </>
 }
 
