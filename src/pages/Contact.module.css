@@ -4,6 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  -ms-overflow-style: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 .contact {
@@ -41,6 +46,12 @@ input {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.spacing_for_label {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .two {
@@ -103,4 +114,9 @@ button {
 .button {
   width: 110px;
   align-self: center;
+}
+
+input[type="text"],
+textarea {
+  padding: 10px;
 }

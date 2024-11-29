@@ -3,10 +3,19 @@
 }
 
 .contentOpen {
+  margin-top: -10px;
   display: block;
 }
 
 .eachblock {
-  border: solid black 1.5px;
+  border-bottom: solid black 1.5px;
+  border-left: solid black 1.5px;
+  border-right: solid black 1.5px;
   height: 37px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.txt {
+  margin-left: 10px;
 }

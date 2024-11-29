@@ -14,10 +14,13 @@ function Contact() {
     artwork: []
   });
   const options = [
-    "one",
-    "two",
-    "three",
-    "four"
+    "Upper Chest",
+    "Left Chest",
+    "Upper Back",
+    "Full Back",
+    "Right Sleeve",
+    "Left Sleeve",
+    "Size Tags"
   ]
   const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const handleChange = (e) => {
@@ -58,7 +61,7 @@ function Contact() {
           </div>
           <div className={styles.question}>
             <label>Placement of Print(s)</label>
-            <Dropdown buttonText="-Select All That Apply-" content={options}></Dropdown>
+            <Dropdown buttonText=" -Select All That Apply- " content={options}></Dropdown>
           </div>
         </div>
         <div className={styles.tellus}>

@@ -10,7 +10,7 @@ function Dropdown({ buttonText, content }) {
     setOpen(!open);
   }
   return <>
-    <DropdownButton toggle={toggleDropdown} open={open}>{buttonText}{open ? <img src={closetri} className={styles.openclose} /> : <img src={opentri} className={styles.openclose} />}</DropdownButton>
+    <DropdownButton toggle={toggleDropdown} open={open}>{<span className={styles.txt}>{buttonText}</span>}{open ? <img src={closetri} className={styles.openclose} /> : <img src={opentri} className={styles.openclose} />}</DropdownButton>
     <DropdownContent open={open} content={content}></DropdownContent>
 
   </>
