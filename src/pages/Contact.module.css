@@ -134,3 +134,40 @@ textarea {
   border-width: 2px;
   font-weight: bold;
 }
+
+.customFileLabel {
+  width: 100%;
+  border: 1.5px solid black;
+  height: 39px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.customFileLabel:hover {
+  border: 2px solid black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fileinput {
+  display: none;
+}
+
+.filesselected {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.eachfile {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.fileaccent {
+  width: 20px;
+}

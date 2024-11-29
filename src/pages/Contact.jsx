@@ -3,6 +3,7 @@ import styles from "./Contact.module.css";
 import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit.svg";
 import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
 import Dropdown from "../parts/Dropdown";
+import fileaccent from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg";
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -21,7 +22,8 @@ function Contact() {
     "Right Sleeve",
     "Left Sleeve",
     "Size Tags"
-  ]
+  ];
+
   const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,11 +31,21 @@ function Contact() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+    // console.log(formData)
+    console.log("counts as submit?")
   }
   const handlePlacementChange = (selectedOptions) => {
     setFormData({ ...formData, placement: selectedOptions })
   }
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    setFiles(selectedFiles);
+
+  }
+  const handleFileRemove = (index) => {
+    setFiles(files.filter((element, i) => i != index));
+  }
+  const [files, setFiles] = useState([])
   return <>
     <div className={styles.container}>
       <p className={styles.header}>Got an idea? Tell us more!</p>
@@ -73,7 +85,18 @@ function Contact() {
         </div>
         <div className={styles.question}>
           <label>Upload Your Artwork</label>
-          <button className={styles.browsefiles}>Browse Files</button>
+          <label htmlFor="artwork" className={styles.customFileLabel}>
+            Browse Files
+          </label>
+          <input
+            type="file"
+            id="artwork"
+            name="artwork"
+            multiple
+            className={styles.fileinput}
+            onChange={handleFileChange}
+          />
+          <div className={styles.filesselected}>{files.length == 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}</div>
         </div>
         <button className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           <img src={isSubmitHovered ? submithover : submit} />
