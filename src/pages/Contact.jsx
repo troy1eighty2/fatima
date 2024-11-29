@@ -31,6 +31,9 @@ function Contact() {
     e.preventDefault();
     console.log(formData)
   }
+  const handlePlacementChange = (selectedOptions) => {
+    setFormData({ ...formData, placement: selectedOptions })
+  }
   return <>
     <div className={styles.container}>
       <p className={styles.header}>Got an idea? Tell us more!</p>
@@ -61,7 +64,7 @@ function Contact() {
           </div>
           <div className={styles.question}>
             <label>Placement of Print(s)</label>
-            <Dropdown buttonText=" -Select All That Apply- " content={options}></Dropdown>
+            <Dropdown buttonText=" -Select All That Apply- " content={options} onSelectionChange={handlePlacementChange}></Dropdown>
           </div>
         </div>
         <div className={styles.tellus}>
@@ -70,7 +73,7 @@ function Contact() {
         </div>
         <div className={styles.question}>
           <label>Upload Your Artwork</label>
-          <input type="button" name="artwork" />
+          <button className={styles.browsefiles}>Browse Files</button>
         </div>
         <button className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           <img src={isSubmitHovered ? submithover : submit} />
