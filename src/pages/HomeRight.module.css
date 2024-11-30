@@ -49,14 +49,17 @@
 }
 
 .gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 100%;
-  border: black 1px solid;
+  /* border: black 1px solid; */
   box-sizing: border-box;
+  padding: 30px;
 
   /* overflow: hidden; */
 }
 
 .display {
   width: 100%;
-  padding: 20px 20px 0px;
 }
