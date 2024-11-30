@@ -1,16 +1,17 @@
 .heading {
-  margin: 10px;
+  margin: 20px;
   font-size: 32px;
 }
 
 .getaquote {
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
   font-size: 32px;
 }
 
 .gobutton {
   height: 55px;
-  margin: 10px;
+  margin-left: 20px;
 }
 
 .container {
