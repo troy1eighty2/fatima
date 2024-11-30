@@ -3,12 +3,12 @@ https://www.figma.com/design/HrPCoDmaFW77TXlTTKSnCN/Fatima-(Copy-Troy)?node-id=0
 Built with react mongoatlas react node axios 
 
 # Roadmap
-db shop homeright 
-cart + payment gate
-contact verification
-animations
-responsive
-deployment
+- db shop homeright 
+- cart + payment gate
+- contact verification
+- animations
+- responsive
+- deployment
 
 # questions
 - homeright?
