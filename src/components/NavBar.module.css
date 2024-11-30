@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 56px;
+  /* height: 100px; */
   /* Prevent shrinking */
 }
 

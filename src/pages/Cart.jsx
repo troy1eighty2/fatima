@@ -1,6 +1,9 @@
+import styles from "./Cart.module.css";
 function Cart() {
   return <>
-    Cart
+    <div className={styles.container}>
+      Cart
+    </div>
   </>
 }
 
