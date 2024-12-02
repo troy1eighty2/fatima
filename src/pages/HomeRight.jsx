@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Intro from "../parts/Intro.jsx";
 import Logo from "../parts/Logo.jsx";
 import gif from "../assets/Assets/Assets/Deliverables/Graphics Animation/Graphics-Animation.gif"
+import FooterRight from "../components/FooterRight.jsx";
 
 import jawn from "../assets/Assets/Assets/temp/jawn.png"
 import jawn1 from "../assets/Assets/Assets/temp/jawn1.png"
@@ -48,6 +49,7 @@ function HomeRight() {
           </div>
         </div>
       </div>
+      <FooterRight></FooterRight>
     </div >
 
   </>

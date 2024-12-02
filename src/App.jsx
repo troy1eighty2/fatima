@@ -59,9 +59,6 @@ function App() {
               <Route path="/faq" element={<Faq></Faq>}></Route>
             </Routes>
           </div>
-          <div className={styles.footerleft}>
-            <FooterLeft></FooterLeft>
-          </div>
         </div>
         <div className={styles.right}>
           <div className={styles.navbar}>
@@ -75,9 +72,6 @@ function App() {
               <Route path="/cart" element={<Cart></Cart>}></Route>
               <Route path="/faq" element={rightContent}></Route>
             </Routes>
-          </div>
-          <div className={styles.footerright}>
-            <FooterRight></FooterRight>
           </div>
         </div>
       </div>
