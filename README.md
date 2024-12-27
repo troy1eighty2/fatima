@@ -22,11 +22,11 @@ Built with react mongoatlas react node axios
 - bolding effect?
 
 # feedback
-- footer bottom of page
+DONE - footer bottom of page
 - swipethrough testimonial
-- more space between icon and word (nav bar)
-- more space button and words vertically
-- space at the bottom of the pages
-- fatima logo goes home
-- all black, only gray text
-- on homepage, footer visible when scroll down
+DONE - more space between icon and word (nav bar)
+DONE - more space button and words vertically
+DONE - space at the bottom of the pages
+DONE - fatima logo goes home
+DONE - all black, only gray text
+DONE - on homepage, footer visible when scroll down

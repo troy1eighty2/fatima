@@ -1,5 +1,6 @@
 import styles from "./Faq.module.css"
 import Question from "../parts/Question.jsx"
+import FooterLeft from "../components/FooterLeft.jsx";
 function Faq() {
   return <>
     {/* database for questions */}

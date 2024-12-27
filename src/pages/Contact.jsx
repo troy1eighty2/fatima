@@ -4,6 +4,7 @@ import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-
 import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
 import Dropdown from "../parts/Dropdown";
 import fileaccent from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg";
+import FooterLeft from "../components/FooterLeft";
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -106,6 +107,7 @@ function Contact() {
       </form>
 
     </div>
+    <FooterLeft></FooterLeft>
   </>
 }
 

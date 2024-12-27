@@ -1,4 +1,5 @@
 import styles from "./Shop.module.css";
+import FooterLeft from "../components/FooterLeft.jsx";
 import { useState } from "react";
 import Store from "../parts/Store.jsx";
 import jawn from "../assets/Assets/Assets/temp/jawn.png";
@@ -17,6 +18,7 @@ function Shop() {
     <div className={styles.container}>
       {items.length == 0 || items.length == null ? <img src={wrestler} className={styles.loadingimg} /> : <Store products={items}></Store>}
     </div>
+    <FooterLeft></FooterLeft>
   </>
 }
 

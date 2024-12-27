@@ -1,9 +1,16 @@
+.containerouter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border: black solid 1.5px;
+  border: black solid 2px;
   padding: 30px;
   width: 70%;
 }

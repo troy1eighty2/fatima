@@ -12,8 +12,14 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Greenhouse-Regular', Georgia, 'Times New Roman', Times, serif;
+  -ms-overflow-style: none;
   /* border-style: solid; */
   /* border-radius: 1px; */
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 a:visited {
