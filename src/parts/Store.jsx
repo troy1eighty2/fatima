@@ -1,4 +1,5 @@
 import styles from "./Store.module.css";
+import FooterLeft from "../components/FooterLeft";
 import { useState } from "react";
 
 function Store({ products }) {

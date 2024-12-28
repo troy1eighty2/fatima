@@ -9,7 +9,10 @@ const items = [
   jawn,
   jawn1,
   jawn,
-  jawn1
+  jawn1,
+  jawn,
+  jawn1,
+  jawn,
 ]
 function Shop() {
   const [loading, setLoading] = useState(true)
