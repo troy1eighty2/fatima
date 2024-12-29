@@ -8,7 +8,7 @@ function Store({ products }) {
     <div className={styles.container}>
       <p className={styles.header}>All Products</p>
       <div className={styles.products}>
-        {products.map((item, index) => <StoreItem key={item.name} name={item.name} image={item.image} price={item.price} description={item.description} stock={item.stock}></StoreItem>)}
+        {products.map((item, index) => <div className={styles.product} key={item.name}><StoreItem name={item.name} image={item.image} price={item.price} description={item.description} stock={item.stock}></StoreItem></div>)}
       </div>
     </div>
   </>

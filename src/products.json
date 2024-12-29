@@ -1,8 +1,8 @@
 [
   {
-    "name": "thing",
-    "image": "",
-    "price": 1,
+    "name": "funny shirt",
+    "image": "./assets/Assets/Assets/temp/jawn.png",
+    "price": 12,
     "description": "top text",
     "stock": {
       "xs": 1,
@@ -14,9 +14,37 @@
     }
   },
   {
-    "name": "thing2",
-    "image": "",
-    "price": 1,
+    "name": "funny pant super cool",
+    "image": "./assets/Assets/Assets/temp/jawn1.png",
+    "price": 5,
+    "description": "bottom text",
+    "stock": {
+      "xs": 1,
+      "s": 5,
+      "m": 0,
+      "l": 0,
+      "xl": 1,
+      "xxl": 1
+    }
+  },
+  {
+    "name": "dogdogdog",
+    "image": "./assets/Assets/Assets/temp/jawn1.png",
+    "price": 5,
+    "description": "bottom text",
+    "stock": {
+      "xs": 1,
+      "s": 5,
+      "m": 0,
+      "l": 0,
+      "xl": 1,
+      "xxl": 1
+    }
+  },
+  {
+    "name": "catcatcat",
+    "image": "./assets/Assets/Assets/temp/jawn1.png",
+    "price": 5,
     "description": "bottom text",
     "stock": {
       "xs": 1,
