@@ -1,4 +1,4 @@
-import styles from "./Cart.module.css";
+import styles from "./Cart.module.css"
 import FooterRight from "../components/FooterRight";
 import jawn from "../assets/Assets/Assets/temp/jawn.png";
 import jawn1 from "../assets/Assets/Assets/temp/jawn1.png";

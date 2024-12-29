@@ -1,0 +1,30 @@
+[
+  {
+    "name": "thing",
+    "image": "",
+    "price": 1,
+    "description": "top text",
+    "stock": {
+      "xs": 1,
+      "s": 1,
+      "m": 0,
+      "l": 0,
+      "xl": 0,
+      "xxl": 1
+    }
+  },
+  {
+    "name": "thing2",
+    "image": "",
+    "price": 1,
+    "description": "bottom text",
+    "stock": {
+      "xs": 1,
+      "s": 5,
+      "m": 0,
+      "l": 0,
+      "xl": 1,
+      "xxl": 1
+    }
+  }
+]
