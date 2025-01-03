@@ -1,11 +1,21 @@
 .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
 }
 
 .griditem {
   height: 300px;
-  width: 239px;
+  width: auto;
+  border: 1.5px solid black;
+  position: relative;
+
+}
+
+.nameandprice {
+  left: 0;
+  position: absolute;
 }
 
 .image {

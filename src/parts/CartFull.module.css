@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: black solid 2px;
+  align-items: center;
 }
 
 .button {
@@ -22,8 +22,9 @@
 
 .first {
   height: min-content;
-  width: min-content;
-  margin-left: 50px;
+  width: 90%;
+  border: black solid 2px;
+  /* margin-left: 50px; */
 
 }
 
@@ -31,22 +32,29 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
-  align-items: center;
-  align-content: center;
+  width: 80%;
+  /* align-items: center; */
+  /* align-content: center; */
   border: black solid 2px;
-  margin-left: 75px;
-  margin-right: 75px;
+  /* margin-left: 75px; */
+  /* margin-right: 75px; */
 
 }
 
 .product {
   height: 300px;
-  border: black solid 2px;
+  width: 100%;
   margin-bottom: 30px;
 
 }
 
 .third {
   height: 300px;
+  width: 100%;
+  border: black solid 2px;
+}
+
+.checkout {
+  height: 50px;
+  border: black solid 2px;
 }

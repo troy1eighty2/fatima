@@ -55,6 +55,7 @@ a:visited {
 }
 
 .contentright {
+  /* border: solid black 2px; */
   flex-grow: 1;
   /* Takes up remaining space */
   overflow-y: auto;
