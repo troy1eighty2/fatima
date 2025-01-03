@@ -43,6 +43,9 @@ function App() {
       case "/faq":
         setLeftContent(<Faq></Faq>);
         break;
+      case "/homeright":
+        setRightContent(<HomeRight></HomeRight>);
+        break;
     }
   }, [location]);
 
@@ -57,6 +60,7 @@ function App() {
               <Route path="/shop" element={<Shop></Shop>}></Route>
               <Route path="/cart" element={leftContent}></Route>
               <Route path="/faq" element={<Faq></Faq>}></Route>
+              <Route path="/homeright" element={leftContent}></Route>
             </Routes>
           </div>
         </div>
@@ -71,6 +75,7 @@ function App() {
               <Route path="/shop" element={rightContent}></Route>
               <Route path="/cart" element={<Cart></Cart>}></Route>
               <Route path="/faq" element={rightContent}></Route>
+              <Route path="/homeright" element={rightContent}></Route>
             </Routes>
           </div>
         </div>

@@ -3,9 +3,20 @@
   width: 100%;
   height: 100%;
   position: relative;
+  background-size: auto;
 }
 
 .infobox {
   position: absolute;
   bottom: 0;
+}
+
+.header {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.price {
+  font-size: 16px;
+  margin: 10px;
 }

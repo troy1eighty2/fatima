@@ -1,13 +1,21 @@
 import styles from "./StoreItem.module.css"
+import { Link } from "react-router-dom";
 function StoreItem({ name, image, price, stock }) {
   return <>
-    <div className={styles.container} style={{ backgroundImage: `url(${image})` }}>
-      <div className={styles.infobox}>
-        <p className={styles.header}>{name}</p>
-        <p className={styles.price}>{price}</p>
-      </div>
+    <Link to="">
+      <div className={styles.container} style={{ backgroundImage: `url(${image})` }}>
+        <div className={styles.infobox}>
+          <p className={styles.header}>{name}</p>
+          <p className={styles.price}>{
+            new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(price)}
+          </p>
+        </div>
 
-    </div>
+      </div>
+    </Link>
   </>
 }
 export default StoreItem;

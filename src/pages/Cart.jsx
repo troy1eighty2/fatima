@@ -4,21 +4,11 @@ import jawn from "../assets/Assets/Assets/temp/jawn.png";
 import jawn1 from "../assets/Assets/Assets/temp/jawn1.png";
 import CartEmpty from "../parts/CartEmpty.jsx"
 import CartFull from "../parts/CartFull.jsx"
+import testdata from "../cart.json"
 function Cart() {
-  const items = [
-    jawn
-    // jawn1,
-    // jawn,
-    // jawn1,
-    // jawn,
-    // jawn1,
-    // jawn,
-  ]
   return <>
     <div className={styles.container}>
-      <div className={styles.container}>
-        {items.length == 0 || items.length == null ? <CartEmpty></CartEmpty> : <CartFull></CartFull>}
-      </div>
+      {testdata.length == 0 || testdata.length == null ? <CartEmpty></CartEmpty> : <CartFull products={testdata}></CartFull>}
     </div>
     <FooterRight></FooterRight>
   </>

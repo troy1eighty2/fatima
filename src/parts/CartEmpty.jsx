@@ -10,7 +10,7 @@ function CartEmpty() {
   return <>
     <div className={styles.container}>
       <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.first}>
-        <Link to="/">
+        <Link to="/homeright">
           <img src={hover ? buttonhover : button} className={styles.button} />
         </Link>
       </button>

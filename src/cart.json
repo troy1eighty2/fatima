@@ -1,0 +1,23 @@
+[
+  {
+    "name": "product1",
+    "image": "https://i.pinimg.com/736x/b5/a8/de/b5a8de0e8b8ec1a35b9afd4beeb79614.jpg",
+    "price": 5,
+    "size": "m",
+    "quantity": 2
+  },
+  {
+    "name": "product2",
+    "image": "https://i.pinimg.com/736x/fd/78/1c/fd781c061500784d6c359ba7abc61d43.jpg",
+    "price": 2,
+    "size": "m",
+    "quantity": 1
+  },
+  {
+    "name": "product3",
+    "image": "https://i.pinimg.com/736x/b5/a8/de/b5a8de0e8b8ec1a35b9afd4beeb79614.jpg",
+    "price": 2,
+    "size": "xl",
+    "quantity": 1
+  }
+]
