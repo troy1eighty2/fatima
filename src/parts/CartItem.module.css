@@ -8,11 +8,17 @@
 .griditem {
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 300px;
   width: auto;
   position: relative;
 
+}
+
+.griditem>*,
+.nameandprice>* {
+  margin-bottom: 10px;
 }
 
 .nameandprice {

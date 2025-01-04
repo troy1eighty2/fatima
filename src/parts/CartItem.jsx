@@ -1,4 +1,6 @@
 import styles from "./CartItem.module.css"
+import Quantity from "./Quantity.jsx"
+import Remove from "./Remove.jsx"
 function CartItem({ product }) {
   return <>
     <div className={styles.container}>
@@ -19,7 +21,8 @@ function CartItem({ product }) {
         <p className={styles.size}>Size: {product.size}</p>
       </div>
       <div className={styles.griditem}>
-        <p>placehodler</p>
+        <Quantity></Quantity>
+        <Remove></Remove>
       </div>
 
     </div>

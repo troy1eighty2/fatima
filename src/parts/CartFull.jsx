@@ -8,11 +8,13 @@ function CartFull({ products }) {
   const [hover, setHover] = useState(false)
   return <>
     <div className={styles.container}>
-      <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.first}>
-        <Link to="/homeright">
-          <img src={hover ? buttonhover : button} className={styles.button} />
-        </Link>
-      </button>
+      <div className={styles.first}>
+        <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.button}>
+          <Link to="/homeright">
+            <img src={hover ? buttonhover : button} className={styles.button} />
+          </Link>
+        </button>
+      </div>
       <div className={styles.second}>
         {products.map((item, index) => <div className={styles.product} key={item.name}><CartItem product={item}></CartItem></div>)}
         {/* {products.map((item, index) => <p className={styles.product}>{item.name}</p>)} */}
