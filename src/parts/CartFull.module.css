@@ -23,8 +23,8 @@
 .first {
   height: min-content;
   width: 90%;
-  border: black solid 2px;
-  /* margin-left: 50px; */
+  margin-top: 30px;
+  margin-bottom: 30px;
 
 }
 
@@ -33,11 +33,6 @@
   flex-direction: column;
   height: 100%;
   width: 80%;
-  /* align-items: center; */
-  /* align-content: center; */
-  border: black solid 2px;
-  /* margin-left: 75px; */
-  /* margin-right: 75px; */
 
 }
 
@@ -49,12 +44,30 @@
 }
 
 .third {
-  height: 300px;
-  width: 100%;
-  border: black solid 2px;
+  width: min-content;
+  align-self: flex-end;
+  margin-top: 200px;
+  margin-right: 60px;
+  margin-bottom: 40px;
+}
+
+.third>* {
+  margin-bottom: 5px;
 }
 
 .checkout {
+  background-color: #F86381;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
   height: 50px;
+  width: 290px;
   border: black solid 2px;
+}
+
+.disclaimer {
+  display: flex;
+  font-size: 12px;
+  text-align: center;
 }

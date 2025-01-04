@@ -19,6 +19,8 @@ function CartFull({ products }) {
       </div>
       <div className={styles.third}>
         <button className={styles.checkout}>Checkout</button>
+        <p className={styles.disclaimer}>Taxes and shipping calculated at checkout
+          *All Sales Final No Returns*</p>
       </div>
     </div>
 
