@@ -3,9 +3,13 @@ function Quantity() {
 
   return <>
     <div className={styles.container}>
-      <p>-</p>
+      <button>
+        <p>-</p>
+      </button>
       <p>1</p>
-      <p>+</p>
+      <button>
+        <p>+</p>
+      </button>
     </div>
   </>
 }
