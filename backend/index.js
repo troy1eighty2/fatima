@@ -1,10 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import shopRoutes from "./routes/shopRoutes.js";
 
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+
+app.use('/shop', shopRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
