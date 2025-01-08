@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import shopRoutes from "./routes/shopRoutes.js";
+import cart from "./routes/cart.js";
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/shop', shopRoutes);
+app.use('/cart', cart);
 
 mongoose
   .connect(process.env.MONGO_URI)

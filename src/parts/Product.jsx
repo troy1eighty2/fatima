@@ -1,4 +1,5 @@
 import styles from "./Product.module.css"
+import axios from "axios";
 function Product() {
 
 }

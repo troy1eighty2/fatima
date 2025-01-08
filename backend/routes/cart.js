@@ -3,22 +3,15 @@ import cors from "cors";
 import Product from "../models/Product.js"
 import Cart from "../models/Cart.js"
 
-const router = express.Router();
+const cart_router = express.Router();
 
-router.get("/", async () => {
+router.get("/", async(request, response) = > {
   try {
-    const
-
-  } catch {
-
-  }
-})
-router.get("/:id", async () => {
-  try {
+    const cart = 
 
   } catch {
 
   }
 })
 
-export default router;
+export default cart_router
