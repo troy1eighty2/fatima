@@ -1,5 +1,6 @@
 [
   {
+    "_id": 1,
     "name": "funny shirt",
     "image": "https://i.pinimg.com/736x/97/47/aa/9747aa4ecbd4bd23986e4eec5f3ebb4d.jpg",
     "price": 12,
@@ -14,6 +15,7 @@
     }
   },
   {
+    "_id": 2,
     "name": "funny pant super cool",
     "image": "https://i.pinimg.com/736x/17/0e/7d/170e7d89ba37f4562b77792ac7b5b4bf.jpg",
     "price": 5,
@@ -28,6 +30,7 @@
     }
   },
   {
+    "_id": 3,
     "name": "dogdogdog",
     "image": "https://i.pinimg.com/736x/b5/a8/de/b5a8de0e8b8ec1a35b9afd4beeb79614.jpg",
     "price": 5,
@@ -42,6 +45,7 @@
     }
   },
   {
+    "_id": 3,
     "name": "catcatcat",
     "image": "https://i.pinimg.com/736x/fd/78/1c/fd781c061500784d6c359ba7abc61d43.jpg",
     "price": 5,

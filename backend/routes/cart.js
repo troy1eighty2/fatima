@@ -5,12 +5,13 @@ import Cart from "../models/Cart.js"
 
 const cart_router = express.Router();
 
-router.get("/", async(request, response) = > {
+cart_router.get("/", async (request, response) => {
   try {
-    const cart = 
-
-  } catch {
-
+    const cart = await Cart.find({});
+    return response.status(200).json(cart)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "server error" });
   }
 })
 

@@ -5,18 +5,24 @@ import Cart from "../models/Cart.js"
 
 const router = express.Router();
 
-router.get("/", async () => {
+router.get("/", async (request, response) => {
   try {
-    const
-
-  } catch {
-
+    const shop = await Product.find({});
+    return response.status(200).json(shop)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "server error" });
   }
 })
-router.get("/:id", async () => {
+router.get("/:id", async (request, response) => {
   try {
+    const { id } = request.params;
+    const item = await BlogEntry.findById(id)
+    return response.status(200).json(item)
 
-  } catch {
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "server error" });
 
   }
 })

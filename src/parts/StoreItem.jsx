@@ -1,8 +1,8 @@
 import styles from "./StoreItem.module.css"
 import { Link } from "react-router-dom";
-function StoreItem({ name, image, price, stock }) {
+function StoreItem({ id, name, image, price, stock }) {
   return <>
-    <Link to="">
+    <Link to={`/shop/${id}/${name}`}>
       <div className={styles.container} style={{ backgroundImage: `url(${image})` }}>
         <div className={styles.infobox}>
           <p className={styles.header}>{name}</p>
