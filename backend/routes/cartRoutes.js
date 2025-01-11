@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import Product from "../models/Product.js"
-import Cart from "../models/Cart.js"
+import Cart from "../models/Order.js"
 
 const cart_router = express.Router();
 

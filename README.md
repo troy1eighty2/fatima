@@ -30,3 +30,20 @@ Built with react mongoatlas react node axios
 - DONE - fatima logo goes home
 - DONE - all black, only gray text
 - DONE - on homepage, footer visible when scroll down
+
+1/10/2025
+
+# Roadmap
+- cart backend, payment gate (2 days)
+- admin page (1 day)
+- animations + responsive design (3 days)
+- deployment (2 days)
+
+# questions
+- orders will come through email?
+
+# notes
+- contact page, weight for boxes, uniform dropdown, either or phone number email,
+- admin page list of contacts
+- checkout tax and final sales separate lines
+- home page one scrollable one not

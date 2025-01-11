@@ -1,5 +1,4 @@
 import styles from "./Question.module.css"
-import FooterLeft from "../components/FooterLeft";
 function Question({ question, answer }) {
   return <>
     <div className={styles.containerouter}>
@@ -25,7 +24,6 @@ function Question({ question, answer }) {
         <p className={styles.content}>We will not aid in the promotion of hate speech or bigotry. We will not print in the support of systems, institutions, or movements that bring harm to marginalized groups. We reserve the right to deny any project we do not wish to proceed with.</p>
       </div>
     </div>
-    <FooterLeft></FooterLeft>
   </>
 }
 
