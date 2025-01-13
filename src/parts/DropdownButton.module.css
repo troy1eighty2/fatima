@@ -1,6 +1,8 @@
 .btn {
-  border: black 2px solid;
+  box-sizing: border-box;
+  border: black 1.5px solid;
   height: 37px;
+  width: 100%;
   font-size: 20px;
   color: #D2D2D2;
   background: #FFFEF6;

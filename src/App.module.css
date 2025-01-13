@@ -16,6 +16,7 @@
   /* border-style: solid; */
   /* border-radius: 1px; */
   scrollbar-width: none;
+  cursor: url('./assets/Assets/Assets/Illos/rat_128.png') 64 64, url('./assets/Assets/Assets/Illos/rat_32.png') 16 16, auto;
 }
 
 *::-webkit-scrollbar {

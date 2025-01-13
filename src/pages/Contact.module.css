@@ -68,7 +68,7 @@ input {
 
 .three {
   display: grid;
-  width: 100%;
+  /* width: 100%; */
   gap: 20px;
   grid-template-columns: 60% calc(40% - 20px);
 }
@@ -93,12 +93,13 @@ textarea {
   width: 100%;
   font-size: 20px;
   background-color: #FFFEF6;
-  border: solid 2px black;
+  border: solid 1.5px black;
 }
 
 input {
   font-size: 20px;
   background-color: #FFFEF6;
+  border: black solid 1.5px;
 }
 
 
@@ -109,7 +110,7 @@ input::placeholder {
 
 button {
   all: unset;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .button {
@@ -136,16 +137,16 @@ textarea::placeholder {
 
 .customFileLabel {
   width: 100%;
-  border: 2px solid black;
+  border: 1.5px solid black;
   height: 39px;
   align-items: center;
   justify-content: center;
   display: flex;
 }
 
-.customFileLabel:hover {
-  cursor: pointer;
-}
+/* .customFileLabel:hover { */
+/*   cursor: pointer; */
+/* } */
 
 .fileinput {
   display: none;

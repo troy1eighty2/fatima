@@ -1,0 +1,37 @@
+.container {
+  border: solid black 1px;
+  height: 100%;
+  width: 100%;
+}
+
+.button {
+  border: solid black 1px;
+  height: 25px;
+  width: min-content;
+}
+
+.first {
+  border: solid black 1px;
+  width: 100%;
+  height: min-content;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+.row {
+  display: flex;
+  height: 100%;
+
+  border: solid black 1px;
+}
+
+.second {
+  border: solid black 1px;
+  width: 50%;
+}
+
+.third {
+  border: solid black 1px;
+  width: 50%;
+}
