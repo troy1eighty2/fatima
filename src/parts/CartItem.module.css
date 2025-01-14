@@ -16,6 +16,11 @@
 
 }
 
+.griditem>*,
+.nameandprice>* {
+  margin-bottom: 10px;
+}
+
 .nameandprice {
   left: 0;
   position: absolute;

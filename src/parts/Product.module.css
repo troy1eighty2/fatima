@@ -24,12 +24,14 @@
 
 .second {
   display: flex;
+  height: 100%;
   flex-direction: column;
   text-align: center;
   width: 50%;
 }
 
 .third {
+  height: 100%;
   padding-left: 30px;
   width: 50%;
 }
@@ -68,4 +70,10 @@
 
 }
 
-.description {}
+.buttons {
+  margin-top: 60px;
+}
+
+.buttons>* {
+  margin-bottom: 30px;
+}

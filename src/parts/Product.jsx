@@ -1,4 +1,6 @@
 import styles from "./Product.module.css";
+import AddToCart from "./AddToCart.jsx";
+import SizeSelection from "./SizeSelection.jsx";
 import FooterLeft from "../components/FooterLeft";
 import { Link, useParams } from "react-router-dom";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Back-26.svg"
@@ -48,6 +50,11 @@ function Product() {
                 }).format(product.price)}</p>
               <p className={styles.name}>{product.name}</p>
               <p className={styles.description}>{product.description}</p>
+              <div className={styles.buttons}>
+                <SizeSelection></SizeSelection>
+                <AddToCart></AddToCart>
+              </div>
+
             </div>
           </div>
         </div>}
