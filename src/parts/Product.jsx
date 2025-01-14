@@ -41,26 +41,17 @@ function Product() {
               })}
             </div>
             <div className={styles.third}>
-              <p className={styles.price}>{product.price}</p>
+              <p className={styles.price}>{
+                new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(product.price)}</p>
               <p className={styles.name}>{product.name}</p>
               <p className={styles.description}>{product.description}</p>
             </div>
           </div>
         </div>}
     </div>
-    {/*     <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.button}> */}
-    {/*       <Link to="/homeright"> */}
-    {/*         <img src={hover ? buttonhover : button} className={styles.button} /> */}
-    {/*       </Link> */}
-    {/*     </button> */}
-    {/*   </div> */}
-    {/*   <div className={styles.second}> */}
-    {/*     {products.map((item, index) => <div className={styles.product} key={item.name}><CartItem product={item}></CartItem></div>)} */}
-    {/*   </div> */}
-    {/*   <div className={styles.third}> */}
-    {/*     <button className={styles.checkout}>Checkout</button> */}
-    {/*     <p className={styles.disclaimer}>*Taxes and shipping calculated at checkout*</p> */}
-    {/*     <p className={styles.disclaimer}>*All Sales Final No Returns*</p> */}
     <FooterLeft></FooterLeft>
 
 

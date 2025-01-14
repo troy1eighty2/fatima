@@ -18,10 +18,14 @@ function CartFull({ products }) {
       <div className={styles.second}>
         {products.map((item, index) => <div className={styles.product} key={item.name}><CartItem product={item}></CartItem></div>)}
       </div>
+      <div className={styles.grow}>
+      </div>
       <div className={styles.third}>
-        <button className={styles.checkout}>Checkout</button>
-        <p className={styles.disclaimer}>*Taxes and shipping calculated at checkout*</p>
-        <p className={styles.disclaimer}>*All Sales Final No Returns*</p>
+        <div className={styles.checkoutcontainer}>
+          <button className={styles.checkout}>Checkout</button>
+          <p className={styles.disclaimer}>*Taxes and shipping calculated at checkout*</p>
+          <p className={styles.disclaimer}>*All Sales Final No Returns*</p>
+        </div>
       </div>
     </div>
 

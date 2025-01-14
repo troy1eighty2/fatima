@@ -40,6 +40,9 @@ form>* {
 }
 
 input {
+  font-size: 20px;
+  background-color: #FFFEF6;
+  border: black solid 1.5px;
   width: 100%;
   height: 37px;
 }
@@ -96,11 +99,7 @@ textarea {
   border: solid 1.5px black;
 }
 
-input {
-  font-size: 20px;
-  background-color: #FFFEF6;
-  border: black solid 1.5px;
-}
+input {}
 
 
 input::placeholder {
@@ -108,9 +107,12 @@ input::placeholder {
   color: #D2D2D2;
 }
 
+input:focus {
+  cursor: url('../assets/Assets/Assets/Illos/rat_128.png') 64 64, url('../assets/Assets/Assets/Illos/rat_32.png') 16 16, auto;
+}
+
 button {
   all: unset;
-  /* cursor: pointer; */
 }
 
 .button {
