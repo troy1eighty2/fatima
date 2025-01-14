@@ -6,7 +6,7 @@ import ContentRight from "./components/ContentRight.jsx";
 import Shop from "./pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Faq from "./pages/Faq.jsx"
-import Product from "./pages/Product.jsx";
+import Product from "./parts/Product.jsx";
 import HomeLeft from "./pages/HomeLeft.jsx";
 import HomeRight from "./pages/HomeRight.jsx";
 
