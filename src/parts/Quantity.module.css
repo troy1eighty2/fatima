@@ -5,8 +5,19 @@
   border: black solid 1.5px;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
+.container:hover {
+  border: black solid 2px;
 }
 
 .container>* {
-  margin: 15px;
+  text-align: center;
+}
+
+.container>*:hover {
+  font-weight: bold;
 }

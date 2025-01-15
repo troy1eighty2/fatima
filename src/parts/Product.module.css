@@ -3,6 +3,7 @@
   height: 100%;
   padding: 45px;
   overflow: auto;
+  display: flex;
 }
 
 .button {
@@ -31,7 +32,9 @@
 }
 
 .third {
+
   height: 100%;
+
   padding-left: 30px;
   width: 50%;
 }
@@ -71,6 +74,10 @@
 }
 
 .buttons {
+  /* height: min-content; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   margin-top: 60px;
 }
 

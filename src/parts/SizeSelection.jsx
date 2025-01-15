@@ -1,25 +1,16 @@
 import styles from "./SizeSelection.module.css"
 function SizeSelection() {
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"]
+  const colors = ["#E46635", "#C58EB6", "#F86381"]
   return <>
+
     <div className={styles.container}>
-      <button className={styles.size}>
-        <p>XS</p>
-      </button>
-      <button className={styles.size}>
-        <p>S</p>
-      </button>
-      <button className={styles.size}>
-        <p>M</p>
-      </button>
-      <button className={styles.size}>
-        <p>L</p>
-      </button>
-      <button className={styles.size}>
-        <p>XL</p>
-      </button>
-      <button className={styles.size}>
-        <p>XXL</p>
-      </button>
+      {sizes.map((size, index) => (
+        <button key={index} className={styles.size}>
+          <p>{size}</p>
+
+        </button>
+      ))}
     </div>
   </>
 

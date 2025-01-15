@@ -108,7 +108,7 @@ input::placeholder {
 }
 
 input:focus {
-  cursor: url('../assets/Assets/Assets/Illos/rat_128.png') 64 64, url('../assets/Assets/Assets/Illos/rat_32.png') 16 16, auto;
+  cursor: url('./assets/Assets/Assets/Illos/rat_128.png') 60 36, url('./assets/Assets/Assets/Illos/rat_32.png') 16 10, auto;
 }
 
 button {
@@ -144,6 +144,11 @@ textarea::placeholder {
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+.customFileLabel:hover {
+  font-weight: bold;
+  border: solid black 2px;
 }
 
 /* .customFileLabel:hover { */

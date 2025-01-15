@@ -12,7 +12,7 @@ function AddToCart() {
 
     <div className={styles.container}>
       <Quantity></Quantity>
-      <button className={styles.thing}>
+      <button className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
         <p>Add to </p>
         <img src={isHover ? cartanimate : cartstatic} className={styles.img} />
       </button>
