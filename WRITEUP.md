@@ -15,3 +15,6 @@ Order Collection
 - the order is populated with the items from cart array and sent to the database
 - payment gate activates and user is redirected to paypal
 
+user enters app -> cart json? gets created with a uuid
+user shops -> cart json? gets manipulated
+cart checkout -> cart json? is logged as an order object on database, cart is cleared

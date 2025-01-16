@@ -14,6 +14,7 @@ import styles from "./App.module.css";
 
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
 // random coment
@@ -26,6 +27,17 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    if (!localStorage.getItem("userCart")) {
+      const newCart = {
+        id: uuidv4(),
+        createdAt: new Date().toISOString(),
+        items: []
+      };
+
+      localStorage.setItem("userCart", JSON.stringify(newCart))
+    } else {
+      const existingCart = JSON.parse(localStorage.getItem("userCart"))
+    }
     switch (location.pathname) {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);

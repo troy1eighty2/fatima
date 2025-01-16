@@ -1,13 +1,16 @@
 import styles from "./Quantity.module.css"
+import { useState } from "react"
 function Quantity() {
+  const [count, setCount] = useState(1)
+
 
   return <>
     <div className={styles.container}>
-      <button className={styles.moreless}>
+      <button className={styles.moreless} onClick={() => count > 1 && setCount(count - 1)} >
         <p>-</p>
       </button>
-      <p>1</p>
-      <button className={styles.moreless}>
+      <p>{count}</p>
+      <button className={styles.moreless} onClick={() => count < 25 && setCount(count + 1)}>
         <p>+</p>
       </button>
     </div>
