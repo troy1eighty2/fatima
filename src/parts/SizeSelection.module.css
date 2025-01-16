@@ -8,6 +8,7 @@
 }
 
 .size {
+  box-sizing: border-box;
   font-size: 16px;
   border: black solid 1px;
   display: flex;
@@ -18,4 +19,8 @@
 .size:hover {
   border: solid black 2px;
   font-weight: bold;
+}
+
+.backgroundUnset {
+  background-color: unset;
 }
