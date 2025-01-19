@@ -4,10 +4,36 @@ import CartEmpty from "../parts/CartEmpty.jsx"
 import CartFull from "../parts/CartFull.jsx"
 import testdata from "../cart.json";
 import { v4 as uuidv4 } from 'uuid';
-function Cart() {
+import { useEffect, useState } from "react";
+
+// cart is string
+function Cart({ cart }) {
+
+  const [content, setContent] = useState(<CartEmpty></CartEmpty>)
+  const [items, setItems] = useState([])
+  useEffect(() => {
+    let cartJSONParsed = []
+    if (cart) {
+      cartJSONParsed = JSON.parse(cart)
+    }
+    else {
+      cartJSONParsed = null
+    }
+    if (cartJSONParsed && cartJSONParsed.items) {
+      setContent(<CartFull productsArray={cartJSONParsed.items} />)
+      setItems(cartJSONParsed.items)
+    } else {
+      setContent(<CartEmpty></CartEmpty>);
+
+    }
+  }, [cart])
   return <>
+
     <div className={styles.container}>
-      {testdata.length == 0 || testdata.length == null ? <CartEmpty></CartEmpty> : <CartFull products={testdata}></CartFull>}
+      {/* {items.map((item, index) => ( */}
+      {/*   <div key={index}>{item.id}</div> */}
+      {/* ))} */}
+      {content}
     </div>
     <FooterRight></FooterRight>
   </>

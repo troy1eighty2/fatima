@@ -13,6 +13,10 @@ function Product() {
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   const { id } = useParams();
+  const [selected, setSelected] = useState(null);
+
+
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/shop/${id}`)
@@ -51,8 +55,8 @@ function Product() {
               <p className={styles.name}>{product.name}</p>
               <p className={styles.description}>{product.description}</p>
               <div className={styles.buttons}>
-                <SizeSelection></SizeSelection>
-                <AddToCart></AddToCart>
+                <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
+                <AddToCart itemId={id} selected={selected}></AddToCart>
               </div>
 
             </div>

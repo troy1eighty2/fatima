@@ -18,3 +18,10 @@ Order Collection
 user enters app -> cart json? gets created with a uuid
 user shops -> cart json? gets manipulated
 cart checkout -> cart json? is logged as an order object on database, cart is cleared
+
+64x64
+navbar shrink 90
+price under name
+price flush with name
+quantity box eqaul to sizes
+reviews

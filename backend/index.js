@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import shopRoutes from "./routes/shopRoutes.js";
-import cart from "./routes/cartRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/shop', shopRoutes);
-app.use('/cart', cart);
+app.use('/cart', cartRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

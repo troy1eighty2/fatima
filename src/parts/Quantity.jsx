@@ -1,7 +1,6 @@
 import styles from "./Quantity.module.css"
 import { useState } from "react"
-function Quantity() {
-  const [count, setCount] = useState(1)
+function Quantity({ count, setCount }) {
 
 
   return <>

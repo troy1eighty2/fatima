@@ -35,8 +35,6 @@ function App() {
       };
 
       localStorage.setItem("userCart", JSON.stringify(newCart))
-    } else {
-      const existingCart = JSON.parse(localStorage.getItem("userCart"))
     }
     switch (location.pathname) {
       case "/":
@@ -53,7 +51,7 @@ function App() {
         setLeftContent(<Product></Product>);
         break;
       case "/cart":
-        setRightContent(<Cart></Cart>);
+        setRightContent(<Cart cart={localStorage.getItem("userCart")}></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);
@@ -90,7 +88,7 @@ function App() {
               <Route path="/contact" element={rightContent}></Route>
               <Route path="/shop" element={rightContent}></Route>
               <Route path="/shop/:id/:name" element={rightContent}></Route>
-              <Route path="/cart" element={<Cart></Cart>}></Route>
+              <Route path="/cart" element={<Cart cart={localStorage.getItem("userCart")}></Cart>}></Route>
               <Route path="/faq" element={rightContent}></Route>
               <Route path="/homeright" element={rightContent}></Route>
             </Routes>
