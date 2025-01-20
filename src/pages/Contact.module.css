@@ -108,7 +108,7 @@ input::placeholder {
 }
 
 input:focus {
-  cursor: url('./assets/Assets/Assets/Illos/rat_128.png') 60 36, url('./assets/Assets/Assets/Illos/rat_32.png') 16 10, auto;
+  cursor: url('./assets/Assets/Assets/Illos/rat_64.png') 30 18, auto;
 }
 
 button {

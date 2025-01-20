@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  height: 50px;
+  width: 125px;
+  border: black solid 1.5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
+.container:hover {
+  border: black solid 2px;
+}
+
+.container>* {
+  text-align: center;
+}
+
+.container>*:hover {
+  font-weight: bold;
+}

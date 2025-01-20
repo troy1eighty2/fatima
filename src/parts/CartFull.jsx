@@ -18,8 +18,29 @@ function CartFull({ productsArray }) {
             axios.get(`${import.meta.env.VITE_API_URL}/shop/${product.id}`)
           )
         );
-        setProductDetails(responses)
-        console.log(responses)
+        // uh uh uh
+        let storedCart = JSON.parse(localStorage.getItem("userCart")) || [];
+        let storedCartArray = storedCart.items;
+
+        const mergedDetails = responses.map((response, index) => {
+          const uniqueID = uuidv4();
+
+          storedCartArray[index] = {
+            ...storedCartArray[index],
+            itemId: uniqueID
+          }
+
+          return {
+            ...response.data, // Add API response data
+            ...productsArray[index],  // Take existing product data
+            itemId: uniqueID
+          };
+
+
+        });
+        localStorage.setItem("userCart", JSON.stringify({ items: storedCartArray }));
+
+        setProductDetails(mergedDetails)
 
       } catch (error) {
         console.log(error)
@@ -43,14 +64,18 @@ function CartFull({ productsArray }) {
         </button>
       </div>
       <div className={styles.second}>
-        {productDetails.map((item, index) => <div className={styles.product} key={uuidv4()}><CartItem product={item}></CartItem></div>)}
+        {productDetails.map((item, index) => {
+          return (
+            <CartItem product={item} key={uuidv4()} ></CartItem>)
+        })}
       </div>
       <div className={styles.grow}>
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
           <button className={styles.checkout}>Checkout</button>
-          <p className={styles.disclaimer}>*Taxes and shipping calculated at checkout*</p>
+          <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>*Taxes and shipping calculated at checkout*</p>
+
           <p className={styles.disclaimer}>*All Sales Final No Returns*</p>
         </div>
       </div>

@@ -37,12 +37,6 @@
 
 }
 
-.product {
-  height: 300px;
-  width: 100%;
-  margin-bottom: 30px;
-
-}
 
 .third {
   display: flex;
@@ -59,7 +53,19 @@
   align-items: center;
   height: 50px;
   width: 290px;
+  border: black solid 1.5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}
+
+.checkout:hover {
+
   border: black solid 2px;
+  font-weight: bold;
+}
+
+.firstlinedisclaimer {
+  margin-bottom: -3px;
 }
 
 .disclaimer {
@@ -80,8 +86,4 @@
   margin-bottom: 30px;
   justify-content: right;
   width: min-content;
-}
-
-.checkoutcontainer>* {
-  margin-bottom: 5px;
 }

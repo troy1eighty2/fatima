@@ -27,6 +27,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    // localStorage.clear();
     if (!localStorage.getItem("userCart")) {
       const newCart = {
         id: uuidv4(),
@@ -36,6 +37,7 @@ function App() {
 
       localStorage.setItem("userCart", JSON.stringify(newCart))
     }
+    console.log(localStorage.getItem("userCart"))
     switch (location.pathname) {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);

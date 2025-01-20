@@ -19,7 +19,7 @@ function Cart({ cart }) {
     else {
       cartJSONParsed = null
     }
-    if (cartJSONParsed && cartJSONParsed.items) {
+    if (cartJSONParsed && cartJSONParsed.items && cartJSONParsed.items.length !== 0) {
       setContent(<CartFull productsArray={cartJSONParsed.items} />)
       setItems(cartJSONParsed.items)
     } else {
