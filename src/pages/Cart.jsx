@@ -9,28 +9,21 @@ import { useEffect, useState } from "react";
 // cart is string
 function Cart({ cart }) {
 
-  const [content, setContent] = useState(<CartEmpty></CartEmpty>)
   const [items, setItems] = useState([])
   useEffect(() => {
-    let cartJSONParsed = []
-    if (cart) {
-      cartJSONParsed = JSON.parse(cart)
+    try {
+      const cartJSONParsed = cart ? JSON.parse(cart) : { items: [] };
+      setItems(cartJSONParsed.items);
+    } catch (error) {
+      console.error("Error parsing cart:", error);
+      setItems([]);
     }
-    else {
-      cartJSONParsed = null
-    }
-    if (cartJSONParsed && cartJSONParsed.items && cartJSONParsed.items.length !== 0) {
-      setContent(<CartFull productsArray={cartJSONParsed.items} />)
-      setItems(cartJSONParsed.items)
-    } else {
-      setContent(<CartEmpty></CartEmpty>);
+  }, [cart]);
 
-    }
-  }, [cart])
   return <>
 
     <div className={styles.container}>
-      {content}
+      {items.length > 0 ? <CartFull productsArray={items} /> : <CartEmpty />}
     </div>
     <FooterRight></FooterRight>
   </>

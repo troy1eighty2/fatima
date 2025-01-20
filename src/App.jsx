@@ -57,7 +57,7 @@ function App() {
         setRightContent(<HomeRight></HomeRight>);
         break;
     }
-  }, [location.pathname]);
+  }, [location]);
 
   return (
     <>
@@ -70,7 +70,6 @@ function App() {
               <Route path="/shop" element={<Shop></Shop>}></Route>
               <Route path="/shop/:id/:name" element={<Product></Product>}></Route>
               <Route path="/cart" element={leftContent}></Route>
-              {/* <Route path="/cart" element={<HomeLeft></HomeLeft>}></Route> */}
               <Route path="/faq" element={<Faq></Faq>}></Route>
               <Route path="/homeright" element={leftContent}></Route>
             </Routes>

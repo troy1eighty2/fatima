@@ -7,6 +7,7 @@ import CartItem from "./CartItem.jsx"
 import axios from "axios"
 import { v4 as uuidv4 } from "uuid"
 function CartFull({ productsArray }) {
+  console.log("cartful")
 
   const [hover, setHover] = useState(false)
   const [productDetails, setProductDetails] = useState([])
@@ -53,6 +54,7 @@ function CartFull({ productsArray }) {
 
     // needs to auto refresh on cart change
   }, [productsArray])
+  // }, [])
   return <>
 
     <div className={styles.container}>
@@ -67,6 +69,7 @@ function CartFull({ productsArray }) {
         {productDetails.map((item, index) => {
           return (
             <CartItem product={item} key={uuidv4()} ></CartItem>)
+          // <CartItem product={item} key={index} ></CartItem>)
         })}
       </div>
       <div className={styles.grow}>
