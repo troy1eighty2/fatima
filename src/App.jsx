@@ -1,8 +1,4 @@
 import NavBar from "./components/Navbar.jsx";
-import FooterLeft from "./components/FooterLeft.jsx";
-import FooterRight from "./components/FooterRight.jsx";
-import ContentLeft from "./components/ContentLeft.jsx";
-import ContentRight from "./components/ContentRight.jsx";
 import Shop from "./pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Faq from "./pages/Faq.jsx"
@@ -37,7 +33,6 @@ function App() {
 
       localStorage.setItem("userCart", JSON.stringify(newCart))
     }
-    console.log(localStorage.getItem("userCart"))
     switch (location.pathname) {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);
@@ -62,7 +57,7 @@ function App() {
         setRightContent(<HomeRight></HomeRight>);
         break;
     }
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <>
@@ -75,6 +70,7 @@ function App() {
               <Route path="/shop" element={<Shop></Shop>}></Route>
               <Route path="/shop/:id/:name" element={<Product></Product>}></Route>
               <Route path="/cart" element={leftContent}></Route>
+              {/* <Route path="/cart" element={<HomeLeft></HomeLeft>}></Route> */}
               <Route path="/faq" element={<Faq></Faq>}></Route>
               <Route path="/homeright" element={leftContent}></Route>
             </Routes>

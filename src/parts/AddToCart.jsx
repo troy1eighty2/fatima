@@ -1,5 +1,6 @@
 import Quantity from "./Quantity.jsx";
 import styles from "./AddToCart.module.css";
+import { Link } from "react-router-dom";
 import SizeSelection from "./SizeSelection.jsx";
 import cartstatic from "../assets/Assets/Assets/Deliverables/Nav Icons/Static/Web/Fatima-Web-Icons-Cart.svg";
 import cartanimate from "../assets/Assets/Assets/Deliverables/Nav Icons/Gifs/Deliverables/Cart.gif";
@@ -26,12 +27,17 @@ function AddToCart({ itemId, selected }) {
 
     <div className={styles.container}>
       <Quantity count={count} setCount={setCount}></Quantity>
-      <button className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} disabled={selected === null} onClick={() => handleAddToCart()}>
+
+      <Link to="/cart" className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} disabled={selected === null} onClick={() => handleAddToCart()}>
         <p>Add to </p>
         <img src={isHover ? cartanimate : cartstatic} className={styles.img} />
-      </button>
+      </Link>
+      {/* <button className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} disabled={selected === null} onClick={() => handleAddToCart()}> */}
+      {/*   <p>Add to </p> */}
+      {/*   <img src={isHover ? cartanimate : cartstatic} className={styles.img} /> */}
+      {/* </button> */}
 
-    </div>
+    </div >
   </>
 }
 export default AddToCart;
