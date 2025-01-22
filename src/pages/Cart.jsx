@@ -1,32 +1,55 @@
-import styles from "./Cart.module.css"
+import styles from "./Cart.module.css";
 import FooterRight from "../components/FooterRight";
-import CartEmpty from "../parts/CartEmpty.jsx"
-import CartFull from "../parts/CartFull.jsx"
-import testdata from "../cart.json";
-import { v4 as uuidv4 } from 'uuid';
+import CartEmpty from "../parts/CartEmpty.jsx";
+import CartFull from "../parts/CartFull.jsx";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
-// cart is string
-function Cart({ cart }) {
 
-  const [items, setItems] = useState([])
+function Cart({ initialCart, removeItem, updateCart }) {
+  // console.log("asd")
+  console.log(initialCart)
+
   useEffect(() => {
-    try {
-      const cartJSONParsed = cart ? JSON.parse(cart) : { items: [] };
-      setItems(cartJSONParsed.items);
-    } catch (error) {
-      console.error("Error parsing cart:", error);
-      setItems([]);
-    }
-  }, [cart]);
+    const fetchProductDetails = async () => {
 
-  return <>
+      try {
+        const responses = await Promise.all(
+          initialCart.map((product) =>
+            axios.get(`${import.meta.env.VITE_API_URL}/shop/${product.id}`)
+          )
+        );
+        // console.log(responses)
+        const mergedDetails = initialCart.map((item, index) => ({
+          ...item,
+          ...responses[index].data,
+          itemId: item.itemId ? item.itemId : uuidv4(),
+        }));
 
-    <div className={styles.container}>
-      {items.length > 0 ? <CartFull productsArray={items} /> : <CartEmpty />}
-    </div>
-    <FooterRight></FooterRight>
-  </>
+        console.log(mergedDetails)
+        updateCart(mergedDetails);
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+      }
+    };
+
+    fetchProductDetails();
+  }, [initialCart]);
+
+  return (
+    <>
+      <div className={styles.container}>
+        {initialCart.length > 0 ? (
+          <CartFull cart={initialCart} removeItem={removeItem} />
+        ) : (
+          <CartEmpty />
+        )}
+      </div>
+      <FooterRight />
+    </>
+  );
 }
 
 export default Cart;
+

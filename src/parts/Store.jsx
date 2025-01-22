@@ -3,7 +3,7 @@ import FooterLeft from "../components/FooterLeft"
 import { useState } from "react"
 import StoreItem from "./StoreItem.jsx"
 
-function Store({ products }) {
+function Store({ products, updateCart }) {
   return <>
     <div className={styles.container}>
       <p className={styles.header}>All Products</p>

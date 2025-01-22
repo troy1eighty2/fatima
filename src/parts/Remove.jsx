@@ -1,27 +1,21 @@
 import styles from "./Remove.module.css";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-function Remove({ itemKey }) {
-  const navigate = useNavigate();
-  const handleClick = (e) => {
-    e.preventDefault();
-    // Retrieve cart from localStorage safely
-    let cart = JSON.parse(localStorage.getItem("userCart")) || { items: [] };
-
-    // Filter out the item with the given itemKey
-    cart.items = cart.items.filter(item => item.itemId !== itemKey);
-
-    // Save the updated cart back to localStorage
-    localStorage.setItem("userCart", JSON.stringify(cart));
-    navigate("/cart");
+function Remove({ itemKey, removeItem }) {
+  const { id, name } = useParams();
+  const handleClick = () => {
+    console.log(itemKey)
+    removeItem(itemKey);
   };
 
   return (
     <>
       <div className={styles.container}>
         {/* <button onClick={handleClick} className={styles.btn}>Remove</button> */}
-        <button onClick={handleClick} className={styles.btn}>Remove</button>
+        <Link to={`/shop/${id}/${name}`} className={styles.btn} onClick={(e) => {
+          e.preventDefault();
+          handleClick();
+        }} >Remove</Link>
 
       </div>
     </>

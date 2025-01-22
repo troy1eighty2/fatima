@@ -1,7 +1,8 @@
 import styles from "./CartItem.module.css"
 import CartQuantity from "./CartQuantity.jsx"
 import Remove from "./Remove.jsx"
-function CartItem({ product }) {
+function CartItem({ product, removeItem }) {
+  // console.log(product)
 
 
   return <>
@@ -26,7 +27,7 @@ function CartItem({ product }) {
       </div>
       <div className={styles.griditem}>
         <CartQuantity></CartQuantity>
-        <Remove itemKey={product.itemId}></Remove>
+        <Remove itemKey={product.itemId} removeItem={removeItem}></Remove>
       </div>
 
     </div >
