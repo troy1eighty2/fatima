@@ -15,10 +15,20 @@ import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
 // random coment
 function App() {
-  const [cartItems, setCartItems] = useState(
-    JSON.parse(localStorage.getItem("userCart"))?.items || []
-  );
   // console.log(cartItems)
+  // localStorage.clear();
+  if (!localStorage.getItem("userCart")) {
+    const newCart = {
+      id: uuidv4(),
+      createdAt: new Date().toISOString(),
+      items: []
+    };
+    localStorage.setItem("userCart", JSON.stringify(newCart))
+
+  }
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("userCart"))?.items
+  );
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
   const [onContact, setOnContact] = useState(false);
@@ -37,44 +47,35 @@ function App() {
     localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
   }
 
-  useEffect(() => {
-    // localStorage.clear();
-    if (!localStorage.getItem("userCart")) {
-      const newCart = {
-        id: uuidv4(),
-        createdAt: new Date().toISOString(),
-        items: []
-      };
-
-      localStorage.setItem("userCart", JSON.stringify(newCart))
-    }
-    // switch (location.pathname) {
-    //   case "/":
-    //     setLeftContent(<HomeLeft></HomeLeft>);
-    //     setRightContent(<HomeRight ></HomeRight>);
-    //     break;
-    //   case "/contact":
-    //     setLeftContent(<Contact></Contact>);
-    //     break;
-    //   case "/shop":
-    //     setLeftContent(<Shop updateCart={updateCart}></Shop>);
-    //
-    //     break;
-    //   case "/shop/:id/:name":
-    //     setLeftContent(<Product updateCart={updateCart}></Product>);
-    //     break;
-    // case "/cart":
-    //   setRightContent(<Cart initialCart={cartItems} updateCart={updateCart} removeItem={removeItem}></Cart>);
-    //   setRightContent(null);
-    // break;
-    // case "/faq":
-    //   setLeftContent(<Faq></Faq>);
-    //   break;
-    // case "/homeright":
-    //   setRightContent(<HomeRight></HomeRight>);
-    //   break;
-    // }
-  }, [location]);
+  // useEffect(() => {
+  // localStorage.clear();
+  // switch (location.pathname) {
+  //   case "/":
+  //     setLeftContent(<HomeLeft></HomeLeft>);
+  //     setRightContent(<HomeRight ></HomeRight>);
+  //     break;
+  //   case "/contact":
+  //     setLeftContent(<Contact></Contact>);
+  //     break;
+  //   case "/shop":
+  //     setLeftContent(<Shop updateCart={updateCart}></Shop>);
+  //
+  //     break;
+  //   case "/shop/:id/:name":
+  //     setLeftContent(<Product updateCart={updateCart}></Product>);
+  //     break;
+  // case "/cart":
+  //   setRightContent(<Cart initialCart={cartItems} updateCart={updateCart} removeItem={removeItem}></Cart>);
+  //   setRightContent(null);
+  // break;
+  // case "/faq":
+  //   setLeftContent(<Faq></Faq>);
+  //   break;
+  // case "/homeright":
+  //   setRightContent(<HomeRight></HomeRight>);
+  //   break;
+  // }
+  // }, [location]);
 
   return (
     <>

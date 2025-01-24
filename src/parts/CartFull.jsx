@@ -22,9 +22,9 @@ function CartFull({ cart, removeItem }) {
         </button>
       </div>
       <div className={styles.second}>
-        {cart.map((item) => (
-          <CartItem product={item} key={item.itemId} removeItem={removeItem} />
-        ))}
+        {/* {cart.map((item) => ( */}
+        {/*   <CartItem product={item} key={item.itemId} removeItem={removeItem} /> */}
+        {/* ))} */}
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>

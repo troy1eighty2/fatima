@@ -14,24 +14,29 @@ function Cart({ initialCart, removeItem, updateCart }) {
   useEffect(() => {
     const fetchProductDetails = async () => {
 
-      try {
-        const responses = await Promise.all(
-          initialCart.map((product) =>
-            axios.get(`${import.meta.env.VITE_API_URL}/shop/${product.id}`)
-          )
-        );
-        // console.log(responses)
-        const mergedDetails = initialCart.map((item, index) => ({
-          ...item,
-          ...responses[index].data,
-          itemId: item.itemId ? item.itemId : uuidv4(),
-        }));
-
-        console.log(mergedDetails)
-        updateCart(mergedDetails);
-      } catch (error) {
-        console.error("Error fetching product details:", error);
+      if (initialCart.length) {
+        console.log("yesss")
       }
+      //
+      //   try {
+      //     const responses = await Promise.all(
+      //       initialCart.map((product) =>
+      //         axios.get(`${import.meta.env.VITE_API_URL}/shop/${product.id}`)
+      //       )
+      //     );
+      //     // console.log(responses)
+      //     const mergedDetails = initialCart.map((item, index) => ({
+      //       ...item,
+      //       ...responses[index].data,
+      //       itemId: item.itemId ? item.itemId : uuidv4(),
+      //     }));
+      //
+      //     console.log(mergedDetails)
+      //     updateCart(mergedDetails);
+      //   } catch (error) {
+      //     console.error("Error fetching product details:", error);
+      //   }
+      // }
     };
 
     fetchProductDetails();
@@ -40,7 +45,7 @@ function Cart({ initialCart, removeItem, updateCart }) {
   return (
     <>
       <div className={styles.container}>
-        {initialCart.length > 0 ? (
+        {(initialCart.length > 0) ? (
           <CartFull cart={initialCart} removeItem={removeItem} />
         ) : (
           <CartEmpty />

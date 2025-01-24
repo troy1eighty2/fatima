@@ -13,9 +13,9 @@ function AddToCart({ itemId, selected, updateCart }) {
   const [isHover, setIsHover] = useState(false);
   const [count, setCount] = useState(1)
   const handleAddToCart = () => {
-    // console.log(itemId)
-    // console.log(count)
-    // console.log(selected)
+    console.log(itemId)
+    console.log(count)
+    console.log(selected)
     const userCart = ({
       id: itemId,
       quantity: count,
@@ -31,7 +31,6 @@ function AddToCart({ itemId, selected, updateCart }) {
       <Quantity count={count} setCount={setCount}></Quantity>
 
       <Link to={`/shop/${id}/${name}`} className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={(e) => {
-        e.preventDefault();
         handleAddToCart();
       }}>
         <p>Add to </p>
