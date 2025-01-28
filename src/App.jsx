@@ -39,6 +39,10 @@ function App() {
     setCartItems(updatedCart);
     localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
   };
+  const mergeCart = (newCart) => {
+    const updatedCart = newCart;
+    localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
+  };
   const removeItem = (itemKey) => {
     console.log(cartItems)
     console.log(itemKey)
@@ -103,7 +107,7 @@ function App() {
               <Route path="/contact" element={rightContent}></Route>
               <Route path="/shop" element={rightContent}></Route>
               <Route path="/shop/:id/:name" element={rightContent}></Route>
-              <Route path="/cart" element={<Cart initialCart={cartItems} updateCart={updateCart} removeItem={removeItem}></Cart>}></Route>
+              <Route path="/cart" element={<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>}></Route>
               <Route path="/faq" element={rightContent}></Route>
               <Route path="/homeright" element={rightContent}></Route>
             </Routes>
