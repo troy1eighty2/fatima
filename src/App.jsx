@@ -5,6 +5,7 @@ import Faq from "./pages/Faq.jsx"
 import Product from "./parts/Product.jsx";
 import HomeLeft from "./pages/HomeLeft.jsx";
 import HomeRight from "./pages/HomeRight.jsx";
+import Layout from "./Layout.jsx";
 
 import styles from "./App.module.css";
 
@@ -51,69 +52,19 @@ function App() {
     localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
   }
 
-  // useEffect(() => {
-  // localStorage.clear();
-  // switch (location.pathname) {
-  //   case "/":
-  //     setLeftContent(<HomeLeft></HomeLeft>);
-  //     setRightContent(<HomeRight ></HomeRight>);
-  //     break;
-  //   case "/contact":
-  //     setLeftContent(<Contact></Contact>);
-  //     break;
-  //   case "/shop":
-  //     setLeftContent(<Shop updateCart={updateCart}></Shop>);
-  //
-  //     break;
-  //   case "/shop/:id/:name":
-  //     setLeftContent(<Product updateCart={updateCart}></Product>);
-  //     break;
-  // case "/cart":
-  //   setRightContent(<Cart initialCart={cartItems} updateCart={updateCart} removeItem={removeItem}></Cart>);
-  //   setRightContent(null);
-  // break;
-  // case "/faq":
-  //   setLeftContent(<Faq></Faq>);
-  //   break;
-  // case "/homeright":
-  //   setRightContent(<HomeRight></HomeRight>);
-  //   break;
-  // }
-  // }, [location]);
-
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <div className={styles.contentleft}>
-            <Routes>
-              <Route path="/" element={<HomeLeft></HomeLeft>}></Route>
-              <Route path="/contact" element={<Contact></Contact>}></Route>
-              <Route path="/shop" element={<Shop></Shop>}></Route>
-              <Route path="/shop/:id/:name" element={<Product updateCart={updateCart}></Product>}></Route>
-              <Route path="/cart" element={leftContent}></Route>
-              <Route path="/faq" element={<Faq></Faq>}></Route>
-              <Route path="/homeright" element={leftContent}></Route>
-            </Routes>
-          </div>
-        </div>
-        <div className={styles.right}>
-          <div className={styles.navbar}>
-            <NavBar></NavBar>
-          </div>
-          <div className={styles.contentright}>
-            <Routes>
-              <Route path="/" element={<HomeRight content={onContact}></HomeRight>}></Route>
-              <Route path="/contact" element={rightContent}></Route>
-              <Route path="/shop" element={rightContent}></Route>
-              <Route path="/shop/:id/:name" element={rightContent}></Route>
-              <Route path="/cart" element={<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>}></Route>
-              <Route path="/faq" element={rightContent}></Route>
-              <Route path="/homeright" element={rightContent}></Route>
-            </Routes>
-          </div>
-        </div>
-      </div>
+      <Routes>
+        <Route element={<Layout></Layout>}>
+          <Route index element={<HomeLeft></HomeLeft>}></Route>
+          <Route path="/contact" element={<Contact></Contact>}></Route>
+          <Route path="/shop" element={<Shop></Shop>}></Route>
+          <Route path="/shop/:id/:name" element={<Product updateCart={updateCart}></Product>}></Route>
+          <Route path="/faq" element={<Faq></Faq>}></Route>
+
+          <Route path="/cart" element={<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>}></Route>
+        </Route>
+      </Routes>
     </>
   )
 }
