@@ -27,14 +27,13 @@ function App() {
     localStorage.setItem("userCart", JSON.stringify(newCart))
 
   }
+  const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
+  const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
+
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("userCart"))?.items
   );
-  const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
-  const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
-  const [onContact, setOnContact] = useState(false);
 
-  const location = useLocation();
   const updateCart = (newItem) => {
     const updatedCart = [...cartItems, newItem];
     setCartItems(updatedCart);
@@ -42,6 +41,7 @@ function App() {
   };
   const mergeCart = (newCart) => {
     const updatedCart = newCart;
+    setCartItems(updatedCart);
     localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
   };
   const removeItem = (itemKey) => {
@@ -51,20 +51,49 @@ function App() {
     setCartItems(updatedCart);
     localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
   }
+  const location = useLocation().pathname;
+  useEffect(() => {
+    switch (location) {
+      case "/":
+        setLeftContent(<HomeLeft></HomeLeft>);
+        setRightContent(<HomeRight></HomeRight>);
+        break;
+      case "/homeright":
+        setRightContent(<HomeRight></HomeRight>);
+        break;
+      case "/contact":
+        setLeftContent(<Contact></Contact>);
+        break;
+      case "/shop":
+        setLeftContent(<Shop></Shop>);
+        break;
+      case "/cart":
+        setLeftContent(<Shop></Shop>);
+        setRightContent(<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>);
+        break;
+      default:
+        setLeftContent(<Product updateCart={updateCart}></Product>);
+        break;
 
+    }
+  }, [location])
   return (
     <>
-      <Routes>
-        <Route element={<Layout></Layout>}>
-          <Route index element={<HomeLeft></HomeLeft>}></Route>
-          <Route path="/contact" element={<Contact></Contact>}></Route>
-          <Route path="/shop" element={<Shop></Shop>}></Route>
-          <Route path="/shop/:id/:name" element={<Product updateCart={updateCart}></Product>}></Route>
-          <Route path="/faq" element={<Faq></Faq>}></Route>
-
-          <Route path="/cart" element={<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>}></Route>
-        </Route>
-      </Routes>
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <div className={styles.contentleft}>
+            {leftContent}
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.navbar}>
+            <NavBar></NavBar>
+          </div>
+          <div className={styles.contentright}>
+            {rightContent}
+          </div>
+        </div>
+      </div>
     </>
   )
 }

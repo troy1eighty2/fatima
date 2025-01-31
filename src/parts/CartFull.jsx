@@ -1,5 +1,5 @@
 import styles from "./CartFull.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem.jsx";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward.png";

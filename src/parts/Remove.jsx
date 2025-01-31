@@ -11,11 +11,7 @@ function Remove({ itemKey, removeItem }) {
   return (
     <>
       <div className={styles.container}>
-        {/* <button onClick={handleClick} className={styles.btn}>Remove</button> */}
-        <Link to={`/shop/${id}/${name}`} className={styles.btn} onClick={(e) => {
-          e.preventDefault();
-          handleClick();
-        }} >Remove</Link>
+        <button onClick={handleClick} className={styles.btn}>Remove</button>
 
       </div>
     </>

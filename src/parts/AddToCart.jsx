@@ -30,12 +30,12 @@ function AddToCart({ itemId, selected, updateCart }) {
     <div className={styles.container}>
       <Quantity count={count} setCount={setCount}></Quantity>
 
-      <Link to={`/shop/${id}/${name}`} className={styles.addtocart} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={(e) => {
+      <button className={styles.addtocart} onClick={(e) => {
         handleAddToCart();
       }}>
         <p>Add to </p>
         <img src={isHover ? cartanimate : cartstatic} className={styles.img} />
-      </Link>
+      </button>
 
     </div >
   </>

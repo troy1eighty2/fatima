@@ -2,7 +2,7 @@ import styles from "./Product.module.css";
 import AddToCart from "./AddToCart.jsx";
 import SizeSelection from "./SizeSelection.jsx";
 import FooterLeft from "../components/FooterLeft";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Back-26.svg"
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Back-27.svg"
 import { useState, useEffect } from "react";
@@ -12,8 +12,10 @@ function Product({ updateCart }) {
   const [hover, setHover] = useState(false)
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
-  const { id } = useParams();
   const [selected, setSelected] = useState(null);
+  const location = useLocation();
+  const pathSegments = location.pathname.split("/");
+  const id = pathSegments[2]
 
 
 
