@@ -8,29 +8,37 @@ import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fa
 import { useState, useEffect } from "react";
 import axios from "axios";
 import wrestler from "../assets/Assets/Assets/Deliverables/Illustrations/wwe.png"
-function Product({ updateCart }) {
+function Product({ updateCart, productID, setProductID }) {
   const [hover, setHover] = useState(false)
-  const [product, setProduct] = useState([])
+  // const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState(null);
+  const [item, setItem] = useState([]);
+
   const location = useLocation();
   const pathSegments = location.pathname.split("/");
   const id = pathSegments[2]
+  // console.log(id)
 
 
 
   useEffect(() => {
+    if (!id) return;
     axios
       .get(`${import.meta.env.VITE_API_URL}/shop/${id}`)
       .then((response) => {
         const item = response.data;
-        setProduct(item);
+        const itemID = item._id;
+        // console.log(item)
+
+        setItem(item);
+        setProductID(itemID);
         setLoading(false);
       })
       .catch((error) => {
         console.log(error)
       })
-  }, []);
+  }, [id]);
   return <>
     <div className={styles.container}>
       {loading ? <div className={styles.loadingcontainer}><img src={wrestler} className={styles.loadingimg} /></div> :
@@ -44,7 +52,7 @@ function Product({ updateCart }) {
           </div>
           <div className={styles.row}>
             <div className={styles.second}>
-              {product.pictures.map((item, index) => {
+              {item.pictures.map((item, index) => {
                 return <div key={index} className={styles.imagecontainer}><img className={styles.picture} src={item.url} /></div>
               })}
             </div>
@@ -53,12 +61,12 @@ function Product({ updateCart }) {
                 new Intl.NumberFormat("en-US", {
                   style: "currency",
                   currency: "USD",
-                }).format(product.price)}</p>
-              <p className={styles.name}>{product.name}</p>
-              <p className={styles.description}>{product.description}</p>
+                }).format(item.price)}</p>
+              <p className={styles.name}>{item.name}</p>
+              <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
                 <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
-                <AddToCart itemId={id} selected={selected} updateCart={updateCart}></AddToCart>
+                {item._id && <AddToCart selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 
             </div>

@@ -17,10 +17,15 @@
   grid-auto-rows: 400px;
   margin-bottom: 120px;
   box-sizing: border-box;
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .product {
   width: 100%;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
   height: 100%;
 
 }

@@ -10,13 +10,13 @@ import Layout from "./Layout.jsx";
 import styles from "./App.module.css";
 
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
 // random coment
 function App() {
-  // console.log(cartItems)
+  // console.log('entry into app')
   // localStorage.clear();
   if (!localStorage.getItem("userCart")) {
     const newCart = {
@@ -27,8 +27,13 @@ function App() {
     localStorage.setItem("userCart", JSON.stringify(newCart))
 
   }
+  const location = useLocation().pathname;
+  const url = location.split("/")
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
+  const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
+
+  const navigate = useNavigate();
 
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("userCart"))?.items
@@ -36,23 +41,34 @@ function App() {
 
   const updateCart = (newItem) => {
     const updatedCart = [...cartItems, newItem];
-    setCartItems(updatedCart);
-    localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
+    setCartItems([...updatedCart]);
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
+      items: updatedCart // Update only the items
+    }));
   };
   const mergeCart = (newCart) => {
     const updatedCart = newCart;
     setCartItems(updatedCart);
-    localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
+      items: updatedCart // Update only the items
+    }));
   };
   const removeItem = (itemKey) => {
     console.log(cartItems)
     console.log(itemKey)
     const updatedCart = cartItems.filter((item) => item.itemId !== itemKey);
     setCartItems(updatedCart);
-    localStorage.setItem("userCart", JSON.stringify({ items: updatedCart }));
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
+      items: updatedCart // Update only the items
+    }));
+    navigate(0);
   }
-  const location = useLocation().pathname;
   useEffect(() => {
+    // console.log(url)
+    setProductID(url.length < 3 ? null : url[2]);
     switch (location) {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);
@@ -68,11 +84,13 @@ function App() {
         setLeftContent(<Shop></Shop>);
         break;
       case "/cart":
-        setLeftContent(<Shop></Shop>);
-        setRightContent(<Cart initialCart={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>);
+        setRightContent(<Cart cartItems={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>);
+        break;
+      case "/faq":
+        setLeftContent(<Faq></Faq>);
         break;
       default:
-        setLeftContent(<Product updateCart={updateCart}></Product>);
+        setLeftContent(<Product updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
         break;
 
     }

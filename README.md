@@ -47,3 +47,9 @@ Built with react mongoatlas react node axios
 - admin page list of contacts
 - checkout tax and final sales separate lines
 - home page one scrollable one not
+
+# flow
+- product sends id back to parent for addtocartoperation
+- cart initialized on app entry
+- addtocart button gives it an id and a cartid
+- needed for cart: name price size quantity
