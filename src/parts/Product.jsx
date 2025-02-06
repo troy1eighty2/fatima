@@ -8,7 +8,7 @@ import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fa
 import { useState, useEffect } from "react";
 import axios from "axios";
 import wrestler from "../assets/Assets/Assets/Deliverables/Illustrations/wwe.png"
-function Product({ updateCart, productID, setProductID }) {
+function Product({ cartItems, updateCart, productID, setProductID }) {
   const [hover, setHover] = useState(false)
   // const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
@@ -66,7 +66,7 @@ function Product({ updateCart, productID, setProductID }) {
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
                 <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
-                {item._id && <AddToCart selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
+                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 
             </div>

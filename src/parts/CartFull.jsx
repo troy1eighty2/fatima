@@ -1,12 +1,13 @@
 import styles from "./CartFull.module.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItem.jsx";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward.png";
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forwardblack.png";
 
 function CartFull({ cart, removeItem }) {
   const [hover, setHover] = useState(false);
+  const navigate = useNavigate();
   // console.log(cart)
 
   return (
@@ -16,15 +17,14 @@ function CartFull({ cart, removeItem }) {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={styles.button}
+          onClick={() => navigate("/homeright")}
         >
-          <Link to="/homeright">
-            <img src={hover ? buttonhover : button} className={styles.button} />
-          </Link>
+          <img src={hover ? buttonhover : button} className={styles.button} />
         </button>
       </div>
       <div className={styles.second}>
         {cart.map((item) => (
-          <CartItem product={item} key={item.itemId} removeItem={removeItem} />
+          <CartItem product={item} key={item.cartItemID} removeItem={removeItem} />
         ))}
       </div>
       <div className={styles.third}>

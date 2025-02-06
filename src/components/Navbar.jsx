@@ -11,13 +11,16 @@ import shopanimate from "../assets/Assets/Assets/Deliverables/Nav Icons/Gifs/Del
 import cartanimate from "../assets/Assets/Assets/Deliverables/Nav Icons/Gifs/Deliverables/Cart.gif"
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function NavBar() {
+function NavBar({ cartItems }) {
   const [isHomeHovered, setIsHomeHovered] = useState(false);
   const [isContactHovered, setIsContactHovered] = useState(false);
   const [isShopHovered, setIsShopHovered] = useState(false);
   const [isCartHovered, setIsCartHovered] = useState(false);
+  useEffect(() => {
+    console.log("cart changed")
+  }, [cartItems])
   return <>
     <div className={styles.container}>
       <Link to="/" className={styles.grid1} onMouseEnter={() => setIsHomeHovered(true)} onMouseLeave={() => setIsHomeHovered(false)}>
@@ -34,7 +37,7 @@ function NavBar() {
       </Link>
       <Link to="/cart" className={styles.grid4} onMouseEnter={() => setIsCartHovered(true)} onMouseLeave={() => setIsCartHovered(false)}>
         <img src={isCartHovered ? cartanimate : cart} className={styles.icons} />
-        <p>Cart</p>
+        <p>Cart ({cartItems.length})</p>
       </Link>
     </div>
   </>

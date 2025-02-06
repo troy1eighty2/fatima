@@ -10,7 +10,7 @@ function CartItem({ product, removeItem }) {
 
 
       <div className={styles.griditem}>
-        <img src={product.pictures[0].url} className={styles.image} />
+        <img src={product.image.url} className={styles.image} />
       </div>
       <div className={styles.griditem}>
         <div className={styles.nameandprice}>
@@ -27,7 +27,7 @@ function CartItem({ product, removeItem }) {
       </div>
       <div className={styles.griditem}>
         <CartQuantity></CartQuantity>
-        <Remove itemKey={product.itemId} removeItem={removeItem}></Remove>
+        <Remove cartItemID={product.cartItemID} removeItem={removeItem}></Remove>
       </div>
 
     </div >

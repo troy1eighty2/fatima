@@ -16,7 +16,6 @@ import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
 // random coment
 function App() {
-  // console.log('entry into app')
   // localStorage.clear();
   if (!localStorage.getItem("userCart")) {
     const newCart = {
@@ -38,33 +37,40 @@ function App() {
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("userCart"))?.items
   );
+  console.log(cartItems)
 
   const updateCart = (newItem) => {
-    const updatedCart = [...cartItems, newItem];
+    const latestCart = JSON.parse(localStorage.getItem("userCart"));
+    const updatedCart = [...latestCart.items, newItem];
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
+      items: updatedCart // Update only the items
+    }));
     setCartItems([...updatedCart]);
-    localStorage.setItem("userCart", JSON.stringify({
-      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
-      items: updatedCart // Update only the items
-    }));
+    navigate("/cart");
   };
-  const mergeCart = (newCart) => {
-    const updatedCart = newCart;
-    setCartItems(updatedCart);
-    localStorage.setItem("userCart", JSON.stringify({
-      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
-      items: updatedCart // Update only the items
-    }));
+  const updateQuantity = (newItem) => {
+    // navigate("/cart");
   };
+  // const mergeCart = (newCart) => {
+  //   const updatedCart = newCart;
+  //   setCartItems(updatedCart);
+  //   localStorage.setItem("userCart", JSON.stringify({
+  //     ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
+  //     items: updatedCart // Update only the items
+  //   }));
+  // };
   const removeItem = (itemKey) => {
-    console.log(cartItems)
-    console.log(itemKey)
-    const updatedCart = cartItems.filter((item) => item.itemId !== itemKey);
-    setCartItems(updatedCart);
+    // console.log(cartItems)
+    // console.log(itemKey)
+    const latestCart = JSON.parse(localStorage.getItem("userCart"));
+    const updatedCart = latestCart.items.filter((item) => item.cartItemID !== itemKey);
     localStorage.setItem("userCart", JSON.stringify({
-      ...JSON.parse(localStorage.getItem("userCart") || "{}"), // Parse it first
+      ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
       items: updatedCart // Update only the items
     }));
-    navigate(0);
+    setCartItems([...updatedCart]);
+    navigate("/cart");
   }
   useEffect(() => {
     // console.log(url)
@@ -84,17 +90,17 @@ function App() {
         setLeftContent(<Shop></Shop>);
         break;
       case "/cart":
-        setRightContent(<Cart cartItems={cartItems} mergeCart={mergeCart} removeItem={removeItem}></Cart>);
+        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} ></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);
         break;
       default:
-        setLeftContent(<Product updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
+        setLeftContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
         break;
 
     }
-  }, [location])
+  }, [location, cartItems])
   return (
     <>
       <div className={styles.container}>
@@ -105,7 +111,7 @@ function App() {
         </div>
         <div className={styles.right}>
           <div className={styles.navbar}>
-            <NavBar></NavBar>
+            <NavBar cartItems={cartItems}></NavBar>
           </div>
           <div className={styles.contentright}>
             {rightContent}
