@@ -1,11 +1,12 @@
 import styles from "./AdminLeft.module.css"
+import AdminLeftPanel from "./AdminLeftPanel";
+import AdminPassword from "./AdminPassword.jsx"
+import { useEffect, useState } from "react"
 function AdminLeft({ password, setPassword }) {
+
   return <>
     <div className={styles.container}>
-      <div className={styles.enterpassword}>
-        <label>Enter password</label>
-        <input type="text" name="quantity" />
-      </div>
+      {password === import.meta.env.VITE_ADMIN_PASS ? <AdminLeftPanel></AdminLeftPanel> : <AdminPassword password={password} setPassword={setPassword}></AdminPassword>}
 
     </div>
   </>

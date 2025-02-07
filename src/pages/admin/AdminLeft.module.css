@@ -2,9 +2,9 @@
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .enterpassword {
-  border: solid black 2px;
   width: 50%;
 }

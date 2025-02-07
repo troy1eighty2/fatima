@@ -33,7 +33,8 @@ function App() {
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
-  const [password, setPassword] = useState(null)
+  const [password, setPassword] = useState("")
+  console.log(password)
 
   const navigate = useNavigate();
 
@@ -105,7 +106,7 @@ function App() {
         break;
 
     }
-  }, [location, cartItems])
+  }, [location, cartItems, password])
   return (
     <>
       <div className={styles.container}>
