@@ -13,7 +13,6 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
-  console.log(product)
   const handleClick = () => {
 
     if (!product || !selected) return; // Prevent adding if product is not loaded or size is not selected
