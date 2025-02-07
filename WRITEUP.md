@@ -25,3 +25,15 @@ price under name
 price flush with name
 quantity box eqaul to sizes
 reviews
+
+ADMIN
+- config
+    - description
+    - homeright pictures
+    - gif
+    - testomonials
+    - shop
+
+- order
+  - all orders
+

@@ -34,39 +34,70 @@ function App() {
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
   const [password, setPassword] = useState("")
-  console.log(password)
 
   const navigate = useNavigate();
 
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("userCart"))?.items
   );
-  // console.log(cartItems)
 
   const updateCart = (newItem) => {
-    // const latestCart = JSON.parse(localStorage.getItem("userCart"));
-    // const item_exists = latestCart.items.find((item) => item.productID == newItem.productID && item.size === newItem.size)
-    // let updatedCart;
-    // if (item_exists) {
-    //   const newLatestCart = latestCart.items.map((item) =>
-    //     item.productID === newItem.productID && item.size === newItem.size ? { ...item, quantity: item.quantity + newItem.quantity } : item
-    //   )
-    //   updatedCart = { ...latestCart, items: [...latestCart.items, newItem] };
-    // } else {
-    //
-    //   updatedCart = [...latestCart.items, newItem];
-    // }
-    // localStorage.setItem("userCart", JSON.stringify({
-    //   ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
-    //   items: updatedCart // Update only the items
-    // }));
-    // setCartItems([...updatedCart.items]);
-    // navigate("/cart");
+    // newItem is object
+    const latestCart = JSON.parse(localStorage.getItem("userCart"));
+    const item_exists = latestCart.items.find((item) => item.productID === newItem.productID && item.size === newItem.size)
+    let updatedCart;
+    if (item_exists) {
+      // produces items array
+      updatedCart = latestCart.items.map((item) =>
+        item.productID === newItem.productID && item.size === newItem.size ? { ...item, quantity: item.quantity + newItem.quantity } : item
+      )
+      // console.log(newLatestCart)
+    }
+    else {
+      updatedCart = [...latestCart.items, newItem];
+    }
+    localStorage.setItem("userCart", JSON.stringify({
+      ...latestCart, // Parse it first
+      items: updatedCart // Update only the items
+    }));
+    setCartItems(updatedCart);
+    navigate("/cart");
 
   };
   const removeItem = (itemKey) => {
     const latestCart = JSON.parse(localStorage.getItem("userCart"));
     const updatedCart = latestCart.items.filter((item) => item.cartItemID !== itemKey);
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
+      items: updatedCart // Update only the items
+    }));
+    setCartItems([...updatedCart]);
+    navigate("/cart");
+  }
+  const add = (cartItemID) => {
+    const latestCart = JSON.parse(localStorage.getItem("userCart"))
+
+    const updatedCart = latestCart.items.map((item) =>
+      item.cartItemID === cartItemID ? { ...item, quantity: item.quantity + 1 } : item
+    )
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
+      items: updatedCart // Update only the items
+    }));
+    setCartItems([...updatedCart]);
+    navigate("/cart");
+  }
+  const subtract = (cartItemID) => {
+    const latestCart = JSON.parse(localStorage.getItem("userCart"))
+    // const item_exists = latestCart.items.find((item) => item.productID === newItem.productID && item.size === newItem.size)
+    const item = latestCart.items.find((item) => item.cartItemID === cartItemID)
+    if (item.quantity < 2) {
+      return
+    }
+
+    const updatedCart = latestCart.items.map((item) =>
+      item.cartItemID === cartItemID ? { ...item, quantity: item.quantity - 1 } : item
+    )
     localStorage.setItem("userCart", JSON.stringify({
       ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
       items: updatedCart // Update only the items
@@ -92,7 +123,7 @@ function App() {
         setLeftContent(<Shop></Shop>);
         break;
       case "/cart":
-        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} ></Cart>);
+        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} ></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);

@@ -1,7 +1,7 @@
 import styles from "./CartItem.module.css"
 import CartQuantity from "./CartQuantity.jsx"
 import Remove from "./Remove.jsx"
-function CartItem({ product, removeItem }) {
+function CartItem({ product, removeItem, add, subtract }) {
   // console.log(product)
 
 
@@ -26,7 +26,7 @@ function CartItem({ product, removeItem }) {
         <p className={styles.size}>Size: {product.size}</p>
       </div>
       <div className={styles.griditem}>
-        <CartQuantity></CartQuantity>
+        <CartQuantity product={product} add={add} subtract={subtract}></CartQuantity>
         <Remove cartItemID={product.cartItemID} removeItem={removeItem}></Remove>
       </div>
 

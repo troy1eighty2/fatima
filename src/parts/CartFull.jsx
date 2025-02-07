@@ -5,7 +5,7 @@ import CartItem from "./CartItem.jsx";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward.png";
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forwardblack.png";
 
-function CartFull({ cart, removeItem }) {
+function CartFull({ cart, removeItem, add, subtract }) {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
   // console.log(cart)
@@ -24,7 +24,7 @@ function CartFull({ cart, removeItem }) {
       </div>
       <div className={styles.second}>
         {cart.map((item) => (
-          <CartItem product={item} key={item.cartItemID} removeItem={removeItem} />
+          <CartItem product={item} key={item.cartItemID} removeItem={removeItem} add={add} subtract={subtract} />
         ))}
       </div>
       <div className={styles.third}>
