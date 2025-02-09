@@ -4,12 +4,21 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItem.jsx";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward.png";
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forwardblack.png";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
-function CartFull({ cart, removeItem, add, subtract }) {
+function CartFull({ cartItems, removeItem, add, subtract }) {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
+  const totalPrice = cartItems.reduce((sum, item) => {
+    return sum + item.price * item.quantity
+  }, 0)
   // console.log(cart)
 
+  const handleCheckout = () => {
+    const orderID = uuidv4()
+
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
@@ -23,13 +32,17 @@ function CartFull({ cart, removeItem, add, subtract }) {
         </button>
       </div>
       <div className={styles.second}>
-        {cart.map((item) => (
+        {cartItems.map((item) => (
           <CartItem product={item} key={item.cartItemID} removeItem={removeItem} add={add} subtract={subtract} />
         ))}
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
-          <button className={styles.checkout}>Checkout</button>
+          <button className={styles.checkout} onClick={handleCheckout}>Checkout {
+            new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(totalPrice)}</button>
           <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>
             *Taxes and shipping calculated at checkout*
           </p>

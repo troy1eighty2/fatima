@@ -133,7 +133,15 @@ function App() {
         setRightContent(<AdminRight password={password} setPassword={setPassword}></AdminRight>);
         break;
       default:
-        setLeftContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
+        if (url[1] === "shop" && url.length >= 4) {
+          const id = url[2];
+          const product = url[3];
+          setLeftContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
+        } else {
+          setLeftContent(<HomeLeft></HomeLeft>);
+          setRightContent(<HomeRight></HomeRight>);
+        }
+
         break;
 
     }

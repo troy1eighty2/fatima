@@ -7,7 +7,7 @@ function AdminRightPanel() {
 
   return <>
     <div className={styles.container}>
-      <h1>Orders</h1>
+      <h1 className={styles.header}>Orders</h1>
       <div className={styles.orders}>
         {orders.length === 0 ? <p>No orders yet.</p> : orders.map((order) => {
           <p>{order}</p>

@@ -53,3 +53,13 @@ Built with react mongoatlas react node axios
 - cart initialized on app entry
 - addtocart button gives it an id and a cartid
 - needed for cart: name price size quantity
+
+
+
+- no bold
+- home freeze pictures
+- testomonials
+- quanittity button
+- contact page behavior? max length? required? sent to email? (400 count for characters in tell us about)
+- auto format number
+-pay pal prio
