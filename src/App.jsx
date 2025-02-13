@@ -16,6 +16,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 // random coment
 function App() {
   // localStorage.clear();
@@ -105,6 +106,13 @@ function App() {
     setCartItems([...updatedCart]);
     navigate("/cart");
   }
+  // paypal
+  const initialOptions = {
+    clientId: "ASYJhvlEOf5aDUGNPSfWj6_RE7HQ-zT-VClb9HpQoFnuHF0d1y5Awr0gC-YgiqWMaNnQpWs5n0ClNtPf",
+    // "disable-funding": "paylater,venmo",
+    // Add other options as needed
+  };
+
   useEffect(() => {
     // console.log(url)
     setProductID(url.length < 3 ? null : url[2]);
@@ -148,21 +156,23 @@ function App() {
   }, [location, cartItems, password])
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <div className={styles.contentleft}>
-            {leftContent}
+      <PayPalScriptProvider options={initialOptions}>
+        <div className={styles.container}>
+          <div className={styles.left}>
+            <div className={styles.contentleft}>
+              {leftContent}
+            </div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.navbar}>
+              <NavBar cartItems={cartItems}></NavBar>
+            </div>
+            <div className={styles.contentright}>
+              {rightContent}
+            </div>
           </div>
         </div>
-        <div className={styles.right}>
-          <div className={styles.navbar}>
-            <NavBar cartItems={cartItems}></NavBar>
-          </div>
-          <div className={styles.contentright}>
-            {rightContent}
-          </div>
-        </div>
-      </div>
+      </PayPalScriptProvider >
     </>
   )
 }

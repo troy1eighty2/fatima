@@ -6,6 +6,7 @@ import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forwardblack.png";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 function CartFull({ cartItems, removeItem, add, subtract }) {
   const [hover, setHover] = useState(false);
@@ -17,6 +18,17 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
 
   const handleCheckout = () => {
     const orderID = uuidv4()
+
+  }
+  //paypal
+  const createOrder = async () => {
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, {})
+
+    } catch (error) {
+      console.log(error)
+
+    }
 
   }
   return (
@@ -38,6 +50,7 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
+          {/* button */}
           <button className={styles.checkout} onClick={handleCheckout}>Checkout {
             new Intl.NumberFormat("en-US", {
               style: "currency",
