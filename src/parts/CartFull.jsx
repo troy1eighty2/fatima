@@ -20,6 +20,7 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, cartItems)
       console.log(response)
+      return response.data.orderID;
     } catch (error) {
       console.log(error)
     }

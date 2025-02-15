@@ -84,7 +84,9 @@ async function getAccessToken() {
 PayPal_router.post("/create-paypal-order", async (request, response) => {
   try {
     const order = await createOrder(request);
-    response.json(order);
+    console.log(order)
+
+    response.json({ orderID: order.id });
 
   } catch (error) {
     console.log(error);
