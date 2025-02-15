@@ -1,16 +1,95 @@
 import express from "express";
-import cors from "cors";
+import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config()
+
 
 const PayPal_router = express.Router();
+const clientID = process.env.CLIENTID;
+const clientSecret = process.env.CLIENTSECRET;
+console.log("Client ID:", clientID);
+console.log("Client Secret:", clientSecret);
 
-PayPal_router.post("/create-paypal-order", async (request, response) => {
+async function createOrder(request) {
+  // console.log(request.body)
+  const cartItems = request.body
+  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const orderData = {
+    "intent": "CAPTURE",
+    "purchase_units": [{
+      "amount": {
+        "currency_code": "USD",
+        "value": totalPrice.toFixed(2).toString(),
+        "breakdown": {
+          "item_total": {
+            "currency_code": "USD",
+            "value": totalPrice.toFixed(2).toString(),
+          }
+        },
+      },
+      "items": cartItems.map((item) => ({
+        "name": item.name,
+        "quantity": item.quantity.toString(),
+        "unit_amount": {
+          "currency_code": "USD",
+          "value": item.price.toFixed(2).toString(),
+        }
+      })),
+    }],
+  }
   try {
-    // const cart = await Cart.find({});
-    // return response.status(200).json(cart)
+
+    const access_token = await getAccessToken();
+    const response = await axios.post("https://api-m.sandbox.paypal.com/v2/checkout/orders", orderData, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${access_token}`,
+      }
+    })
+    return response.data;
+
   } catch (error) {
     console.log(error)
-    // return response.status(500).json({ error: "server error" });
+
+  }
+
+}
+async function getAccessToken() {
+  try {
+    const response = await axios.post(
+      "https://api-m.sandbox.paypal.com/v1/oauth2/token",
+      "grant_type=client_credentials",
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        auth: {
+          username: clientID,
+          password: clientSecret,
+        },
+      }
+    );
+
+    return response.data.access_token;
+  }
+  catch (error) {
+    console.error("Error fetching PayPal access token:", error.response?.data || error.message);
+    if (error.response) {
+      console.error("Status Code:", error.response.status);
+      console.error("Response Data:", error.response.data);
+    }
+    throw new Error("Failed to obtain PayPal access token");
+  }
+}
+PayPal_router.post("/create-paypal-order", async (request, response) => {
+  try {
+    const order = await createOrder(request);
+    response.json(order);
+
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({ error: "error creating PayPal order" });
   }
 })
 
-export default PayPal_router
+export default PayPal_router;

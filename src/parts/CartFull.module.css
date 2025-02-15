@@ -58,11 +58,6 @@
   box-sizing: border-box;
 }
 
-.checkout:hover {
-
-  border: black solid 2px;
-  font-weight: bold;
-}
 
 .firstlinedisclaimer {
   margin-bottom: -3px;
@@ -82,8 +77,14 @@
 }
 
 .checkoutcontainer {
+  margin-top: 300px;
   margin-right: 30px;
   margin-bottom: 30px;
   justify-content: right;
-  width: min-content;
+  width: 30%;
+}
+
+.paypalButtonstyle {
+  border: solid black 1px;
+  height: 52px;
 }

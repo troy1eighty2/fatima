@@ -14,22 +14,21 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
   const totalPrice = cartItems.reduce((sum, item) => {
     return sum + item.price * item.quantity
   }, 0)
-  // console.log(cart)
 
-  const handleCheckout = () => {
-    const orderID = uuidv4()
-
-  }
   //paypal
   const createOrder = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, {})
-
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, cartItems)
+      console.log(response)
     } catch (error) {
       console.log(error)
-
     }
-
+  }
+  const buttonInit = {
+    "shape": "sharp",
+    "layout": "vertical",
+    "label": "checkout",
+    "height": 50,
   }
   return (
     <div className={styles.container}>
@@ -50,12 +49,14 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
-          {/* button */}
-          <button className={styles.checkout} onClick={handleCheckout}>Checkout {
-            new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-            }).format(totalPrice)}</button>
+          <div className={styles.paypalButtonstyle}>
+            <PayPalButtons style={buttonInit} createOrder={createOrder}></PayPalButtons>
+          </div>
+          {/* <button className={styles.checkout} onClick={createOrder}>Checkout { */}
+          {/*   new Intl.NumberFormat("en-US", { */}
+          {/*     style: "currency", */}
+          {/*     currency: "USD", */}
+          {/*   }).format(totalPrice)}</button> */}
           <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>
             *Taxes and shipping calculated at checkout*
           </p>

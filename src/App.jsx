@@ -109,7 +109,7 @@ function App() {
   // paypal
   const initialOptions = {
     clientId: "ASYJhvlEOf5aDUGNPSfWj6_RE7HQ-zT-VClb9HpQoFnuHF0d1y5Awr0gC-YgiqWMaNnQpWs5n0ClNtPf",
-    // "disable-funding": "paylater,venmo",
+    "disable-funding": "paylater,venmo,card",
     // Add other options as needed
   };
 

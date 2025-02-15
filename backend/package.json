@@ -17,7 +17,8 @@
     "express": "^4.21.2",
     "mongoose": "*",
     "nodemon": "*",
-    "uuid": "*"
+    "uuid": "*",
+    "axios": "*"
   },
   "author": "",
   "license": "ISC"
