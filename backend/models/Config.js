@@ -1,29 +1,41 @@
 import mongoose from "mongoose";
 const configSchema = new mongoose.Schema(
   {
-    items: [
+    description: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    gif: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    homeRightPictures: [
       {
-        item_id: {
-          type: String,
-          required: true,
-          trim: true
-        },
-        name: {
-          type: String,
-          required: true,
-          trim: true
-        },
-        quantity: {
-          type: Number,
-          required: true,
-        },
-        size: {
-          type: String,
-          required: true,
-          trim: true
-        }
+        type: String,
+        required: true
       }
     ],
+    testimonials: [
+      {
+        text: {
+
+          type: String,
+          required: true
+        },
+        author: {
+          type: String,
+          required: true
+        }
+      }
+
+    ]
 
   },
   { timestamps: true }

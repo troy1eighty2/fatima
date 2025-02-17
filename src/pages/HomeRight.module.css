@@ -11,14 +11,13 @@
 .container2 {
   width: 100%;
   display: flex;
-  overflow-x: hidden;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
 .left {
   flex: 1;
   border-right: solid black 1.5px;
-  /* overflow: hidden; */
 }
 
 .right {

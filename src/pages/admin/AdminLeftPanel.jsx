@@ -1,4 +1,6 @@
 import styles from "./AdminPanel.module.css"
+import { useState, useEffect } from "react"
+import axios from "axios"
 function AdminLeftPanel() {
   const handleStyleSubmit = () => {
 
@@ -7,6 +9,12 @@ function AdminLeftPanel() {
   const handleStyleChange = () => {
     console.log("stylechange")
   }
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/admin`)
+
+
+
+  }, [])
   return <>
     <div className={styles.container}>
       <h1 className={styles.header}>Config</h1>

@@ -11,17 +11,12 @@ import jawn1 from "../assets/Assets/Assets/temp/jawn1.png"
 
 import axios from "axios";
 
-const tempData = [
-  jawn,
-  jawn1,
-  jawn,
-  jawn1
-]
-
-
 function HomeRight() {
   const location = useLocation();
   const [page, setPage] = useState(<Intro></Intro>);
+  const [homeRightPictures, setHomeRightPictures] = useState([])
+  const [testimonials, setTestimonials] = useState([])
+  const [gif, setGif] = useState("")
 
   useEffect(() => {
     if (location.pathname === "/contact") {
@@ -30,6 +25,15 @@ function HomeRight() {
     else {
       setPage(<Intro></Intro>);
     }
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/config`)
+      .then((response) => {
+        const config = response.data[0]
+        setHomeRightPictures(config.homeRightPictures)
+        setGif(config.gif)
+        setTestimonials(config.testimonials)
+
+      })
 
   }, [location])
   return <>
@@ -38,7 +42,7 @@ function HomeRight() {
       <div className={styles.container2}>
         <div className={styles.left}>
           <div className={styles.gallery}>
-            {tempData.map((item, index) => (<img key={index} src={item} className={styles.display} />))}
+            {homeRightPictures.map((item, index) => (<img key={index} src={item} className={styles.display} />))}
           </div>
         </div>
         <div className={styles.right}>

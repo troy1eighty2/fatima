@@ -63,3 +63,28 @@ Built with react mongoatlas react node axios
 - contact page behavior? max length? required? sent to email? (400 count for characters in tell us about)
 - auto format number
 -pay pal prio
+
+{ "_id": { "$oid": "67b38ca42fe7a700e0eb80f5" },
+  "description":"Fatima is an art-focused screenprinting service. We want to print your goods for you. We want to make your life better. Get a quote from us today.",
+  "gif":"https://i.pinimg.com/736x/3a/ec/1b/3aec1b913b9f3e4ec41e46e6b75e6a95.jpg",
+  "password":"password",
+  "homeRightPictures":[
+    "https://i.pinimg.com/736x/8a/cd/76/8acd765a60dd61eed580561cd48e2196.jpg",
+    "https://i.pinimg.com/736x/24/33/31/243331279efc66e7218ce7a688578ce4.jpg",
+    "https://i.pinimg.com/736x/8a/cd/76/8acd765a60dd61eed580561cd48e2196.jpg"
+  ],
+  "testimonials":[
+    {
+      "text":"These are f*ckin' pro, dude",
+      "author":"Cristian, Die Mart"
+    },
+    {
+      "text":"Service and quality or work is great. I ordered some shirts for my construction crew and the graphics have held up really well.",
+      "author":"Justin, Capital Exterior"
+    },
+    {
+      "text":"Dope.",
+      "author":"Luis, Situation Gear"
+    }    
+  ]
+}
