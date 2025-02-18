@@ -33,7 +33,8 @@ a:visited {
 
 .left,
 .right {
-  height: 100vh;
+  height: 100%;
+  /* height: 100vh; */
   display: flex;
   width: 50%;
   flex-direction: column;

@@ -73,22 +73,64 @@ function AdminLeftPanel() {
   return <>
     <div className={styles.container}>
       <h1 className={styles.header}>Config</h1>
+      <p>
+        Remove content in input boxes to remove content on webpage.
+      </p>
+      <p>
+        Maximum of 5 homeRightPictures and 5 testimonials.
+      </p>
+      <p>
+        **THIS PAGE WONT SAVE YOUR WORK IF YOU REFRESH OR EXIT IT. PRESS SUBMIT CHANGES TO SAVE.**
+      </p>
       <form className={styles.pagestyle} onSubmit={handleStyleSubmit}>
-        <label>description</label>
-        <textarea className={styles.inputbox} type="text" name="description" onChange={handleStyleChange} value={form.description} />
-        <label>home right pictures</label>
-        {form.homeRightPictures.map((item, index) => (
-          <textarea key={index} className={styles.inputbox} type="text" name="homeRightPictures" onChange={(e) => handleStyleChange(e, index)} value={item} />
-        ))}
-        <label>home gif</label>
-        <textarea className={styles.inputbox} type="text" name="gif" onChange={handleStyleChange} value={form.gif} />
-        <label>testimonials</label>
-        {/* {form.testimonials.map((item, index) => ( */}
-        {/*   <textarea key={index} className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index)} value={item} /> */}
-        {/* ))} */}
-        {/* <label>shop</label> */}
-        <label>password</label>
-        <textarea className={styles.inputbox} type="text" name="password" onChange={handleStyleChange} value={form.password} />
+
+        <div className={styles.option}>
+          <label>description</label>
+          <textarea className={styles.inputbox} type="text" name="description" onChange={handleStyleChange} value={form.description} />
+        </div>
+
+        <div className={styles.option}>
+          <label>home right pictures</label>
+          {form.homeRightPictures.map((item, index) => (
+            <textarea key={index} className={styles.inputbox} type="text" name="homeRightPictures" onChange={(e) => handleStyleChange(e, index)} value={item} />
+          ))}
+        </div>
+
+        <div className={styles.option}>
+          <label>home gif</label>
+          <textarea className={styles.inputbox} type="text" name="gif" onChange={handleStyleChange} value={form.gif} />
+        </div>
+
+        <div className={styles.option}>
+          <label>testimonials</label>
+          {form.testimonials.map((item, index) => (
+            <div key={index}>
+              <p>Quote, Author</p>
+              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index)} value={item.text} />
+              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index)} value={item.author} />
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.option}>
+          <label>shop</label>
+          {form.shop.map((item, index) => (
+            <div key={index}>
+              <p>name, description, pictures, price, stock (xs,s,m,l,xl)</p>
+              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.name} />
+              <textarea className={styles.inputdesc} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.description} />
+              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.pictures} />
+              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.price} />
+              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock} />
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.option}>
+          <label>password</label>
+          <textarea className={styles.inputbox} type="text" name="password" onChange={handleStyleChange} value={form.password} />
+        </div>
+
         <button type="submit" className={styles.submit}>Submit Changes</button>
       </form>
     </div>
