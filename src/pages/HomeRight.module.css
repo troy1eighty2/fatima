@@ -13,15 +13,18 @@
   display: flex;
   overflow: hidden;
   box-sizing: border-box;
+  height: 100vh;
 }
 
 .left {
   flex: 1;
+  overflow-y: auto;
   border-right: solid black 1.5px;
 }
 
 .right {
   flex: 1;
+  height: min-content;
 }
 
 .container3 {
