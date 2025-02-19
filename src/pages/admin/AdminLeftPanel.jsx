@@ -85,24 +85,24 @@ function AdminLeftPanel() {
       <form className={styles.pagestyle} onSubmit={handleStyleSubmit}>
 
         <div className={styles.option}>
-          <label>description</label>
+          <h1 className={styles.label}>description</h1>
           <textarea className={styles.inputbox} type="text" name="description" onChange={handleStyleChange} value={form.description} />
         </div>
 
         <div className={styles.option}>
-          <label>home right pictures</label>
+          <h1 className={styles.label}>home gallery</h1>
           {form.homeRightPictures.map((item, index) => (
             <textarea key={index} className={styles.inputbox} type="text" name="homeRightPictures" onChange={(e) => handleStyleChange(e, index)} value={item} />
           ))}
         </div>
 
         <div className={styles.option}>
-          <label>home gif</label>
+          <h1 className={styles.label}>home gif</h1>
           <textarea className={styles.inputbox} type="text" name="gif" onChange={handleStyleChange} value={form.gif} />
         </div>
 
         <div className={styles.option}>
-          <label>testimonials</label>
+          <h1 className={styles.label}>testimonials</h1>
           {form.testimonials.map((item, index) => (
             <div key={index}>
               <p>Quote, Author</p>
@@ -113,7 +113,7 @@ function AdminLeftPanel() {
         </div>
 
         <div className={styles.option}>
-          <label>shop</label>
+          <h1 className={styles.label}>shop</h1>
           {form.shop.map((item, index) => (
             <div key={index}>
               <p>name, description, pictures, price, stock (xs,s,m,l,xl)</p>
@@ -127,7 +127,7 @@ function AdminLeftPanel() {
         </div>
 
         <div className={styles.option}>
-          <label>password</label>
+          <h1 className={styles.label}>password</h1>
           <textarea className={styles.inputbox} type="text" name="password" onChange={handleStyleChange} value={form.password} />
         </div>
 

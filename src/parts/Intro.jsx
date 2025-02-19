@@ -23,11 +23,13 @@ function Intro() {
   }, [])
   return <>
     <div className={styles.container}>
-      <p className={styles.heading}>{description}</p>
-      <p className={styles.getaquote}>Get a quote from us today.</p>
-      <Link to="/contact" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <img className={styles.gobutton} src={isHovered ? goAnimate : go} />
-      </Link>
+      <div className={styles.content}>
+        <p className={styles.heading}>{description}</p>
+        <p className={styles.getaquote}>Get a quote from us today.</p>
+        <Link to="/contact" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+          <img className={styles.gobutton} src={isHovered ? goAnimate : go} />
+        </Link>
+      </div>
     </div>
   </>
 }

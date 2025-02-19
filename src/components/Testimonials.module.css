@@ -1,0 +1,13 @@
+.container {
+  margin: 40px;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.quote {
+  margin-bottom: 10px;
+}

@@ -6,17 +6,21 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  /* border: black solid 5px; */
 }
 
 .container2 {
+  height: 100%;
   width: 100%;
   display: flex;
   overflow: hidden;
   box-sizing: border-box;
-  height: 100vh;
 }
 
 .left {
+  height: 100vh;
   flex: 1;
   overflow-y: auto;
   border-right: solid black 1.5px;
@@ -24,30 +28,13 @@
 
 .right {
   flex: 1;
-  height: min-content;
+  width: 100%;
 }
 
-.container3 {
-  font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
 
 .gif {
   width: 100%;
   border-bottom: solid 1.5px black;
-}
-
-.quote {
-  text-align: center;
-  margin: 75px 50px 0px;
-}
-
-.customer {
-  margin: 20px 0px 75px;
 }
 
 .gallery {

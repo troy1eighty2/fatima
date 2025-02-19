@@ -18,6 +18,10 @@
   margin-bottom: 60px;
 }
 
+.label {
+  font-size: x-large;
+}
+
 .submit {
   border: black solid 1px;
   display: flex;

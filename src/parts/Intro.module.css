@@ -1,24 +1,28 @@
 .heading {
-  margin: 20px;
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .getaquote {
-  margin-left: 20px;
-  margin-bottom: 10px;
-  font-size: 32px;
+  /* margin-left: 20px; */
+  /* margin-bottom: 10px; */
+  font-size: 30px;
+  margin-top: 10px;
 }
 
 .gobutton {
   height: 55px;
-  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .container {
-  height: 239px;
+  height: min-content;
   border-bottom: solid black 1.5px;
   -ms-overflow-style: none;
-  overflow: auto;
+  overflow: off;
+}
+
+.content {
+  margin: 20px;
 }
 
 .container::-webkit-scrollbar {
