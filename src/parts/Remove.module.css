@@ -7,10 +7,10 @@
   background-color: #C58EB6;
 }
 
-.container:hover {
-  border: solid black 2px;
-  font-weight: bold;
-}
+/* .container:hover { */
+/*   border: solid black 2px; */
+/*   font-weight: bold; */
+/* } */
 
 .btn {
   display: flex;

@@ -16,10 +16,10 @@
   align-items: center;
 }
 
-.size:hover {
-  border: solid black 2px;
-  font-weight: bold;
-}
+/* .size:hover { */
+/*   border: solid black 2px; */
+/*   font-weight: bold; */
+/* } */
 
 .backgroundUnset {
   background-color: unset;

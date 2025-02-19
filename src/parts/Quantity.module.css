@@ -10,14 +10,14 @@
 }
 
 
-.container:hover {
-  border: black solid 2px;
-}
+/* .container:hover { */
+/*   border: black solid 2px; */
+/* } */
 
 .container>* {
   text-align: center;
 }
 
-.container>*:hover {
-  font-weight: bold;
-}
+/* .container>*:hover { */
+/*   font-weight: bold; */
+/* } */
