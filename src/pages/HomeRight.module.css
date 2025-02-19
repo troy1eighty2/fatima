@@ -34,7 +34,9 @@
 
 .gif {
   width: 100%;
+  height: min-content;
   border-bottom: solid 1.5px black;
+  display: block;
 }
 
 .gallery {

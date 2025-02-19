@@ -88,3 +88,10 @@ Built with react mongoatlas react node axios
     }    
   ]
 }
+
+# finish by friday
+- animations
+- paypal into order 
+- think about admin
+- testimonial carousel gallery
+
