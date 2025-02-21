@@ -8,7 +8,6 @@ const cart_router = express.Router();
 cart_router.get("/", async (request, response) => {
   try {
     const cart = await Cart.find({});
-    console.log(response)
     return response.status(200).json(cart)
   } catch (error) {
     console.log(error)

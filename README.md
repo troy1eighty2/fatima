@@ -93,5 +93,9 @@ Built with react mongoatlas react node axios
 - animations
 - paypal into order 
 - think about admin
-- testimonial carousel gallery
+- testimonial carousel
 
+- 60percent opacity on buttons
+- more space button and text
+- autorotate on testimonials 5 sec
+- space paypal button more

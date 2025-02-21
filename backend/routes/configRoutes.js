@@ -7,7 +7,6 @@ const config_router = express.Router();
 config_router.get("/", async (request, response) => {
   try {
     const config = await Config.find({});
-    console.log(response)
     return response.status(200).json(config)
   } catch (error) {
     console.log(error)

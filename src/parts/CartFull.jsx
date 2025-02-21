@@ -19,11 +19,20 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
   const createOrder = async () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, cartItems)
-      console.log(response)
       return response.data.orderID;
     } catch (error) {
       console.log(error)
     }
+  }
+  const onApprove = async (data) => {
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`,)
+      console.log(`transaction completed by ${response}`)
+    } catch (error) {
+      console.log(error)
+    }
+
+
   }
   const buttonInit = {
     "shape": "sharp",
@@ -51,13 +60,8 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
           <div className={styles.paypalButtonstyle}>
-            <PayPalButtons style={buttonInit} createOrder={createOrder}></PayPalButtons>
+            <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
           </div>
-          {/* <button className={styles.checkout} onClick={createOrder}>Checkout { */}
-          {/*   new Intl.NumberFormat("en-US", { */}
-          {/*     style: "currency", */}
-          {/*     currency: "USD", */}
-          {/*   }).format(totalPrice)}</button> */}
           <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>
             *Taxes and shipping calculated at checkout*
           </p>
