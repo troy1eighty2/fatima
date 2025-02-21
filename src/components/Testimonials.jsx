@@ -1,6 +1,7 @@
 import styles from "./Testimonials.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import nub from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg"
 
 function Testimonials() {
 
@@ -26,6 +27,11 @@ function Testimonials() {
     }
 
   }
+  const handleNub = (index) => {
+    console.log("asdads")
+    setCurr(index)
+
+  }
 
 
   useEffect(() => {
@@ -46,7 +52,6 @@ function Testimonials() {
     <div className={styles.container}>
       <div className={styles.slider} style={{
         transform: `translateX(-${curr * 100}%)`
-        // width: `${testimonials.length * 100}%`
       }}>
         {testimonials.length > 0 ? (
           testimonials.map((item, index) => (
@@ -55,6 +60,12 @@ function Testimonials() {
               <p className={styles.customer}>{`- ${item.author}`}</p>
             </div>))
         ) : null}
+
+      </div>
+      <div className={styles.selectorbuttons}>
+        {testimonials.map((item, index) => (
+          <button key={index} className={`${styles.individualselectorbutton} ${index === curr ? styles.selected : ""}`} onClick={() => handleNub(index)}><img src={nub} /></button>
+        ))}
 
       </div>
       <div className={styles.navigate}>

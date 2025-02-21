@@ -5,15 +5,16 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  /* border: purple solid 4px; */
 }
 
 .slider {
   box-sizing: border-box;
   font-size: 20px;
-  margin-top: 40px;
   display: flex;
   transition: transform 0.5s ease-in-out;
 
+  /* border: black solid 1px; */
 }
 
 .quote {
@@ -21,10 +22,12 @@
 }
 
 .testimonial {
-  border: black 2px solid;
+
   box-sizing: border-box;
-  flex: 0 0 100%;
+  flex: 0 0 80%;
+  margin: 10% 10%;
   text-align: center;
+  /* border: black solid 1px; */
 }
 
 
@@ -39,10 +42,34 @@
 
 
 .button {
-  border: black solid 1px;
+  width: 50px;
   opacity: 0;
+  border: black solid 1px;
 }
 
 .button:hover {
   opacity: 1;
+}
+
+.selectorbuttons {
+  position: absolute;
+  display: flex;
+  bottom: 0%;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+
+}
+
+.individualselectorbutton {
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+}
+
+.individualselectorbutton img {
+  width: 100%;
+}
+
+.selected {
+  width: 35px;
 }
