@@ -75,6 +75,13 @@ function App() {
     setCartItems([...updatedCart]);
     navigate("/cart");
   }
+  const clearCart = () => {
+    localStorage.setItem("userCart", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
+      items: []// Update only the items
+    }));
+    navigate("/cart");
+  }
   const add = (cartItemID) => {
     const latestCart = JSON.parse(localStorage.getItem("userCart"))
 
@@ -131,7 +138,7 @@ function App() {
         setLeftContent(<Shop></Shop>);
         break;
       case "/cart":
-        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} ></Cart>);
+        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);

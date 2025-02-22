@@ -8,12 +8,9 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
-function CartFull({ cartItems, removeItem, add, subtract }) {
+function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
-  // const totalPrice = cartItems.reduce((sum, item) => {
-  //   return sum + item.price * item.quantity
-  // }, 0)
 
   //paypal
   const createOrder = async () => {
@@ -26,10 +23,9 @@ function CartFull({ cartItems, removeItem, add, subtract }) {
   }
   const onApprove = async (data) => {
     try {
-      // console.log("testing")
-      // console.log(data)
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`, data)
-      console.log(`transaction completed by ${response}`)
+      clearCart()
+
     } catch (error) {
       console.log(error)
     }
