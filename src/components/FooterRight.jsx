@@ -8,7 +8,7 @@ function FooterRight() {
         <img className={styles.logo} src={logo} />
       </Link>
       <div className={styles.tinyfooter}>
-        <p className={styles.copyright}>© Copyright 2024</p>
+        <p className={styles.copyright}>© Copyright 2025</p>
         <a href="https://jonydoce.com/" target="_blank" className={styles.link}>Site by Jony Doce</a>
       </div>
     </div>

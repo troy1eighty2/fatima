@@ -28,7 +28,6 @@ function Testimonials() {
 
   }
   const handleNub = (index) => {
-    console.log("asdads")
     setCurr(index)
 
   }
@@ -40,7 +39,6 @@ function Testimonials() {
       .then((response) => {
         const config = response.data[0]
         setTestimonials(config.testimonials)
-        console.log(config.testimonials)
 
       })
       .catch((error) => {

@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
+import { v4 as uuidv4 } from "uuid";
 dotenv.config()
 
 
@@ -54,6 +55,29 @@ async function createOrder(request) {
   }
 
 }
+async function captureOrder(request) {
+  const orderID = request.body.orderID
+  const PayPalRequestID = uuidv4()
+  const captureData = {
+    "id": orderID
+  }
+  try {
+    const access_token = await getAccessToken();
+    const response = await axios.post(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}/capture`, captureData, {
+      headers: {
+        "Content-Type": "application/json",
+        "PayPal-Request-Id": `${PayPalRequestID}`,
+        "Authorization": `Bearer ${access_token}`,
+      }
+    })
+    return response.data;
+  } catch (error) {
+    console.log(error)
+
+
+  }
+}
+
 async function getAccessToken() {
   try {
     const response = await axios.post(
@@ -93,13 +117,11 @@ PayPal_router.post("/create-paypal-order", async (request, response) => {
   }
 })
 
-PayPal_router.post("/approve-paypal-order", async (request, response) => {
-
-})
 PayPal_router.post("/capture-paypal-order", async (request, response) => {
   try {
-    // const order = await captureOrder();
-    console.log(request)
+    const order = await captureOrder(request);
+    console.log(order)
+    response.json(order);
 
   } catch (error) {
     console.log(error)
