@@ -69,8 +69,8 @@ function Testimonials() {
 
       </div>
       <div className={styles.navigate}>
-        <button onClick={handleBack} className={styles.button}>back</button>
-        <button onClick={handleForward} className={styles.button}>forward</button>
+        <button onClick={handleBack} className={styles.button}></button>
+        <button onClick={handleForward} className={styles.button}></button>
       </div>
     </div>
   </>

@@ -95,7 +95,7 @@ Built with react mongoatlas react node axios
 - think about admin
 - testimonial carousel
 
-- 60percent opacity on buttons
-- more space button and text
+- DONE 60percent opacity on buttons
+- DONE more space button and text
 - autorotate on testimonials 5 sec
-- space paypal button more
+- DONE space paypal button more
