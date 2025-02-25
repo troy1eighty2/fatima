@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.stockbox {
+  display: flex;
+  gap: 10px;
+}
+
+.stockboxbox {
+  height: 50px;
+  width: 50px;
+
+}
+
+.product {
+  border: black 1px solid;
+  padding: 20px;
+}
+
+.label {
+  font-size: medium;
+}
+
+.smallinput {
+  height: 50px;
+}
+
+.input {
+  height: 200px;
+}
+
+.delete {
+  border: solid black 1px;
+  padding: 10px;
+  background-color: tomato;
+  width: min-content;
+  margin-left: auto;
+
+}

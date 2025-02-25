@@ -1,11 +1,16 @@
 import styles from "./AdminLeftPanel.module.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import AdminShopCard from "./AdminShopCard"
 function AdminLeftPanel() {
   const handleStyleSubmit = (e) => {
 
     e.preventDefault()
     console.log(form)
+  }
+  const handleShopChange = (e, index, field) => {
+    const { name, value } = e.target
+
   }
   const handleStyleChange = (e, index, field) => {
     const { name, value } = e.target
@@ -20,6 +25,8 @@ function AdminLeftPanel() {
 
     }
     else if (name === "testimonials") {
+      console.log(name)
+      console.log(value)
       const updatedTestimonials = [...form.testimonials]
       updatedTestimonials[index] = {
         ...updatedTestimonials[index],
@@ -49,6 +56,29 @@ function AdminLeftPanel() {
     shop: [],
     password: "",
   })
+  const [store, setStore] = useState([])
+  const handleAddProduct = () => {
+    console.log("add product")
+    setStore(() => [
+      ...store,
+      {
+        name: "",
+        description: "",
+        price: 0,
+        pictures: [],
+        stock: {
+          xs: 0,
+          s: 0,
+          m: 0,
+          l: 0,
+          xl: 0,
+          xxl: 0,
+        },
+      }
+
+    ])
+
+  }
 
   useEffect(() => {
     axios
@@ -72,10 +102,7 @@ function AdminLeftPanel() {
       .then((response) => {
         const theGoodStuff = response.data
 
-        setForm((prevForm) => ({
-          ...prevForm,
-          shop: theGoodStuff
-        }))
+        setStore(theGoodStuff)
       })
       .catch((error) => {
         console.log(error)
@@ -124,31 +151,10 @@ function AdminLeftPanel() {
 
         <div className={styles.option}>
           <h1 className={styles.label}>shop</h1>
-          <button className={styles.addproduct}>Add Product</button>
-          {form.shop.map((item, index) => (
-            <div key={index} className={styles.product}>
-              <p>name, description, pictures, price, stock (xs,s,m,l,xl)</p>
-              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.name} />
-              <textarea className={styles.inputdesc} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.description} />
-              <h2 className={styles.label2}>product pictures</h2>
-              <button className={styles.addproduct}>Add Picture</button>
-              {item.pictures.map((item, index) => {
-                return <textarea key={index} className={styles.inputbox} type="text" name="pictures" onChange={(e) => handleStyleChange(e, index)} value={item.url} />
-
-              })}
-              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.price} />
-              <h2 className={styles.label2}>stock</h2>
-              <p>xs, s, m, l, xl, xxl</p>
-              <div className={styles.stockbox}>
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xs} />
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.s} />
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.m} />
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.l} />
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xl} />
-                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xxl} />
-              </div>
-            </div>
-          ))}
+          <button className={styles.addproduct} onClick={handleAddProduct}>Add Product</button>
+          {store.map((item, index) => {
+            return <div className={styles.product} key={index}><AdminShopCard handleShopChange={handleShopChange} name={item.name} description={item.description} pictures={item.pictures} price={item.price} stock={item.stock} ></AdminShopCard></div>
+          })}
         </div>
 
         <div className={styles.option}>
