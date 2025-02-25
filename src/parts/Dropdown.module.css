@@ -1,7 +1,20 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
 .openclose {
   width: 11px;
 }
 
 .txt {
   margin-left: 10px;
+}
+
+.image {
+  position: absolute;
+  width: 50%;
+  top: 30%;
+  right: 170%;
 }
