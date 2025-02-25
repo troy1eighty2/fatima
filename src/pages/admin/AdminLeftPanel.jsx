@@ -7,7 +7,7 @@ function AdminLeftPanel() {
     e.preventDefault()
     console.log(form)
   }
-  const handleStyleChange = (e, index) => {
+  const handleStyleChange = (e, index, field) => {
     const { name, value } = e.target
     if (name === "homeRightPictures") {
       const updatedPictures = [...form.homeRightPictures]
@@ -18,7 +18,23 @@ function AdminLeftPanel() {
         [name]: updatedPictures
       }))
 
-    } else {
+    }
+    else if (name === "testimonials") {
+      const updatedTestimonials = [...form.testimonials]
+      updatedTestimonials[index] = {
+        ...updatedTestimonials[index],
+        [field]: value,
+      }
+      setForm(() => ({
+        ...form,
+        [name]: updatedTestimonials
+      }))
+    }
+    else if (name === "shop") {
+      console.log("shop")
+
+    }
+    else {
       setForm(() => ({
         ...form,
         [name]: value
@@ -74,12 +90,6 @@ function AdminLeftPanel() {
     <div className={styles.container}>
       <h1 className={styles.header}>Config</h1>
       <p>
-        Remove content in input boxes to remove content on webpage.
-      </p>
-      <p>
-        Maximum of 5 homeRightPictures and 5 testimonials.
-      </p>
-      <p>
         **THIS PAGE WONT SAVE YOUR WORK IF YOU REFRESH OR EXIT IT. PRESS SUBMIT CHANGES TO SAVE.**
       </p>
       <form className={styles.pagestyle} onSubmit={handleStyleSubmit}>
@@ -106,22 +116,37 @@ function AdminLeftPanel() {
           {form.testimonials.map((item, index) => (
             <div key={index}>
               <p>Quote, Author</p>
-              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index)} value={item.text} />
-              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index)} value={item.author} />
+              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index, "text")} value={item.text} />
+              <textarea className={styles.inputbox} type="text" name="testimonials" onChange={(e) => handleStyleChange(e, index, "author")} value={item.author} />
             </div>
           ))}
         </div>
 
         <div className={styles.option}>
           <h1 className={styles.label}>shop</h1>
+          <button className={styles.addproduct}>Add Product</button>
           {form.shop.map((item, index) => (
-            <div key={index}>
+            <div key={index} className={styles.product}>
               <p>name, description, pictures, price, stock (xs,s,m,l,xl)</p>
               <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.name} />
               <textarea className={styles.inputdesc} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.description} />
-              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.pictures} />
+              <h2 className={styles.label2}>product pictures</h2>
+              <button className={styles.addproduct}>Add Picture</button>
+              {item.pictures.map((item, index) => {
+                return <textarea key={index} className={styles.inputbox} type="text" name="pictures" onChange={(e) => handleStyleChange(e, index)} value={item.url} />
+
+              })}
               <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.price} />
-              <textarea className={styles.inputbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock} />
+              <h2 className={styles.label2}>stock</h2>
+              <p>xs, s, m, l, xl, xxl</p>
+              <div className={styles.stockbox}>
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xs} />
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.s} />
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.m} />
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.l} />
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xl} />
+                <textarea className={styles.stockboxbox} type="text" name="shop" onChange={(e) => handleStyleChange(e, index)} value={item.stock.xxl} />
+              </div>
             </div>
           ))}
         </div>

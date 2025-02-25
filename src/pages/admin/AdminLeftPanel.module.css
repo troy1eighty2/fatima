@@ -21,6 +21,10 @@
   font-size: x-large;
 }
 
+.label2 {
+  font-size: medium;
+}
+
 .submit {
   border: black solid 1px;
   display: flex;
@@ -50,4 +54,25 @@
 
 .option {
   margin-bottom: 100px;
+}
+
+.addproduct {
+  border: solid black 1px;
+  padding: 5px;
+}
+
+.stockbox {
+  display: flex;
+  gap: 10px;
+}
+
+.stockboxbox {
+  height: min-content;
+  width: min-content;
+
+}
+
+.product {
+  border: black 1px solid;
+  padding: 20px;
 }
