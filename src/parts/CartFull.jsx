@@ -7,9 +7,12 @@ import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/fo
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { motion } from "motion/react";
+import clown from "../assets/Assets/Assets/Deliverables/Illustrations/clown.png"
 
 function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
   const [hover, setHover] = useState(false);
+  const [checkoutHover, setCheckoutHover] = useState(false);
   const navigate = useNavigate();
 
   //paypal
@@ -57,9 +60,10 @@ function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
       </div>
       <div className={styles.third}>
         <div className={styles.checkoutcontainer}>
-          <div className={styles.paypalButtonstyle}>
+          <div className={styles.paypalButtonstyle} onMouseEnter={() => setCheckoutHover(true)} onMouseLeave={() => setCheckoutHover(false)}>
             <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
           </div>
+          <motion.img className={styles.clown} src={clown} animate={checkoutHover ? { width: "50%", translateY: "-80%" } : { width: "1px", translateY: "0%" }}></motion.img>
           <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>
             *Taxes and shipping calculated at checkout*
           </p>

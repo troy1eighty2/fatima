@@ -82,11 +82,19 @@
   margin-bottom: 30px;
   justify-content: right;
   width: 30%;
+  position: relative;
 }
 
 .paypalButtonstyle {
   border: solid black 1px;
   height: 52px;
   margin-bottom: 2%;
+  position: relative;
 
+}
+
+.clown {
+  position: absolute;
+  top: 0%;
+  right: 40%;
 }

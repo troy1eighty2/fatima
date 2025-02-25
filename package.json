@@ -18,7 +18,8 @@
     "react-router-dom": "^6.27.0",
     "uuid": "^11.0.5",
     "axios": "*",
-    "@paypal/react-paypal-js": "*"
+    "@paypal/react-paypal-js": "*",
+    "motion": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
