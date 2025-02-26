@@ -6,10 +6,41 @@ function AdminLeftPanel() {
   const handleStyleSubmit = (e) => {
 
     e.preventDefault()
+    setForm(() => ({
+      ...form,
+      shop: store
+    }))
     console.log(form)
   }
-  const handleShopChange = (e, index, field) => {
+  const handleShopChange = (e, field) => {
     const { name, value } = e.target
+    switch (name) {
+      case "name":
+        setStore(() => ({
+          ...store,
+          [name]: value
+        }))
+        break;
+      case "description":
+        break;
+      case "price":
+        break;
+      case "xs":
+        break;
+      case "s":
+        break;
+      case "m":
+        break;
+      case "l":
+        break;
+      case "xl":
+        break;
+      case "xxl":
+        break;
+      default:
+        console.log("default");
+    }
+
 
   }
   const handleStyleChange = (e, index, field) => {
@@ -36,10 +67,6 @@ function AdminLeftPanel() {
         ...form,
         [name]: updatedTestimonials
       }))
-    }
-    else if (name === "shop") {
-      console.log("shop")
-
     }
     else {
       setForm(() => ({
