@@ -35,6 +35,7 @@
 }
 
 .delete {
+  font-size: small;
   border: solid black 1px;
   padding: 10px;
   background-color: tomato;

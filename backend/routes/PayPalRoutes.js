@@ -120,7 +120,6 @@ PayPal_router.post("/create-paypal-order", async (request, response) => {
 PayPal_router.post("/capture-paypal-order", async (request, response) => {
   try {
     const order = await captureOrder(request);
-    console.log(order)
     response.json(order);
 
   } catch (error) {

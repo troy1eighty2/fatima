@@ -15,22 +15,21 @@ function AdminLeftPanel() {
   }
   const handleShopChange = (e, _id) => {
     const { name, value } = e.target;
-
     setStore((prevStore) =>
       prevStore.map((item) =>
         item._id === _id
           ? {
             ...item,
             ...(name === "name" || name === "description"
-              ? { [name]: value } // Directly update name or description
+              ? { [name]: value }
               : name in item.stock
                 ? {
                   stock: {
                     ...item.stock,
-                    [name]: value, // Convert to number
+                    [name]: value,
                   },
                 }
-                : {}) // Do nothing if the field isn't found
+                : {})
           }
           : item
       )

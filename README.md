@@ -99,3 +99,15 @@ Built with react mongoatlas react node axios
 - DONE more space button and text
 - autorotate on testimonials 5 sec
 - DONE space paypal button more
+
+# 2/27
+- send invoice
+- add order info to database
+- display order to admin page
+
+- faw same stroke
+- faw ex into periods
+- homneright testimonials
+- animations straighty up
+- subtotal
+- contact monster no fade
