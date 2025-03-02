@@ -80,6 +80,7 @@ function App() {
       ...JSON.parse(localStorage.getItem("userCart")), // Parse it first
       items: []// Update only the items
     }));
+    setCartItems([])
     navigate("/cart");
   }
   const add = (cartItemID) => {

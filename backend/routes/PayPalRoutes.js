@@ -12,7 +12,6 @@ console.log("Client ID:", clientID);
 console.log("Client Secret:", clientSecret);
 
 async function createOrder(request) {
-  // console.log(request.body)
   const cartItems = request.body
   const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   const orderData = {
@@ -78,6 +77,7 @@ async function captureOrder(request) {
   }
 }
 
+
 async function getAccessToken() {
   try {
     const response = await axios.post(
@@ -105,6 +105,21 @@ async function getAccessToken() {
     throw new Error("Failed to obtain PayPal access token");
   }
 }
+async function showDetails(orderID) {
+  try {
+    const access_token = await getAccessToken();
+    const findOrderResponse = await axios.get(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}`, {
+      headers: {
+        "Authorization": `Bearer ${access_token}`,
+      }
+    })
+    return findOrderResponse.data
+
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 PayPal_router.post("/create-paypal-order", async (request, response) => {
   try {
     const order = await createOrder(request);
@@ -128,4 +143,15 @@ PayPal_router.post("/capture-paypal-order", async (request, response) => {
   }
 })
 
+PayPal_router.get("/get-order/:id", async (request, response) => {
+  try {
+    const orderID = request.params.id;
+    const order = await showDetails(orderID);
+    response.json(order);
+
+  } catch (error) {
+    console.log(error)
+
+  }
+})
 export default PayPal_router;

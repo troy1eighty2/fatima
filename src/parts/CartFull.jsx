@@ -26,10 +26,11 @@ function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
   }
   const onApprove = async (data) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`, data)
-      // console.log(JSON.stringify(response.data, null, 1))
-      clearCart()
-      const addToDatabase = await axios.post(`${import.meta.env.VITE_API_URL}/order`)
+      const onApproveResponse = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`, data)
+      const originalOrder = await axios.get(`${import.meta.env.VITE_API_URL}/PayPal/get-order/${onApproveResponse.data.id}`)
+      console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+      const addToDatabase = await axios.post(`${import.meta.env.VITE_API_URL}/order/post`, { onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+      return addToDatabase
 
     } catch (error) {
       console.log(error)

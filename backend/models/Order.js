@@ -2,22 +2,36 @@ import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema(
   {
+
+    id: String,
     create_time: String,
     update_time: String,
     purchase_units: [
       {
+        amount: {
+
+          breakdown: {
+            item_total: {
+              currency_code: String,
+              value: String
+            }
+          }
+        },
         items: [
           {
             name: { type: String, required: true },
-            quantity: { type: String, required: true },
-            unit_amount:
-            {
-              currency_code: { type: String, required: true },
-              value: { type: String, required: true }
-            }
+            quantity: { type: Number, required: true },
           }
         ],
-
+        shipping: {
+          address: {
+            address_line_1: String,
+            admin_area_1: String,
+            admin_area_2: String,
+            country_code: String,
+            postal_code: String,
+          }
+        }
       }
     ],
     payer:
@@ -27,16 +41,6 @@ const orderSchema = new mongoose.Schema(
       {
         given_name: String,
         surname: String
-      }
-      ,
-      address:
-      {
-        address_line_1: String,
-        address_line_2: String,
-        admin_area_2: String,
-        admin_area_1: String,
-        postal_code: String,
-        country_code: String,
       }
     },
     status: { type: String, required: true }
