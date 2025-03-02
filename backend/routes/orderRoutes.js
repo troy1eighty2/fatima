@@ -24,6 +24,7 @@ order_router.post("/post", async (request, response) => {
     }))
 
 
+
     const newOrder = {
       id: originalOrder.id,
       create_time: originalOrder.create_time,
@@ -31,11 +32,22 @@ order_router.post("/post", async (request, response) => {
       purchase_units:
         [{
           amount: {
-
+            currency_code: originalOrder.purchase_units[0].amount.currency_code,
+            value: originalOrder.purchase_units[0].amount.value,
             breakdown: {
               item_total: {
                 currency_code: originalOrder.purchase_units[0].amount.breakdown.item_total.currency_code,
                 value: originalOrder.purchase_units[0].amount.breakdown.item_total.value
+              },
+              shipping: {
+                currency_code: originalOrder.purchase_units[0].amount.breakdown.shipping.currency_code,
+                value: originalOrder.purchase_units[0].amount.breakdown.shipping.value
+
+              },
+              tax_total: {
+                currency_code: originalOrder.purchase_units[0].amount.breakdown.tax_total.currency_code,
+                value: originalOrder.purchase_units[0].amount.breakdown.tax_total.value
+
               }
             }
           },

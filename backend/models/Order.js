@@ -10,17 +10,27 @@ const orderSchema = new mongoose.Schema(
       {
         amount: {
 
+          currency_code: String,
+          value: String,
           breakdown: {
             item_total: {
               currency_code: String,
               value: String
-            }
+            },
+            shipping: {
+              currency_code: String,
+              value: String
+            },
+            tax_total: {
+              currency_code: String,
+              value: String
+            },
           }
         },
         items: [
           {
             name: { type: String, required: true },
-            quantity: { type: Number, required: true },
+            quantity: { type: String, required: true },
           }
         ],
         shipping: {

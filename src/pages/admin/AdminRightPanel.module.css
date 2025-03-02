@@ -1,16 +1,19 @@
 .container {
   height: 100%;
   width: 100%;
-  border: black 1px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px;
+  /* border: black solid 1px; */
+
 }
 
 
 .item {
-
+  height: 100%;
+  margin-bottom: 5%;
+  padding: 2%;
+  width: 100%;
   border: black 1px solid;
 }
 
@@ -25,3 +28,18 @@
 .label2 {
   font-size: medium;
 }
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.receipt {
+  align-items: center;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.receiptItem {}

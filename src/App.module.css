@@ -53,6 +53,7 @@ a:visited {
 .contentleft {
   border-right: 1.5px solid black;
   flex-grow: 1;
+  height: 100%;
   /* Takes up remaining space */
   overflow-y: auto;
   /* Enables scrolling if content overflows */
@@ -62,6 +63,7 @@ a:visited {
 .contentright {
   /* border: solid black 2px; */
   flex-grow: 1;
+  height: 100%;
   /* Takes up remaining space */
   overflow-y: auto;
   /* Enables scrolling if content overflows */

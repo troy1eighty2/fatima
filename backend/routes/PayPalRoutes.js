@@ -19,12 +19,21 @@ async function createOrder(request) {
     "purchase_units": [{
       "amount": {
         "currency_code": "USD",
-        "value": totalPrice.toFixed(2).toString(),
+        "value": (totalPrice + parseFloat(process.env.FLAT_SHIPPING_RATE) + (totalPrice * parseFloat(process.env.FLAT_TAX_RATE))).toFixed(2).toString(),
         "breakdown": {
           "item_total": {
             "currency_code": "USD",
             "value": totalPrice.toFixed(2).toString(),
-          }
+          },
+          "shipping": {
+            "currency_code": "USD",
+            "value": parseFloat(process.env.FLAT_SHIPPING_RATE).toFixed(2).toString(),
+          },
+          "tax_total": {
+            "currency_code": "USD",
+            "value": (totalPrice * parseFloat(process.env.FLAT_TAX_RATE)).toFixed(2).toString()
+          },
+
         },
       },
       "items": cartItems.map((item) => ({
