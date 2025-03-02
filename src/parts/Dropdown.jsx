@@ -13,7 +13,7 @@ function Dropdown({ buttonText, content, onSelectionChange }) {
   }
   return <>
     <div className={styles.container}>
-      <motion.img src={darko} initial={{ opacity: 0 }} animate={open ? { opacity: 1, transition: { duration: 0.5 } } : { opacity: 0, transition: { duration: 0 } }} className={styles.image}></motion.img>
+      <motion.img src={darko} initial={{ opacity: 0 }} animate={open ? { opacity: 1, transition: { duration: 0 } } : { opacity: 0, transition: { duration: 0 } }} className={styles.image}></motion.img>
       <DropdownButton toggle={toggleDropdown} open={open}>{<span className={styles.txt}>{buttonText}</span>}{open ? <img src={closetri} className={styles.openclose} /> : <img src={opentri} className={styles.openclose} />}</DropdownButton>
       <DropdownContent open={open} content={content} onSelectionChange={onSelectionChange}></DropdownContent>
     </div>

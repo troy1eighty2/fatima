@@ -7,7 +7,6 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  height: auto;
   /* border: black solid 5px; */
 }
 
@@ -22,13 +21,14 @@
 .left {
   height: 100vh;
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   border-right: solid black 1.5px;
 }
 
 .right {
   flex: 1;
   width: 100%;
+  height: min-content;
 }
 
 
