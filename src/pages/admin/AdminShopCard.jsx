@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AdminShopCard.module.css";
 
-function AdminShopCard({ handleDelete, handleShopChange, _id, name, description, pictures, price, stock }) {
+function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _id, name, description, pictures, price, stock }) {
   return <>
     <div className={styles.container}>
       <button className={styles.delete} onClick={() => handleDelete(_id)}>DELETE</button>
@@ -11,6 +11,11 @@ function AdminShopCard({ handleDelete, handleShopChange, _id, name, description,
       <p>Description</p>
       <textarea className={styles.input} type="text" name="description" onChange={(e) => handleShopChange(e, _id)} value={description || ""} />
       <p>Pictures</p>
+      <div className={styles.picturebox}>
+        <textarea className={styles.mediuminput} type="text" name="picture" onChange={(e) => handleShopChange(e, _id, 0)} value={pictures[0].url} />
+        <textarea className={styles.mediuminput} type="text" name="picture" onChange={(e) => handleShopChange(e, _id, 1)} value={pictures[1].url} />
+        <textarea className={styles.mediuminput} type="text" name="picture" onChange={(e) => handleShopChange(e, _id, 2)} value={pictures[2].url} />
+      </div>
       <p>Price</p>
       <textarea className={styles.smallinput} type="text" name="price" onChange={(e) => handleShopChange(e, _id)} value={price} />
       <p>Stock</p>

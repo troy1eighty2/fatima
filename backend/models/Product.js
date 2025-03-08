@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -56,6 +60,10 @@ const productSchema = new mongoose.Schema({
       min: 0
     }
   },
+  newProduct: {
+    type: Boolean,
+    required: true
+  }
 
 }, {
   timestamps: true

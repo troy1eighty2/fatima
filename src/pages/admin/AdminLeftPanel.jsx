@@ -2,18 +2,63 @@ import styles from "./AdminLeftPanel.module.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import AdminShopCard from "./AdminShopCard"
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid"
+
 function AdminLeftPanel() {
   const handleStyleSubmit = (e) => {
 
     e.preventDefault()
     setForm((prevForm) => ({
-      ...prevForm,
-      shop: store
+      ...prevForm
     }))
+    console.log(store)
     console.log(form)
+
+    axios
+      .put(`${import.meta.env.VITE_API_URL}/config/put`, form)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+
+        console.log(error)
+      })
+    store.forEach((item) => {
+
+      if (item.newProduct) {
+        console.log("new item")
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/shop/post`, item)
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((error) => {
+
+            console.log(error)
+          })
+      }
+      else {
+        console.log("old item")
+        setStore((prevStore) =>
+          prevStore.map((prod) =>
+            prod._id === item._id
+              ? { ...prod, newProduct: false }
+              : prod
+          )
+        );
+        axios
+          .put(`${import.meta.env.VITE_API_URL}/shop/put/${item._id}`, item)
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((error) => {
+
+            console.log(error)
+          })
+      }
+    })
   }
-  const handleShopChange = (e, _id) => {
+  const handleShopChange = (e, _id, pictureIndex) => {
     const { name, value } = e.target;
     setStore((prevStore) =>
       prevStore.map((item) =>
@@ -29,7 +74,12 @@ function AdminLeftPanel() {
                     [name]: value,
                   },
                 }
-                : {})
+                : name === "picture" ? {
+                  pictures: item.pictures.map((pic, index) =>
+                    index === pictureIndex ? { ...pic, url: value } : pic
+                  )
+                } : {}
+            )
           }
           : item
       )
@@ -49,8 +99,6 @@ function AdminLeftPanel() {
 
     }
     else if (name === "testimonials") {
-      console.log(name)
-      console.log(value)
       const updatedTestimonials = [...form.testimonials]
       updatedTestimonials[index] = {
         ...updatedTestimonials[index],
@@ -73,7 +121,6 @@ function AdminLeftPanel() {
     homeRightPictures: [],
     gif: "",
     testimonials: [],
-    shop: [],
     password: "",
   })
   const [store, setStore] = useState([])
@@ -81,19 +128,30 @@ function AdminLeftPanel() {
 
   const handleAddProduct = () => {
     const temp_id = uuidv4()
-    const newProduct = {
+    const item = {
       _id: temp_id,
       name: "",
       description: "",
       price: 0,
-      pictures: [],
+      pictures: [
+        { url: "" }, { url: "" }, { url: "" }
+      ],
       stock: { xs: 0, s: 0, m: 0, l: 0, xl: 0, xxl: 0 },
+      newProduct: true
     };
-    setStore((prevStore) => [...prevStore, newProduct]);
-    console.log(store)
+    setStore((prevStore) => [...prevStore, item]);
   };
   const handleDelete = (id) => {
-    setStore((prevStore) => prevStore.filter((item) => item._id !== id));
+    console.log(`Delete this: ${id}`)
+    axios
+      .delete(`${import.meta.env.VITE_API_URL}/shop/delete/${id}`)
+      .then((response) => {
+        console.log(response)
+        setStore((prevStore) => prevStore.filter(item => item._id !== id));
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
   }
 
@@ -104,6 +162,7 @@ function AdminLeftPanel() {
         const config = response.data[0]
         setForm((prevForm) => ({
           ...prevForm,
+          _id: config._id,
           description: config.description,
           homeRightPictures: config.homeRightPictures,
           gif: config.gif,
@@ -170,7 +229,7 @@ function AdminLeftPanel() {
           <h1 className={styles.label}>shop</h1>
           <button className={styles.addproduct} onClick={handleAddProduct}>Add Product</button>
           {store.map((item) => {
-            return <div className={styles.product} key={item._id}><AdminShopCard handleDelete={handleDelete} handleShopChange={handleShopChange} _id={item._id} name={item.name} description={item.description} pictures={item.pictures} price={item.price} stock={item.stock} ></AdminShopCard></div>
+            return <div className={styles.product} key={item._id}><AdminShopCard handleDelete={() => handleDelete(item._id)} handleShopChange={handleShopChange} _id={item._id} name={item.name} description={item.description} pictures={item.pictures} price={item.price} stock={item.stock} ></AdminShopCard></div>
           })}
         </div>
 

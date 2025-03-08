@@ -14,4 +14,13 @@ config_router.get("/", async (request, response) => {
   }
 })
 
+config_router.put("/put", async (request, response) => {
+  try {
+    const result = await Config.findByIdAndUpdate(request.body._id, request.body, { new: true })
+    return response.status(200).json(result)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "put error" });
+  }
+})
 export default config_router

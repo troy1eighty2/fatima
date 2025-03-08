@@ -26,5 +26,49 @@ router.get("/:id", async (request, response) => {
 
   }
 })
+router.put("/put/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+    const result = await Product.findByIdAndUpdate(id, request.body, { new: true })
+    return response.status(200).json(result)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "put shop error" });
+  }
+
+})
+router.post("/post", async (request, response) => {
+  try {
+    const item = request.body
+    console.log(item)
+    const newProduct = {
+      _id: item._id,
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      pictures: item.pictures,
+      stock: item.stock,
+      newProduct: item.newProduct
+    }
+    const productInstance = new Product(newProduct)
+    await productInstance.save()
+    return response.json(newProduct)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "post shop error" });
+  }
+
+})
+router.delete("/delete/:id", async (request, response) => {
+  try {
+    const { id } = request.params
+    console.log(id)
+    const result = await Product.findByIdAndDelete(id)
+    return response.status(200).json(result)
+  } catch (error) {
+    console.log(error)
+    return response.status(500).json({ error: "delete shop error" });
+  }
+})
 
 export default router;
