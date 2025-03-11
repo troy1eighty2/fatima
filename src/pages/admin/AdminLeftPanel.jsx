@@ -23,40 +23,31 @@ function AdminLeftPanel() {
 
         console.log(error)
       })
-    store.forEach((item) => {
-
+    let updatedStore = [...store];
+    updatedStore.forEach((item, index) => {
       if (item.newProduct) {
-        console.log("new item")
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/shop/post`, item)
+        console.log("New item detected:", item);
+        axios.post(`${import.meta.env.VITE_API_URL}/shop/post`, item)
           .then((response) => {
-            console.log(response)
+            console.log("New product posted:", response);
           })
           .catch((error) => {
+            console.error("Error posting new product:", error);
+          });
+      } else {
+        console.log("Updating old item:", item._id);
+        updatedStore[index] = { ...item, newProduct: false };
 
-            console.log(error)
-          })
-      }
-      else {
-        console.log("old item")
-        setStore((prevStore) =>
-          prevStore.map((prod) =>
-            prod._id === item._id
-              ? { ...prod, newProduct: false }
-              : prod
-          )
-        );
-        axios
-          .put(`${import.meta.env.VITE_API_URL}/shop/put/${item._id}`, item)
+        axios.put(`${import.meta.env.VITE_API_URL}/shop/put/${item._id}`, item)
           .then((response) => {
-            console.log(response)
+            console.log("Product updated:", response);
           })
           .catch((error) => {
-
-            console.log(error)
-          })
+            console.error("Error updating product:", error);
+          });
       }
-    })
+    });
+    setStore(updatedStore);
   }
   const handleShopChange = (e, _id, pictureIndex) => {
     const { name, value } = e.target;

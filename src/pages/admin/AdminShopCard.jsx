@@ -4,7 +4,7 @@ import styles from "./AdminShopCard.module.css";
 function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _id, name, description, pictures, price, stock }) {
   return <>
     <div className={styles.container}>
-      <button className={styles.delete} onClick={() => handleDelete(_id)}>DELETE</button>
+      <button className={styles.delete} onClick={() => handleDelete(_id)} type="button">DELETE</button>
       <p>{_id}</p>
       <p>Name</p>
       <textarea className={styles.smallinput} type="text" name="name" onChange={(e) => handleShopChange(e, _id)} value={name || ""} />
@@ -28,7 +28,7 @@ function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _
         <textarea className={styles.stockboxbox} type="text" name="xxl" onChange={(e) => handleShopChange(e, _id)} value={stock.xxl} />
       </div>
 
-    </div>
+    </div >
   </>
 
 }

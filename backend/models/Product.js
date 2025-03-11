@@ -7,24 +7,24 @@ const productSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   price: {
     type: Number,
-    required: true,
+    required: false,
     min: 0
   },
   description: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   pictures: [
     {
       url: {
         type: String,
-        required: true
+        required: false
       },
     }
   ],
