@@ -8,6 +8,7 @@ import HomeRight from "./pages/HomeRight.jsx";
 import AdminLeft from "./pages/admin/AdminLeft.jsx";
 import AdminRight from "./pages/admin/AdminRight.jsx";
 import Layout from "./Layout.jsx";
+import axios from "axios";
 
 import styles from "./App.module.css";
 
@@ -34,7 +35,6 @@ function App() {
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
-  const [password, setPassword] = useState("")
 
   const navigate = useNavigate();
 
@@ -145,8 +145,8 @@ function App() {
         setLeftContent(<Faq></Faq>);
         break;
       case "/admin":
-        setLeftContent(<AdminLeft password={password} setPassword={setPassword}></AdminLeft>);
-        setRightContent(<AdminRight password={password} setPassword={setPassword}></AdminRight>);
+        setLeftContent(<AdminLeft></AdminLeft>);
+        setRightContent(<AdminRight></AdminRight>);
         break;
       default:
         if (url[1] === "shop" && url.length >= 4) {
@@ -161,7 +161,7 @@ function App() {
         break;
 
     }
-  }, [location, cartItems, password])
+  }, [location, cartItems])
   return (
     <>
       <PayPalScriptProvider options={initialOptions}>

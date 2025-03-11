@@ -1,14 +1,22 @@
 import styles from "./AdminPassword.module.css"
 import { useState } from "react";
+import axios from "axios";
 
-function AdminPassword({ password, setPassword }) {
+function AdminPassword({ setToken }) {
   const [passwordEntry, setPasswordEntry] = useState("");
   const handleChange = (e) => {
     setPasswordEntry(e.target.value); // Update state as user types
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setPassword(passwordEntry);
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin`, { password: passwordEntry })
+      localStorage.setItem("token", res.data.token)
+    } catch (error) {
+      console.log(error)
+    }
+
+
   }
   return <>
     <div className={styles.container}>

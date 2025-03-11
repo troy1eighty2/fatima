@@ -26,8 +26,9 @@ function AdminLeftPanel() {
     let updatedStore = [...store];
     updatedStore.forEach((item, index) => {
       if (item.newProduct) {
+        const newItem = { ...item, newProduct: false };
         console.log("New item detected:", item);
-        axios.post(`${import.meta.env.VITE_API_URL}/shop/post`, item)
+        axios.post(`${import.meta.env.VITE_API_URL}/shop/post`, newItem)
           .then((response) => {
             console.log("New product posted:", response);
           })
@@ -218,7 +219,7 @@ function AdminLeftPanel() {
 
         <div className={styles.option}>
           <h1 className={styles.label}>shop</h1>
-          <button className={styles.addproduct} onClick={handleAddProduct}>Add Product</button>
+          <button className={styles.addproduct} onClick={handleAddProduct} type="button">Add Product</button>
           {store.map((item) => {
             return <div className={styles.product} key={item._id}><AdminShopCard handleDelete={() => handleDelete(item._id)} handleShopChange={handleShopChange} _id={item._id} name={item.name} description={item.description} pictures={item.pictures} price={item.price} stock={item.stock} ></AdminShopCard></div>
           })}
