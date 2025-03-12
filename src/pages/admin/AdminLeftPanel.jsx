@@ -63,14 +63,17 @@ function AdminLeftPanel() {
                 ? {
                   stock: {
                     ...item.stock,
-                    [name]: value,
+                    [name]: parseInt(value),
                   },
                 }
                 : name === "picture" ? {
                   pictures: item.pictures.map((pic, index) =>
                     index === pictureIndex ? { ...pic, url: value } : pic
                   )
-                } : {}
+                }
+                  : name === "price" ? {
+                    [name]: Number(value)
+                  } : {}
             )
           }
           : item

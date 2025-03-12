@@ -53,7 +53,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
           <div className={styles.row}>
             <div className={styles.second}>
               {item.pictures.map((item, index) => {
-                return <div key={index} className={styles.imagecontainer}><img className={styles.picture} src={item.url} /></div>
+                return <img className={styles.picture} src={item.url} key={index} />
               })}
             </div>
             <div className={styles.third}>

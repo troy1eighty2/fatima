@@ -20,9 +20,7 @@ function Cart({ cartItems, mergeCart, removeItem, add, subtract, clearCart }) {
   return (
     <>
       <div className={styles.container}>
-        {/* {(<img src={wrestler} className={styles.loadingimg} />) : cartItems.length > 0 ? (<CartFull cart={cartItems} removeItem={removeItem} />) : (<CartEmpty />)} */}
         {cartItems.length > 0 ? (<CartFull cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart} />) : (<CartEmpty />)}
-        {/* {console.log(cartItems)} */}
       </div>
       <FooterRight />
     </>

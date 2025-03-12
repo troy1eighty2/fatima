@@ -12,8 +12,9 @@ import clown from "../assets/Assets/Assets/Deliverables/Illustrations/clown.png"
 
 function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
   const [hover, setHover] = useState(false);
-  const [checkoutHover, setCheckoutHover] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  // console.log(cartItems)
 
   //paypal
   const createOrder = async () => {
@@ -43,34 +44,40 @@ function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
     "layout": "vertical",
     "label": "checkout",
     "height": 50,
+    "width": 290
   }
   return (
     <div className={styles.container}>
-      <div className={styles.first}>
-        <button
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={styles.button}
-          onClick={() => navigate("/homeright")}
-        >
-          <img src={hover ? buttonhover : button} className={styles.button} />
-        </button>
-      </div>
       <div className={styles.second}>
-        {cartItems.map((item) => (
-          <CartItem product={item} key={item.cartItemID} removeItem={removeItem} add={add} subtract={subtract} />
-        ))}
+        <div className={styles.first}>
+          <button
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            className={styles.button}
+            onClick={() => navigate("/homeright")}
+          >
+            <img src={hover ? buttonhover : button} className={styles.button} />
+          </button>
+        </div>
+        <div className={styles.list}>
+          {cartItems.map((item) => (
+            <CartItem product={item} key={item.cartItemID} removeItem={removeItem} add={add} subtract={subtract} />
+          ))}
+        </div>
       </div>
       <div className={styles.third}>
-        <div className={styles.checkoutcontainer}>
-          <div className={styles.paypalButtonstyle} onMouseEnter={() => setCheckoutHover(true)} onMouseLeave={() => setCheckoutHover(false)}>
-            <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+        <div className={styles.subtotal}>
+          <p className={styles.title}>Subtotal</p>
+          <p>{`$${(cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)).toFixed(2)}`}</p>
+          <div className={styles.checkoutcontainer}>
+            <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+              <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+            </div>
+            <motion.img className={styles.clown} initial={{ width: "60%", translateY: "0%" }} animate={isHovered ? { translateY: "-80%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
+            <p className={styles.disclaimer}>
+              *Taxes and shipping calculated at checkout*
+            </p>
           </div>
-          <motion.img className={styles.clown} src={clown} initial={{ opacity: "0" }} animate={checkoutHover ? { opacity: "1", width: "50%", translateY: "-80%" } : { opacity: "1", width: "1px", translateY: "0%" }}></motion.img>
-          <p className={`${styles.disclaimer} ${styles.firstlinedisclaimer}`}>
-            *Taxes and shipping calculated at checkout*
-          </p>
-          <p className={styles.disclaimer}>*All Sales Final No Returns*</p>
         </div>
       </div>
     </div>

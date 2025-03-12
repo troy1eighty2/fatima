@@ -25,11 +25,14 @@
 
 .second {
   display: flex;
-  height: 100%;
+  gap: 20px;
+  height: min-content;
   flex-direction: column;
   text-align: center;
   width: 50%;
+  padding-bottom: 300px;
 }
+
 
 .third {
 
@@ -53,9 +56,6 @@
   height: 100%;
 }
 
-.imagecontainer {
-  margin-bottom: 20px;
-}
 
 .picture {
   width: 100%;
