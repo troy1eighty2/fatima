@@ -11,7 +11,8 @@ function AdminPassword({ setToken }) {
     e.preventDefault();
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin`, { password: passwordEntry })
-      localStorage.setItem("token", res.data.token)
+      sessionStorage.setItem("token", res.data.token)
+      setToken(res.data.token)
     } catch (error) {
       console.log(error)
     }
@@ -22,7 +23,7 @@ function AdminPassword({ setToken }) {
     <div className={styles.container}>
       <form className={styles.enterpassword} onSubmit={handleSubmit}>
         <label>Enter password</label>
-        <input type="text" onChange={handleChange} />
+        <input type="password" onChange={handleChange} />
         <button type="submit" className={styles.submit}>Submit</button>
       </form>
 

@@ -121,6 +121,27 @@ function App() {
     // Add other options as needed
   };
 
+  const [token, setToken] = useState(sessionStorage.getItem("token"))
+  const [authenticated, setAuthenticated] = useState(false)
+  const verifyToken = async () => {
+
+    if (!token) {
+      return
+    }
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/verify`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (res.status === 200) {
+        setAuthenticated(true)
+      }
+
+    } catch (error) {
+      console.log(error)
+      setAuthenticated(false)
+    }
+  }
+
   useEffect(() => {
     // console.log(url)
     setProductID(url.length < 3 ? null : url[2]);
@@ -145,8 +166,8 @@ function App() {
         setLeftContent(<Faq></Faq>);
         break;
       case "/admin":
-        setLeftContent(<AdminLeft></AdminLeft>);
-        setRightContent(<AdminRight></AdminRight>);
+        setLeftContent(<AdminLeft authenticated={authenticated} setToken={setToken} verifyToken={verifyToken}></AdminLeft>);
+        setRightContent(<AdminRight authenticated={authenticated} verifyToken={verifyToken}></AdminRight>);
         break;
       default:
         if (url[1] === "shop" && url.length >= 4) {
@@ -161,7 +182,8 @@ function App() {
         break;
 
     }
-  }, [location, cartItems])
+    verifyToken()
+  }, [location, cartItems, authenticated, token])
   return (
     <>
       <PayPalScriptProvider options={initialOptions}>

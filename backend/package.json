@@ -18,6 +18,7 @@
     "mongoose": "*",
     "nodemon": "*",
     "uuid": "*",
+    "jsonwebtoken": "*",
     "axios": "*"
   },
   "author": "",

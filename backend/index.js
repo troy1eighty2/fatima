@@ -5,6 +5,7 @@ import shopRoutes from "./routes/shopRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import configRoutes from "./routes/configRoutes.js";
 import PayPalRoutes from "./routes/PayPalRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js"
 import cors from "cors";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use('/shop', shopRoutes);
 app.use('/order', orderRoutes);
 app.use('/config', configRoutes);
 app.use('/PayPal', PayPalRoutes);
+app.use('/admin', adminRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
