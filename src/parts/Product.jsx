@@ -53,6 +53,9 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
           <div className={styles.row}>
             <div className={styles.second}>
               {item.pictures.map((item, index) => {
+                if (item.url === "") {
+                  return
+                }
                 return <img className={styles.picture} src={item.url} key={index} />
               })}
             </div>

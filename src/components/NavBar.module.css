@@ -54,3 +54,26 @@
 .grid4:hover {
   background-color: #E46635;
 }
+
+@media screen and (max-width: 768px) {
+
+  .grid1:hover,
+  .grid2:hover,
+  .grid3:hover,
+  .grid4:hover {
+    outline: none;
+  }
+
+  .grid1,
+  .grid2,
+  .grid3,
+  .grid4 {
+    font-size: 14px;
+  }
+
+  .icons {
+    width: 15px;
+  }
+
+
+}

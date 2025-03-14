@@ -32,8 +32,7 @@ function Contact() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData)
-    console.log("counts as submit?")
+    console.log(formData)
   }
   const handlePlacementChange = (selectedOptions) => {
     setFormData({ ...formData, placement: selectedOptions })

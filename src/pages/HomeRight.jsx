@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Intro from "../parts/Intro.jsx";
 import Logo from "../parts/Logo.jsx";
 import FooterRight from "../components/FooterRight.jsx";
+import FooterLeft from "../components/FooterLeft.jsx";
 import Testimonials from "../components/Testimonials.jsx";
 
 
@@ -34,11 +35,19 @@ function HomeRight() {
   }, [location])
   return <>
     <div className={styles.container}>
+      <div className={styles.mobileLogo}>
+        <Logo></Logo>
+      </div>
       {page}
       <div className={styles.container2}>
         <div className={styles.left}>
           <div className={styles.gallery}>
-            {homeRightPictures.map((item, index) => (<img key={index} src={item} className={styles.display} />))}
+            {homeRightPictures.map((item, index) => {
+              if (item === "") {
+                return
+              }
+              return <img key={index} src={item} className={styles.display} />
+            })}
           </div>
         </div>
         <div className={styles.right}>
@@ -47,6 +56,9 @@ function HomeRight() {
         </div>
       </div>
     </div >
+    <div className={styles.mobileFooterLeft}>
+      <FooterLeft></FooterLeft>
+    </div>
     <FooterRight></FooterRight>
 
   </>

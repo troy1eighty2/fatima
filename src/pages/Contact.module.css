@@ -116,6 +116,8 @@ button {
 }
 
 .button {
+  position: relative;
+  z-index: 2;
   width: 110px;
   align-self: center;
 }

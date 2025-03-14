@@ -1,5 +1,5 @@
 .container {
-  height: min-content;
+  height: 200px;
   padding-bottom: 10px;
   width: 100%;
   display: block;
@@ -67,4 +67,21 @@
 .selected {
   width: 35px;
   opacity: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .testimonial {
+    font-size: 14px;
+  }
+
+  .selectorbuttons {
+    position: absolute;
+    display: flex;
+    bottom: 10%;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+
+  }
+
 }

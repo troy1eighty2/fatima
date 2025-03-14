@@ -11,13 +11,13 @@ function AdminLeftPanel() {
     setForm((prevForm) => ({
       ...prevForm
     }))
-    console.log(store)
-    console.log(form)
+    // console.log(store)
+    // console.log(form)
 
     axios
       .put(`${import.meta.env.VITE_API_URL}/config/put`, form)
       .then((response) => {
-        console.log(response)
+        // console.log(response)
       })
       .catch((error) => {
 
@@ -141,7 +141,6 @@ function AdminLeftPanel() {
     axios
       .delete(`${import.meta.env.VITE_API_URL}/shop/delete/${id}`)
       .then((response) => {
-        console.log(response)
         setStore((prevStore) => prevStore.filter(item => item._id !== id));
       })
       .catch((error) => {

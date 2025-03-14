@@ -7,7 +7,6 @@ import HomeLeft from "./pages/HomeLeft.jsx";
 import HomeRight from "./pages/HomeRight.jsx";
 import AdminLeft from "./pages/admin/AdminLeft.jsx";
 import AdminRight from "./pages/admin/AdminRight.jsx";
-import Layout from "./Layout.jsx";
 import axios from "axios";
 
 import styles from "./App.module.css";

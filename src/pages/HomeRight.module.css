@@ -1,7 +1,4 @@
-.logo {
-  height: 122px;
-}
-
+/* Default styles (for desktop) */
 .container {
   display: flex;
   flex-direction: column;
@@ -30,10 +27,9 @@
   height: min-content;
 }
 
-
 .gif {
   width: 100%;
-  height: min-content;
+  height: auto;
   border-bottom: solid 1.5px black;
   display: block;
 }
@@ -43,13 +39,66 @@
   flex-direction: column;
   gap: 30px;
   width: 100%;
-  /* border: black 1px solid; */
   box-sizing: border-box;
   padding: 30px;
-
-  /* overflow: hidden; */
 }
 
 .display {
   width: 100%;
+}
+
+.mobileLogo {
+  width: 100%;
+  display: none;
+}
+
+.mobileFooterLeft {
+  display: none;
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media screen and (max-width: 768px) {
+
+  /* Adjust layout for smaller screens */
+  .container2 {
+    flex-direction: column-reverse;
+  }
+
+  .left,
+  .right {
+    flex: none;
+    width: 100%;
+    height: auto;
+    border-right: none;
+  }
+
+  .gallery {
+    padding: 15px;
+    /* Reduce padding */
+    gap: 15px;
+    /* Reduce gap between images */
+  }
+
+  .gif {
+    height: auto;
+    /* Make sure it scales properly */
+    width: 100%;
+  }
+
+  .display {
+    width: 100%;
+    height: auto;
+  }
+
+  .mobileLogo {
+    display: block;
+  }
+
+  .gallery {
+    border-top: 1px black solid;
+  }
+
+  .mobileFooterLeft {
+    display: block;
+  }
 }
