@@ -15,6 +15,7 @@
   height: 50px;
   width: 50px;
 
+  font-size: 20px;
 }
 
 .product {
@@ -28,14 +29,17 @@
 
 .smallinput {
   height: 50px;
+  font-size: 20px;
 }
 
 .mediuminput {
   height: 80px;
+  font-size: 20px;
 }
 
 .input {
   height: 200px;
+  font-size: 20px;
 }
 
 .delete {

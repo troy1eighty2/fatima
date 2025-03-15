@@ -33,6 +33,7 @@ function App() {
   const url = location.split("/")
   const [leftContent, setLeftContent] = useState(<HomeLeft></HomeLeft>);
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
+  const [mobileContent, setMobileContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
 
   const navigate = useNavigate();
@@ -148,21 +149,27 @@ function App() {
       case "/":
         setLeftContent(<HomeLeft></HomeLeft>);
         setRightContent(<HomeRight></HomeRight>);
+        setMobileContent(<HomeRight></HomeRight>);
         break;
       case "/homeright":
         setRightContent(<HomeRight></HomeRight>);
+        setMobileContent(<HomeRight></HomeRight>);
         break;
       case "/contact":
         setLeftContent(<Contact></Contact>);
+        setMobileContent(<Contact></Contact>);
         break;
       case "/shop":
         setLeftContent(<Shop></Shop>);
+        setMobileContent(<Shop></Shop>);
         break;
       case "/cart":
         setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}></Cart>);
+        setMobileContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);
+        setMobileContent(<Faq></Faq>);
         break;
       case "/admin":
         setLeftContent(<AdminLeft authenticated={authenticated} setToken={setToken} verifyToken={verifyToken}></AdminLeft>);
@@ -173,6 +180,7 @@ function App() {
           const id = url[2];
           const product = url[3];
           setLeftContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
+          setMobileContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
         } else {
           setLeftContent(<HomeLeft></HomeLeft>);
           setRightContent(<HomeRight></HomeRight>);
@@ -198,6 +206,14 @@ function App() {
             </div>
             <div className={styles.contentright}>
               {rightContent}
+            </div>
+          </div>
+          <div className={styles.mobileLayout}>
+            <div className={styles.navbar}>
+              <NavBar cartItems={cartItems}></NavBar>
+            </div>
+            <div className={styles.content}>
+              {mobileContent}
             </div>
           </div>
         </div>

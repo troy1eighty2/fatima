@@ -1,10 +1,8 @@
 .container {
-  /* border: black solid 1px; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 50px;
-  /* height: 100px; */
-  /* Prevent shrinking */
+  width: 100%;
 }
 
 .icons {

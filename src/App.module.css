@@ -37,19 +37,24 @@ a:visited {
   display: flex;
   height: 100vh;
   background-color: #FFFEF6;
+  width: 100%;
 }
 
 .left,
 .right {
   height: 100%;
-  /* height: 100vh; */
+  flex: 1;
   display: flex;
-  width: 50%;
   flex-direction: column;
 }
 
 .navbar {
+
   border-bottom: 1.5px solid black;
+  height: 50px;
+  position: fixed;
+  width: 50%;
+  background-color: #FFFEF6;
 }
 
 .contentleft {
@@ -63,6 +68,7 @@ a:visited {
 }
 
 .contentright {
+  padding-top: 50px;
   /* border: solid black 2px; */
   flex-grow: 1;
   height: 100%;
@@ -87,12 +93,33 @@ a:visited {
   flex-shrink: 0;
 }
 
+.mobileLayout {
+  display: none;
+}
+
+.content {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 768px) {
-  .left {
+
+  .left,
+  .right {
     display: none;
   }
 
-  .right {
+
+  .mobileLayout {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar {
+
     width: 100%;
   }
 }

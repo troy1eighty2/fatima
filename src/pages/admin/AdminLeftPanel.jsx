@@ -186,7 +186,7 @@ function AdminLeftPanel() {
   return <>
     <div className={styles.container}>
       <h1 className={styles.header}>Config</h1>
-      <p>
+      <p className={styles.how}>
         **THIS PAGE WONT SAVE YOUR WORK IF YOU REFRESH OR EXIT IT. PRESS SUBMIT CHANGES TO SAVE.**
       </p>
       <form className={styles.pagestyle} onSubmit={handleStyleSubmit}>

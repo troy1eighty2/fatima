@@ -54,7 +54,7 @@ function Contact() {
         <p>Email: fatima.printed@gmail.com</p>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.question}>
           <label>Your Name</label>
           <input type="text" name="name" placeholder="First and Last" value={formData.name} onChange={handleChange} />
