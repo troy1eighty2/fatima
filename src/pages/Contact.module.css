@@ -30,13 +30,16 @@
 .form {
   font-size: 1.75em;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 
 input {
-  font-size: 1em;
+  padding: 0 15px;
+  line-height: normal;
+  font-size: .75em;
   background-color: #FFFEF6;
   border: black solid 1.5px;
   width: 100%;
@@ -73,13 +76,18 @@ input {
 }
 
 
+
 .tellus {
+  padding-bottom: 30px;
   display: flex;
+  font-size: 1em;
   flex-direction: column;
   gap: 10px;
 }
 
 textarea {
+  padding-left: 15px;
+  padding-top: 5px;
   height: 110px;
   resize: none;
   width: 100%;
@@ -90,8 +98,8 @@ textarea {
 
 
 input::placeholder {
-  font-size: 1em;
   color: #D2D2D2;
+
 }
 
 input:focus {
@@ -109,10 +117,6 @@ button {
   align-self: center;
 }
 
-input[type="text"],
-textarea {
-  /* padding: 10px; */
-}
 
 textarea::placeholder {
   color: #D2D2D2;
@@ -188,9 +192,10 @@ textarea::placeholder {
   }
 
   input::placeholder {
-    font-size: .5em;
+    font-size: .75em;
     color: #D2D2D2;
   }
+
 
   .two {
     display: block;
@@ -207,7 +212,14 @@ textarea::placeholder {
 
   .three .question {
     width: 100%;
-    gap: 20px;
+  }
+
+  .tellus {
+    font-size: .5em;
+  }
+
+  textarea {
+    font-size: 1em;
   }
 
 

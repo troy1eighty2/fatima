@@ -1,7 +1,6 @@
 .container {
-  height: 100%;
-  width: 100%;
   position: relative;
+  width: 99.3%;
 }
 
 .openclose {
@@ -14,4 +13,41 @@
   width: 50%;
   top: 30%;
   right: 170%;
+}
+
+.triangle {
+  width: 11px;
+  height: 11px;
+}
+
+.txt {
+  display: flex;
+  /* font-size: 1px; */
+  flex-wrap: nowrap;
+  border: black solid 1px;
+}
+
+.dropDownButton {
+  display: flex;
+  text-wrap: nowrap;
+  flex-wrap: nowrap;
+  border: solid black 1px;
+  width: calc(100% - 30px);
+  height: 37px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.text {
+  color: #D2D2D2;
+  font-size: .75em;
+
+}
+
+@media screen and (max-width: 1580px) {
+  .text {
+    font-size: .5em;
+
+  }
 }
