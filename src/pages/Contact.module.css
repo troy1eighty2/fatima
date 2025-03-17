@@ -24,6 +24,7 @@
   gap: 20px;
   font-size: 1em;
   text-wrap: nowrap;
+  margin-bottom: 30px;
 }
 
 .form {
@@ -33,9 +34,6 @@
   flex-direction: column;
 }
 
-form>* {
-  margin-bottom: 20px;
-}
 
 input {
   font-size: 1em;
@@ -49,6 +47,7 @@ input {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 30px;
 }
 
 .spacing_for_label {
@@ -112,7 +111,7 @@ button {
 
 input[type="text"],
 textarea {
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 textarea::placeholder {
@@ -167,7 +166,32 @@ textarea::placeholder {
   width: 20px;
 }
 
+
 @media screen and (max-width: 1580px) {
+  .container {
+
+    padding: 5% 5% 0% 5%;
+  }
+
+  .header {
+    text-align: center;
+    font-size: 1.75em;
+  }
+
+  .links {
+    font-size: .75em;
+  }
+
+
+  .question label {
+    font-size: .5em;
+  }
+
+  input::placeholder {
+    font-size: .5em;
+    color: #D2D2D2;
+  }
+
   .two {
     display: block;
     width: 100%;
@@ -175,7 +199,6 @@ textarea::placeholder {
 
   .two .question {
     width: 100%;
-    gap: 20px;
   }
 
   .three {
@@ -186,5 +209,6 @@ textarea::placeholder {
     width: 100%;
     gap: 20px;
   }
+
 
 }

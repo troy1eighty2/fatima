@@ -35,9 +35,6 @@ function HomeRight() {
   }, [location])
   return <>
     <div className={styles.container}>
-      <div className={styles.mobileLogo}>
-        <Logo></Logo>
-      </div>
       {page}
       <div className={styles.container2}>
         <div className={styles.left}>

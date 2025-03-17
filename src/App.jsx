@@ -7,6 +7,7 @@ import HomeLeft from "./pages/HomeLeft.jsx";
 import HomeRight from "./pages/HomeRight.jsx";
 import AdminLeft from "./pages/admin/AdminLeft.jsx";
 import AdminRight from "./pages/admin/AdminRight.jsx";
+import Logo from "./parts/Logo.jsx";
 import axios from "axios";
 
 import styles from "./App.module.css";
@@ -211,6 +212,9 @@ function App() {
           <div className={styles.mobileLayout}>
             <div className={styles.navbar}>
               <NavBar cartItems={cartItems}></NavBar>
+            </div>
+            <div className={styles.mobileLogo}>
+              <Logo></Logo>
             </div>
             <div className={styles.content}>
               {mobileContent}
