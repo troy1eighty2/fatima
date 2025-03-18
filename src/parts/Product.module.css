@@ -20,6 +20,7 @@
 .row {
   display: flex;
   height: 100%;
+  flex-wrap: wrap;
 
 }
 
@@ -38,6 +39,7 @@
 
   height: 100%;
 
+  flex-direction: column;
   padding-left: 30px;
   width: 50%;
 }
@@ -73,7 +75,6 @@
 }
 
 .buttons {
-  /* height: min-content; */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -82,4 +83,29 @@
 
 .buttons>* {
   margin-bottom: 30px;
+}
+
+.secondMobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  .second {
+    display: none;
+  }
+
+  .third {
+    width: 100%;
+    padding-left: 0;
+    height: min-content
+  }
+
+  .secondMobile {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
 }

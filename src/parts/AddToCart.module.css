@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: min-content;
+  height: 50px;
   display: flex;
   gap: 10px;
   box-sizing: border-box;

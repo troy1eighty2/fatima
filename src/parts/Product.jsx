@@ -59,6 +59,9 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
                 return <img className={styles.picture} src={item.url} key={index} />
               })}
             </div>
+            <div className={styles.secondMobile}>
+              <img className={styles.picture} src={item.pictures[0].url} />
+            </div>
             <div className={styles.third}>
               <p className={styles.price}>{
                 new Intl.NumberFormat("en-US", {

@@ -117,7 +117,7 @@ a:visited {
 
 
   .mobileLayout {
-    height: 100%;
+    height: min-content;
     display: flex;
     width: 100%;
     flex-direction: column;
