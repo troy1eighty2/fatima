@@ -9,18 +9,21 @@
 
 .size {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: .75vw;
   border: black solid 1px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .size:hover { */
-/*   border: solid black 2px; */
-/*   font-weight: bold; */
-/* } */
 
 .backgroundUnset {
   background-color: unset;
+}
+
+@media screen and (max-width: 768px) {
+  .size {
+    font-size: 14px;
+  }
+
 }

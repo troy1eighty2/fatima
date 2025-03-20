@@ -22,6 +22,8 @@
   justify-content: center;
   align-items: center;
   gap: 2%;
+  font-size: 1.2vw;
+
 }
 
 
@@ -29,5 +31,12 @@
 
   /* border: solid black 2px; */
   background-color: #E46635;
+
+}
+
+@media screen and (max-width: 768px) {
+  .addtocart {
+    font-size: 20px;
+  }
 
 }

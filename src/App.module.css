@@ -23,7 +23,6 @@
   cursor: url('./assets/Assets/Assets/Illos/rat_64.png') 30 18, auto;
 }
 
-body {}
 
 *::-webkit-scrollbar {
   display: none;
@@ -94,12 +93,12 @@ a:visited {
 }
 
 .mobileLayout {
+  background-color: #FFFEF6;
   display: none;
 }
 
 .content {
   width: 100%;
-  height: 100%;
 }
 
 .mobileLogo {
