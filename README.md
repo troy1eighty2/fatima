@@ -111,3 +111,12 @@ Built with react mongoatlas react node axios
 - animations straighty up
 - subtotal
 - contact monster no fade
+
+# 3/21/2025
+- margin on home photos
+- quotes
+- footer type size too big
+- less space between shirt name and price
+- padding price image on product lessened (same as all prodeucts)
+- footer is one
+-stack size boxes

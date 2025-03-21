@@ -1,37 +1,93 @@
 .container {
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  height: 100%;
-  width: 100%;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.griditem {
-  font-size: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 300px;
-  width: auto;
-  position: relative;
-
+  width: 100%;
 }
 
-.griditem>*,
-.nameandprice>* {
-  margin-bottom: 10px;
-}
 
-.nameandprice {
-  left: 0;
-  position: absolute;
-  margin-left: 30px;
-}
 
 .image {
   width: 239px;
-  height: 300px;
   border: 1.5px solid black;
+  overflow: hidden;
+  aspect-ratio: 1/1.25;
+}
+
+.info {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+
+.info>* {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+}
+
+.nameandprice {
+  display: block;
+  padding-left: 20px;
+
+}
+
+
+
+.control {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 15px;
+
+}
+
+@media screen and (max-width:768px) {
+
+  .container {
+    gap: 20px;
+  }
+
+  .image {
+    width: 50%;
+  }
+
+  .info {
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+  .nameandprice {
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .size {
+    font-size: 14px;
+
+  }
+
+  .info>* {
+    display: block;
+  }
+
+  .buttons {
+    width: 100%;
+
+    align-items: start;
+  }
+
 }
