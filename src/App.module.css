@@ -3,6 +3,10 @@
 /*   position: relative; */
 /*   z-index: 0; */
 /* } */
+#root {
+  position: relative;
+  z-index: 0;
+}
 
 @font-face {
   font-family: 'Greenhouse-Regular';
@@ -47,14 +51,6 @@ a:visited {
   flex-direction: column;
 }
 
-.navbar {
-
-  border-bottom: 1.5px solid black;
-  height: 50px;
-  position: fixed;
-  width: 50%;
-  background-color: #FFFEF6;
-}
 
 .contentleft {
   border-right: 1.5px solid black;

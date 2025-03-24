@@ -5,7 +5,8 @@ import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fa
 import Dropdown from "../parts/Dropdown";
 import fileaccent from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg";
 import FooterLeft from "../components/FooterLeft";
-import Logo from "../parts/Logo";
+import monster from "../assets/Assets/Assets/Deliverables/Illustrations/monster.png"
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',

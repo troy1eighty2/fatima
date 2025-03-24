@@ -18,4 +18,21 @@
 
 .header {
   font-size: 48px;
+  text-align: center;
+}
+
+@media screen and (max-width:768px) {
+  .header {
+    font-size: 28px;
+  }
+
+  .container {
+    padding-top: 30px;
+  }
+
+
+
+  .container>* {
+    margin-bottom: 30px;
+  }
 }

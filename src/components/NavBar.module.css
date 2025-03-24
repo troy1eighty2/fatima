@@ -1,12 +1,13 @@
-.container {
+.navbarContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 50px;
-  width: 100%;
-  /* background-color: #FFFEF6; */
-  /* border-bottom: 1px solid black; */
-  /* z-index: 10; */
-  /* position: relative; */
+  width: 50%;
+  z-index: 9999;
+  right: 0;
+  position: fixed;
+  background-color: #FFFEF6;
+  border-bottom: 1.5px solid black;
 }
 
 .icons {
@@ -75,6 +76,10 @@
 
   .icons {
     width: 15px;
+  }
+
+  .navbarContainer {
+    width: 100%;
   }
 
 

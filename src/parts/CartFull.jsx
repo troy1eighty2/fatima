@@ -67,7 +67,7 @@ function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
       </div>
       <div className={styles.third}>
         <div className={styles.subtotal}>
-          <p className={styles.title}>Subtotal</p>
+          <p className={styles.title}>Subtotal:</p>
           <p>{`$${(cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)).toFixed(2)}`}</p>
           <div className={styles.checkoutcontainer}>
             <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>

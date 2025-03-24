@@ -195,6 +195,7 @@ function App() {
   return (
     <>
       <PayPalScriptProvider options={initialOptions}>
+        <NavBar cartItems={cartItems}></NavBar>
         <div className={styles.container}>
           <div className={styles.left}>
             <div className={styles.contentleft}>
@@ -202,17 +203,11 @@ function App() {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.navbar}>
-              <NavBar cartItems={cartItems}></NavBar>
-            </div>
             <div className={styles.contentright}>
               {rightContent}
             </div>
           </div>
           <div className={styles.mobileLayout}>
-            <div className={styles.navbar}>
-              <NavBar cartItems={cartItems}></NavBar>
-            </div>
             <div className={styles.mobileLogo}>
               <Logo></Logo>
             </div>

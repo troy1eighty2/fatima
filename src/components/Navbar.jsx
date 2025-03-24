@@ -18,24 +18,29 @@ function NavBar({ cartItems }) {
   const [isContactHovered, setIsContactHovered] = useState(false);
   const [isShopHovered, setIsShopHovered] = useState(false);
   const [isCartHovered, setIsCartHovered] = useState(false);
+  const [selected, setSelected] = useState();
+  const handleClick = (data) => {
+    setSelected(data)
+
+  }
   useEffect(() => {
     console.log("cart changed")
   }, [cartItems])
   return <>
-    <div className={styles.container}>
-      <Link to="/" className={styles.grid1} onMouseEnter={() => setIsHomeHovered(true)} onMouseLeave={() => setIsHomeHovered(false)}>
+    <div className={styles.navbarContainer}>
+      <Link to="/" className={styles.grid1} style={selected === "/" ? { backgroundColor: "#E46635" } : null} onMouseEnter={() => setIsHomeHovered(true)} onMouseLeave={() => setIsHomeHovered(false)} onClick={() => handleClick("/")}  >
         <img src={isHomeHovered ? homeanimate : home} className={styles.icons} />
         <p>Home</p>
       </Link>
-      <Link to="/contact" className={styles.grid2} onMouseEnter={() => setIsContactHovered(true)} onMouseLeave={() => setIsContactHovered(false)}>
+      <Link to="/contact" className={styles.grid2} style={selected === "/contact" ? { backgroundColor: "#C58EB6" } : null} onMouseEnter={() => setIsContactHovered(true)} onMouseLeave={() => setIsContactHovered(false)} onClick={() => handleClick("/contact")}>
         <img src={isContactHovered ? contactanimate : contact} className={styles.icons} />
         <p>Contact</p>
       </Link>
-      <Link to="/shop" className={styles.grid3} onMouseEnter={() => setIsShopHovered(true)} onMouseLeave={() => setIsShopHovered(false)}>
+      <Link to="/shop" className={styles.grid3} style={selected === "/shop" ? { backgroundColor: "#F86381" } : null} onMouseEnter={() => setIsShopHovered(true)} onMouseLeave={() => setIsShopHovered(false)} onClick={() => handleClick("/shop")}>
         <img src={isShopHovered ? shopanimate : shop} className={styles.icons} />
         <p>Shop</p>
       </Link>
-      <Link to="/cart" className={styles.grid4} onMouseEnter={() => setIsCartHovered(true)} onMouseLeave={() => setIsCartHovered(false)}>
+      <Link to="/cart" className={styles.grid4} style={selected === "/cart" ? { backgroundColor: "#E46635" } : null} onMouseEnter={() => setIsCartHovered(true)} onMouseLeave={() => setIsCartHovered(false)} onClick={() => handleClick("/cart")}>
         <img src={isCartHovered ? cartanimate : cart} className={styles.icons} />
         <p>Cart ({cartItems.length})</p>
       </Link>
