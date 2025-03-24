@@ -60,16 +60,16 @@ function Testimonials() {
         ) : null}
 
       </div>
-      <div className={styles.selectorbuttons}>
-        {testimonials.map((item, index) => (
-          <button key={index} className={`${styles.individualselectorbutton} ${index === curr ? styles.selected : ""}`} onClick={() => handleNub(index)}><img src={nub} /></button>
-        ))}
-
-      </div>
       <div className={styles.navigate}>
         <button onClick={handleBack} className={styles.button}></button>
         <button onClick={handleForward} className={styles.button}></button>
       </div>
+    </div>
+    <div className={styles.selectorbuttons}>
+      {testimonials.map((item, index) => (
+        <button key={index} className={`${styles.individualselectorbutton} ${index === curr ? styles.selected : ""}`} onClick={() => handleNub(index)}><img src={nub} /></button>
+      ))}
+
     </div>
   </>
 
