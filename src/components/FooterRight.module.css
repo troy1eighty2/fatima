@@ -1,15 +1,16 @@
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 138px;
   width: 100%;
   border-top: black solid 1.5px;
+  background-color: #FFFEF6;
 }
 
 .logo {
   display: flex;
   height: 76px;
-  margin-top: 35px;
 
 }
 
@@ -18,13 +19,17 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
 
 .tinyfooter {
   display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   justify-content: space-between;
-
+  padding-bottom: 5px
 }
 
 .copyright {
@@ -37,9 +42,15 @@
   font-size: 10px;
   color: grey;
   margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 .link:visited {
   color: grey
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    font-size: 14px;
+    height: 113px;
+  }
 }

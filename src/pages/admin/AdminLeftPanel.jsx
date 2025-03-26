@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from "uuid"
 
 function AdminLeftPanel() {
   const handleStyleSubmit = (e) => {
-
     e.preventDefault()
     setForm((prevForm) => ({
       ...prevForm
@@ -24,9 +23,18 @@ function AdminLeftPanel() {
         console.log(error)
       })
     let updatedStore = [...store];
+    console.log(updatedStore)
     updatedStore.forEach((item, index) => {
-      if (item.newProduct) {
-        const newItem = { ...item, newProduct: false };
+      if (item.newProduct === true) {
+        const stockParsing = {
+          xs: parseInt(item.stock.xs),
+          s: parseInt(item.stock.s),
+          m: parseInt(item.stock.m),
+          l: parseInt(item.stock.l),
+          xl: parseInt(item.stock.xl),
+          xxl: parseInt(item.stock.xxl)
+        }
+        const newItem = { ...item, price: parseFloat(item.price), newProduct: false, stock: stockParsing };
         console.log("New item detected:", item);
         axios.post(`${import.meta.env.VITE_API_URL}/shop/post`, newItem)
           .then((response) => {
@@ -37,7 +45,7 @@ function AdminLeftPanel() {
           });
       } else {
         console.log("Updating old item:", item._id);
-        updatedStore[index] = { ...item, newProduct: false };
+        updatedStore[index] = { ...item, price: parseFloat(item.price), newProduct: false };
 
         axios.put(`${import.meta.env.VITE_API_URL}/shop/put/${item._id}`, item)
           .then((response) => {
@@ -63,7 +71,7 @@ function AdminLeftPanel() {
                 ? {
                   stock: {
                     ...item.stock,
-                    [name]: parseInt(value),
+                    [name]: value,
                   },
                 }
                 : name === "picture" ? {
@@ -72,7 +80,7 @@ function AdminLeftPanel() {
                   )
                 }
                   : name === "price" ? {
-                    [name]: Number(value)
+                    [name]: value
                   } : {}
             )
           }

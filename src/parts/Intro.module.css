@@ -1,9 +1,4 @@
-.heading {
-  font-size: 30px;
-}
-
 .getaquote {
-  font-size: 30px;
   margin-top: 10px;
 }
 
@@ -21,6 +16,7 @@
 
 .content {
   margin: 3%;
+  font-size: 32px;
 }
 
 .container::-webkit-scrollbar {

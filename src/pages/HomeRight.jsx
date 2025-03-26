@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Intro from "../parts/Intro.jsx";
 import Logo from "../parts/Logo.jsx";
-import FooterRight from "../components/FooterRight.jsx";
-import FooterLeft from "../components/FooterLeft.jsx";
 import Testimonials from "../components/Testimonials.jsx";
 
 
@@ -53,10 +51,6 @@ function HomeRight() {
         </div>
       </div>
     </div >
-    <div className={styles.mobileFooterLeft}>
-      <FooterLeft></FooterLeft>
-    </div>
-    <FooterRight></FooterRight>
 
   </>
 }

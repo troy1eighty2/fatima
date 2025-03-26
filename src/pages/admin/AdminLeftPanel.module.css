@@ -27,6 +27,8 @@
 }
 
 .submit {
+  position: relative;
+  z-index: 2;
   border: black solid 1px;
   display: flex;
   width: 30%;
@@ -38,7 +40,6 @@
 
 .submit:hover {
   border: black solid 3px;
-  justify-content: center;
 }
 
 .submit:active {
@@ -47,6 +48,8 @@
 }
 
 .inputbox {
+  z-index: 2;
+  position: relative;
   font-size: 20px;
   height: 10%;
   resize: none;

@@ -8,6 +8,7 @@ import HomeRight from "./pages/HomeRight.jsx";
 import AdminLeft from "./pages/admin/AdminLeft.jsx";
 import AdminRight from "./pages/admin/AdminRight.jsx";
 import Logo from "./parts/Logo.jsx";
+import Footer from "./components/Footer.jsx"
 import axios from "axios";
 
 import styles from "./App.module.css";
@@ -215,6 +216,9 @@ function App() {
               {mobileContent}
             </div>
           </div>
+        </div>
+        <div className={styles.footer}>
+          <Footer></Footer>
         </div>
       </PayPalScriptProvider >
     </>

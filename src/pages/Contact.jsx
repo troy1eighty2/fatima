@@ -4,7 +4,6 @@ import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-
 import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
 import Dropdown from "../parts/Dropdown";
 import fileaccent from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg";
-import FooterLeft from "../components/FooterLeft";
 import monster from "../assets/Assets/Assets/Deliverables/Illustrations/monster.png"
 
 function Contact() {
@@ -76,17 +75,22 @@ function Contact() {
             <label>Quantity of Items and Garment Style</label>
             <input type="text" name="quantity" placeholder="12 Shirts, 12 Hoodies, etc." value={formData.quantity} onChange={handleChange} />
           </div>
-          <div className={styles.question}>
+          <div className={`${styles.question} ${styles.dropdown}`}>
             <label>Placement of Print(s)</label>
             <Dropdown buttonText=" -Select All That Apply- " content={options} onSelectionChange={handlePlacementChange}></Dropdown>
           </div>
         </div>
         <div className={styles.tellus}>
-          <label>Tell Us About your Project</label>
+          <label >Tell Us About your Project</label>
           <textarea name="details" placeholder="Anything else you'd like for us to know?" value={formData.details} onChange={handleChange}></textarea>
         </div>
-        <div className={styles.question}>
-          <label>Upload Your Artwork</label>
+        <div className={styles.artwork}>
+          <div className={styles.artworkHeader}>
+            <label className={styles.uploadLabel}>Upload Your Artwork</label>
+            <div className={styles.monster}>
+              <img src={monster} className={styles.image} />
+            </div>
+          </div>
           <label htmlFor="artwork" className={styles.customFileLabel}>
             Browse Files
           </label>
@@ -98,7 +102,8 @@ function Contact() {
             className={styles.fileinput}
             onChange={handleFileChange}
           />
-          <div className={styles.filesselected}>{files.length == 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}</div>
+          <div className={styles.filesselected}>{files.length == 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}
+          </div>
         </div>
         <button className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           <img src={isSubmitHovered ? submithover : submit} />
@@ -108,7 +113,6 @@ function Contact() {
       </form>
 
     </div>
-    <FooterLeft></FooterLeft>
   </>
 }
 

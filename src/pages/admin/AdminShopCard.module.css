@@ -7,11 +7,15 @@
 
 
 .stockbox {
+  z-index: 2;
+  position: relative;
   display: flex;
   gap: 10px;
 }
 
 .stockboxbox {
+  z-index: 2;
+  position: relative;
   height: 50px;
   width: 50px;
 
@@ -28,16 +32,22 @@
 }
 
 .smallinput {
+  z-index: 2;
+  position: relative;
   height: 50px;
   font-size: 20px;
 }
 
 .mediuminput {
+  z-index: 2;
+  position: relative;
   height: 80px;
   font-size: 20px;
 }
 
 .input {
+  z-index: 2;
+  position: relative;
   height: 200px;
   font-size: 20px;
 }

@@ -7,16 +7,19 @@ a:visited {
 }
 
 .container {
+  font-size: 20px;
   position: relative;
   z-index: 1;
+  border-right: black solid 1.5px;
+  height: 138px;
 }
 
 .footer {
   position: relative;
+  height: 100%;
   background-color: white;
   z-index: 2;
   display: grid;
-  height: 138px;
   width: 100%;
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr 1fr;
@@ -32,7 +35,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   background-color: #E46635;
 }
 
@@ -44,7 +46,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   background-color: #C58EB6;
 }
 
@@ -56,7 +57,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   background-color: #C58EB6;
 }
 
@@ -67,7 +67,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   background-color: #E46635;
 }
 
@@ -77,7 +76,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   background-color: #F86381;
 }
 
@@ -97,4 +95,12 @@ a:visited {
   z-index: 0;
   position: absolute;
   overflow: hidden;
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    font-size: 14px;
+    height: 113px;
+  }
+
 }

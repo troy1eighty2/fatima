@@ -15,11 +15,22 @@
 }
 
 .header {
-  font-size: 16px;
-  margin-left: 10px;
+  font-size: 20px;
+  margin: 15px 15px 4px 15px;
 }
 
 .price {
-  font-size: 14px;
-  margin: 10px;
+  font-size: 16px;
+  margin: 0px 15px 15px 15px;
+}
+
+@media screen and (max-width:768px) {
+  .header {
+    font-size: 16px;
+  }
+
+  .price {
+
+    font-size: 14px;
+  }
 }

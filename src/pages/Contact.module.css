@@ -1,7 +1,6 @@
 .container {
   height: 100%;
   display: flex;
-  padding: 5% 10% 0% 10%;
   flex-direction: column;
   align-items: center;
   -ms-overflow-style: none;
@@ -9,37 +8,48 @@
   scrollbar-width: none;
 }
 
+
 .container::-webkit-scrollbar {
   display: none;
 }
 
 
+.uploadLabel {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  width: 50%;
+  height: min-content;
+}
+
 .header {
+
   text-align: center;
-  font-size: 3em;
+  font-size: 48px;
+  margin-top: 47px;
+  margin-bottom: 10px
 }
 
 .links {
   display: flex;
   gap: 20px;
-  font-size: 1em;
+  font-size: 16px;
   text-wrap: nowrap;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .form {
-  font-size: 1.75em;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0px 130px 269px 130px;
 }
 
 
 input {
-  padding: 0 15px;
+  font-size: 20px;
+  padding: 0 10px;
   line-height: normal;
-  font-size: .75em;
   background-color: #FFFEF6;
   border: black solid 1.5px;
   width: 100%;
@@ -47,11 +57,13 @@ input {
 }
 
 .question {
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
+
 
 .spacing_for_label {
   display: flex;
@@ -78,26 +90,26 @@ input {
 
 
 .tellus {
-  padding-bottom: 30px;
   display: flex;
-  font-size: 1em;
+  font-size: 20px;
   flex-direction: column;
   gap: 10px;
 }
 
 textarea {
-  padding-left: 15px;
+  font-size: 20px;
+  padding-left: 10px;
   padding-top: 5px;
   height: 110px;
   resize: none;
   width: 100%;
-  font-size: .75em;
   background-color: #FFFEF6;
   border: solid 1.5px black;
 }
 
 
 input::placeholder {
+  font-size: 20px;
   color: #D2D2D2;
 
 }
@@ -111,28 +123,22 @@ button {
 }
 
 .button {
-  position: relative;
   z-index: 2;
   width: 110px;
   align-self: center;
-  margin-bottom: 40px;
 }
 
 
 textarea::placeholder {
+  font-size: 20px;
   color: #D2D2D2;
+
 }
 
-.browsefiles {
-  box-sizing: border-box;
-  width: 100%;
-  height: 39px;
-  text-align: center;
-  font-size: 1em;
-}
 
 .customFileLabel {
   width: 100%;
+  margin-bottom: 11px;
   border: 1.5px solid black;
   height: 39px;
   align-items: center;
@@ -140,24 +146,37 @@ textarea::placeholder {
   display: flex;
 }
 
-.customFileLabel:hover {
-  font-weight: bold;
-  border: solid black 2px;
-}
-
-/* .customFileLabel:hover { */
-/*   cursor: pointer; */
-/* } */
 
 .fileinput {
   display: none;
 }
 
 .filesselected {
-  font-size: 0.5em;
+  font-size: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+}
+
+.artworkHeader {
+  width: 100%;
+  display: flex;
+}
+
+.monster {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+
+
+.image {
+  position: absolute;
+  top: -130%;
+  right: 10%;
+  width: 82px;
 
 }
 
@@ -172,28 +191,39 @@ textarea::placeholder {
 }
 
 
+
 @media screen and (max-width: 1580px) {
-  .container {
-    padding: 25px 25px 250px 25px;
-  }
 
   .header {
     text-align: center;
-    font-size: 1.75em;
+    font-size: 28px;
   }
 
   .links {
-    font-size: .75em;
+    font-size: 12px;
+    margin-bottom: 30px;
   }
 
-
-  .question label {
-    font-size: .5em;
+  .form {
+    padding: 0px 25px 248px 25px;
   }
 
   input::placeholder {
-    font-size: .75em;
+    font-size: 20px;
     color: #D2D2D2;
+  }
+
+  .question {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  input::placeholder {
+    font-size: 14px;
   }
 
 
@@ -215,11 +245,20 @@ textarea::placeholder {
   }
 
   .tellus {
-    font-size: .5em;
+    font-size: 14px;
   }
 
   textarea {
-    font-size: 1em;
+    font-size: 14px;
+  }
+
+  textarea::placeholder {
+    font-size: 14px;
+    padding-top: 5px;
+  }
+
+  .monster {
+    display: flex;
   }
 
 

@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+
+}
+
+.one {
+
+  width: 50%;
+}
+
+.two {
+  width: 50%;
+
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .one {
+    width: 100%;
+  }
+
+  .two {
+    width: 100%;
+  }
+}

@@ -74,20 +74,6 @@ a:visited {
   /* Adds padding inside content */
 }
 
-.footerleft {
-  border-top: 1.5px solid black;
-  height: 138px;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.footerright {
-  border-top: 1.5px solid black;
-  height: 138px;
-  width: 100%;
-  flex-shrink: 0;
-}
-
 .mobileLayout {
   background-color: #FFFEF6;
   display: none;
@@ -103,7 +89,12 @@ a:visited {
   display: none;
 }
 
+/* @media screen and (max-width: 1000px) { */
 @media screen and (max-width: 768px) {
+
+  .container {
+    height: 100%;
+  }
 
   .left,
   .right {
@@ -126,4 +117,5 @@ a:visited {
   .mobileLogo {
     display: block;
   }
+
 }

@@ -79,7 +79,6 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
           </div>
         </div>}
     </div>
-    <FooterLeft></FooterLeft>
 
 
   </>
