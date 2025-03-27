@@ -101,6 +101,7 @@ a:visited {
   .container {
     font-size: 14px;
     height: 113px;
+    border-right: black solid 0px;
   }
 
 }

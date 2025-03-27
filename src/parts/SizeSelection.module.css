@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: min-content;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -10,6 +10,7 @@
 .size {
   box-sizing: border-box;
   height: 37px;
+  width: 58px;
   font-size: 16px;
   border: black solid 1.5px;
   display: flex;
@@ -22,22 +23,28 @@
   background-color: unset;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1600px) {
   .container {
 
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    row-gap: 25px;
+    column-gap: 9px;
+    row-gap: 15px;
   }
 
-  .size {
-    height: 37px;
-  }
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    column-gap: 12px;
+  }
+
   .size {
     font-size: 14px;
+    width: 100%;
   }
 
 }

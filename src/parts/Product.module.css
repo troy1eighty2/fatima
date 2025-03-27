@@ -5,7 +5,6 @@
   padding: 35px 50px 35px 50px;
   display: flex;
   background-color: #FFFEF6;
-  border: black solid 5px;
 }
 
 
@@ -16,7 +15,6 @@
 }
 
 .first {
-  border: black solid 5px;
   width: 100%;
   height: min-content;
 }
@@ -40,7 +38,6 @@
 
 
 .third {
-  border: black solid 5px;
   padding-left: 37px;
   width: 50%;
 }
@@ -78,6 +75,9 @@
 }
 
 .buttons {
+  position: relative;
+  z-index: 2;
+  width: min-content;
   display: flex;
   flex-direction: column;
   margin-top: 60px;
@@ -91,9 +91,24 @@
   display: none;
 }
 
+.description {
+  font-size: 16px;
+
+}
+
 
 
 @media screen and (max-width: 768px) {
+
+  .container {
+    padding: 26px 15px 35px 15px;
+    display: flex;
+    background-color: #FFFEF6;
+  }
+
+  .button {
+    margin-bottom: 26px;
+  }
 
   .second {
     display: none;
@@ -107,9 +122,31 @@
 
   .secondMobile {
     display: flex;
-    gap: 20px;
-    flex-direction: column;
     text-align: center;
+    margin-bottom: 15px;
     width: 100%;
+    margin-left: 25px;
+    margin-right: 25px;
+
+  }
+
+  .description {
+    font-size: 14px;
+
+  }
+
+  .name {
+
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .buttons>* {
+    margin-bottom: 15px;
   }
 }

@@ -42,7 +42,9 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
 
   return (
     <div className={styles.container}>
-      <Quantity count={count} setCount={setCount} />
+      <div className={styles.quantity}>
+        <Quantity count={count} setCount={setCount} />
+      </div>
 
       <button
         className={styles.addtocart}

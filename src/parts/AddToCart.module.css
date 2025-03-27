@@ -1,8 +1,7 @@
 .container {
-  width: 100%;
-  height: 50px;
+  width: min-content;
   display: flex;
-  gap: 10px;
+  gap: 9px;
   box-sizing: border-box;
 
 }
@@ -15,29 +14,44 @@
 .addtocart {
   box-sizing: border-box;
   border: solid black 1px;
-  height: 100%;
-  width: 100%;
+  height: 50px;
+  width: 259px;
   display: flex;
   font-size: 20px;
   justify-content: center;
   align-items: center;
   gap: 2%;
-  font-size: 1.2vw;
 
 }
-
 
 .addtocart:hover {
-
   /* border: solid black 2px; */
   background-color: #E46635;
-
 }
 
+@media screen and (max-width: 1600px) {
+
+  .container {
+    flex-direction: column;
+  }
+
+  .addtocart {
+    width: 192px;
+    height: 50px;
+  }
+}
 
 @media screen and (max-width: 768px) {
+  .container {
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    font-size: 16px;
+  }
+
   .addtocart {
-    font-size: 20px;
+
+    width: 100%;
   }
 
 }
