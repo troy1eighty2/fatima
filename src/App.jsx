@@ -218,7 +218,7 @@ function App() {
           </div>
         </div>
         <div className={styles.footer}>
-          <Footer></Footer>
+          <Footer cartItems={cartItems}></Footer>
         </div>
       </PayPalScriptProvider >
     </>

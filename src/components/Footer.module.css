@@ -10,6 +10,37 @@
 
 .two {
   width: 50%;
+  position: relative;
+
+}
+.subtotal{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: black solid 1px;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.clown {
+  position: absolute;
+  top: 0%;
+  right: 20%;
+  z-index: 2;
+}
+.checkoutcontainer {
+  position: relative;
+  width: 290px;
+  height: min-content;
+  background-color: #FFFEF6;
+  z-index: 1;
+}
+
+.paypalButtonstyle {
+  border: black solid 1px;
+  height: 52px;
+  width: 100%;
+  padding-bottom: 2%;
 
 }
 
@@ -24,5 +55,12 @@
 
   .two {
     width: 100%;
+  }
+  .clown{
+    display:none;
+  }
+  .subtotal{
+    width: 100%;
+    /* bottom:0; */
   }
 }
