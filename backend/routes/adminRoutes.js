@@ -6,7 +6,7 @@ dotenv.config()
 
 const admin_router = express.Router();
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const SECRET_KEY = process.env.JWT_SECRET;
+export const SECRET_KEY = process.env.JWT_SECRET;
 
 admin_router.post("/", async (req, res) => {
   try {
@@ -44,4 +44,5 @@ admin_router.get("/verify", async (req, res) => {
     return res.status(400).json(error)
   }
 })
+
 export default admin_router;

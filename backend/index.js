@@ -7,6 +7,8 @@ import configRoutes from "./routes/configRoutes.js";
 import PayPalRoutes from "./routes/PayPalRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js"
 import cors from "cors";
+import jwt from "jsonwebtoken";
+import { SECRET_KEY } from './routes/adminRoutes.js';
 
 dotenv.config();
 
@@ -19,6 +21,25 @@ app.use('/order', orderRoutes);
 app.use('/config', configRoutes);
 app.use('/PayPal', PayPalRoutes);
 app.use('/admin', adminRoutes);
+
+export function authenticateToken(req, res){
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ message: "No token provided" });
+  }
+  const token = authHeader.split(" ")[1];
+  try{
+    // returns error if fail
+    const decoded = jwt.verify(token, SECRET_KEY);
+
+  }catch(error){
+    console.log("token verification failed");
+    return res.status(403).json({ message: "Invalid or expired token" });
+  }
+
+
+}
 
 mongoose
   .connect(process.env.MONGO_URI)

@@ -4,14 +4,12 @@ import axios from "axios"
 import AdminShopCard from "./AdminShopCard"
 import { v4 as uuidv4 } from "uuid"
 
-function AdminLeftPanel() {
+function AdminLeftPanel({verifyToken}) {
   const handleStyleSubmit = (e) => {
     e.preventDefault()
     setForm((prevForm) => ({
       ...prevForm
     }))
-    // console.log(store)
-    // console.log(form)
 
     axios
       .put(`${import.meta.env.VITE_API_URL}/config/put`, form)

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import Config from "../models/Config.js"
+import {authenticateToken} from '../index.js'
 
 const config_router = express.Router();
 
@@ -14,7 +15,7 @@ config_router.get("/", async (request, response) => {
   }
 })
 
-config_router.put("/put", async (request, response) => {
+config_router.put("/put", authenticateToken, async (request, response) => {
   try {
     const result = await Config.findByIdAndUpdate(request.body._id, request.body, { new: true })
     return response.status(200).json(result)

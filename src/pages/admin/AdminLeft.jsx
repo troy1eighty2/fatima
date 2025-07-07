@@ -7,7 +7,7 @@ function AdminLeft({ authenticated, setToken, verifyToken }) {
 
   return <>
     <div className={styles.container}>
-      {authenticated ? <AdminLeftPanel></AdminLeftPanel> : <AdminPassword setToken={setToken}></AdminPassword>}
+      {authenticated ? <AdminLeftPanel verifyToken={verifyToken}></AdminLeftPanel> : <AdminPassword setToken={setToken}></AdminPassword>}
 
     </div>
   </>
