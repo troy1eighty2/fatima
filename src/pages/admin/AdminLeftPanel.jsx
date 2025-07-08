@@ -4,7 +4,7 @@ import axios from "axios"
 import AdminShopCard from "./AdminShopCard"
 import { v4 as uuidv4 } from "uuid"
 
-function AdminLeftPanel({verifyToken}) {
+function AdminLeftPanel({token}) {
   const handleStyleSubmit = (e) => {
     e.preventDefault()
     setForm((prevForm) => ({
@@ -12,7 +12,11 @@ function AdminLeftPanel({verifyToken}) {
     }))
 
     axios
-      .put(`${import.meta.env.VITE_API_URL}/config/put`, form)
+      .put(`${import.meta.env.VITE_API_URL}/config/put`, form, {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         // console.log(response)
       })

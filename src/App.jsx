@@ -174,7 +174,7 @@ function App() {
         setMobileContent(<Faq></Faq>);
         break;
       case "/admin":
-        setLeftContent(<AdminLeft authenticated={authenticated} setToken={setToken} verifyToken={verifyToken}></AdminLeft>);
+        setLeftContent(<AdminLeft authenticated={authenticated} token={token} setToken={setToken} verifyToken={verifyToken}></AdminLeft>);
         setRightContent(<AdminRight authenticated={authenticated} verifyToken={verifyToken}></AdminRight>);
         break;
       default:

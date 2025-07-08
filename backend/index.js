@@ -22,7 +22,7 @@ app.use('/config', configRoutes);
 app.use('/PayPal', PayPalRoutes);
 app.use('/admin', adminRoutes);
 
-export function authenticateToken(req, res){
+export function authenticateToken(req, res, next){
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -32,6 +32,7 @@ export function authenticateToken(req, res){
   try{
     // returns error if fail
     const decoded = jwt.verify(token, SECRET_KEY);
+    next();
 
   }catch(error){
     console.log("token verification failed");

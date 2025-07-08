@@ -3,11 +3,11 @@ import AdminLeftPanel from "./AdminLeftPanel";
 import AdminPassword from "./AdminPassword.jsx"
 import { useEffect, useState } from "react"
 import axios from "axios";
-function AdminLeft({ authenticated, setToken, verifyToken }) {
+function AdminLeft({ authenticated, token, setToken, verifyToken }) {
 
   return <>
     <div className={styles.container}>
-      {authenticated ? <AdminLeftPanel verifyToken={verifyToken}></AdminLeftPanel> : <AdminPassword setToken={setToken}></AdminPassword>}
+      {authenticated ? <AdminLeftPanel token={token}></AdminLeftPanel> : <AdminPassword setToken={setToken}></AdminPassword>}
 
     </div>
   </>
