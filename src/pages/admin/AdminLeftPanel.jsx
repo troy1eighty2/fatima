@@ -25,7 +25,7 @@ function AdminLeftPanel({token}) {
         console.log(error)
       })
     let updatedStore = [...store];
-    console.log(updatedStore)
+    console.clear();
     updatedStore.forEach((item, index) => {
       if (item.newProduct === true) {
         const stockParsing = {
@@ -37,16 +37,16 @@ function AdminLeftPanel({token}) {
           xxl: parseInt(item.stock.xxl)
         }
         const newItem = { ...item, price: parseFloat(item.price), newProduct: false, stock: stockParsing };
-        console.log("New item detected:", item);
+        // console.log("New item detected:", item);
         axios.post(`${import.meta.env.VITE_API_URL}/shop/post`, newItem)
           .then((response) => {
             console.log("New product posted:", response);
           })
           .catch((error) => {
-            console.error("Error posting new product:", error);
+            console.error("Error posting new product:", error.data);
           });
       } else {
-        console.log("Updating old item:", item._id);
+        // console.log("Updating old item:", item._id);
         updatedStore[index] = { ...item, price: parseFloat(item.price), newProduct: false };
 
         axios.put(`${import.meta.env.VITE_API_URL}/shop/put/${item._id}`, item)
@@ -54,7 +54,7 @@ function AdminLeftPanel({token}) {
             console.log("Product updated:", response);
           })
           .catch((error) => {
-            console.error("Error updating product:", error);
+            console.error("Error updating product:", error.response.data.error);
           });
       }
     });
@@ -196,9 +196,9 @@ function AdminLeftPanel({token}) {
   return <>
     <div className={styles.container}>
       <h1 className={styles.header}>Config</h1>
-      <p className={styles.how}>
-        **THIS PAGE WONT SAVE YOUR WORK IF YOU REFRESH OR EXIT IT. PRESS SUBMIT CHANGES TO SAVE.**
-      </p>
+      <ul className={styles.how}>
+        <li>THIS PAGE WONT SAVE YOUR WORK IF YOU REFRESH OR EXIT IT. PRESS SUBMIT CHANGES TO SAVE.</li>
+      </ul>
       <form className={styles.pagestyle} onSubmit={handleStyleSubmit}>
 
         <div className={styles.option}>

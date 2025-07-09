@@ -24,7 +24,7 @@ function NavBar({ cartItems }) {
 
   }
   useEffect(() => {
-    console.log("cart changed")
+    // console.log("cart changed")
   }, [cartItems])
   return <>
     <div className={styles.navbarContainer}>

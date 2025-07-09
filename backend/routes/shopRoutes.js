@@ -33,7 +33,7 @@ router.put("/put/:id", async (request, response) => {
     return response.status(200).json(result)
   } catch (error) {
     console.log(error)
-    return response.status(500).json({ error: "put shop error" });
+    return response.status(500).json({ error: error });
   }
 
 })

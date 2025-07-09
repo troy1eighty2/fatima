@@ -16,9 +16,9 @@ function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _
         <textarea className={styles.mediuminput} type="text" name="picture" onChange={(e) => handleShopChange(e, _id, 1)} value={pictures[1].url} />
         <textarea className={styles.mediuminput} type="text" name="picture" onChange={(e) => handleShopChange(e, _id, 2)} value={pictures[2].url} />
       </div>
-      <p>Price</p>
+      <p>Price (Numbers only)</p>
       <textarea className={styles.smallinput} type="text" name="price" onChange={(e) => handleShopChange(e, _id)} value={price} />
-      <p>Stock</p>
+      <p>Stock (Numbers only)</p>
       <div className={styles.stockbox}>
         <textarea className={styles.stockboxbox} type="text" name="xs" onChange={(e) => handleShopChange(e, _id)} value={stock.xs} />
         <textarea className={styles.stockboxbox} type="text" name="s" onChange={(e) => handleShopChange(e, _id)} value={stock.s} />
