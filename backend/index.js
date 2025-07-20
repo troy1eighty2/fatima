@@ -16,11 +16,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/shop', shopRoutes);
-app.use('/order', orderRoutes);
-app.use('/config', configRoutes);
-app.use('/PayPal', PayPalRoutes);
-app.use('/admin', adminRoutes);
+app.use('/api/shop', shopRoutes);
+app.use('/api/order', orderRoutes);
+app.use('/api/config', configRoutes);
+app.use('/api/PayPal', PayPalRoutes);
+app.use('/api/admin', adminRoutes);
 
 export function authenticateToken(req, res, next){
   const authHeader = req.headers.authorization;

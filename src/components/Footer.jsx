@@ -4,10 +4,13 @@ import FooterRight from "./FooterRight"
 import clown from "../assets/Assets/Assets/Deliverables/Illustrations/clown.png"
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { motion } from "motion/react";
-import { useState} from "react";
-function Footer({cartItems, location}) {
+import { useState, useEffect, useRef} from "react";
+import Cart from "../pages/Cart.jsx";
+function Footer({cartItems, location, rightContent}) {
   // console.log(location)
   const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef(null);
+  const [container_width, setContainerWidth]= useState(0);
   //paypal
   const createOrder = async () => {
     try {
@@ -35,25 +38,32 @@ function Footer({cartItems, location}) {
     "shape": "sharp",
     "layout": "vertical",
     "label": "checkout",
-    "height": 50,
-    "width": 290
+    // "height": 55,
+    // "width": 455,
   }
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+        console.log(containerRef.current.offsetWidth)
+      }
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  },[])
   return <>
-    <div className={styles.container}>
-      <div className={styles.one}>
-        <FooterLeft></FooterLeft>
-      </div>
-      <div className={styles.two}>
-        <FooterRight></FooterRight>
-      </div>
-      <div className={styles.subtotal}style={total === 0 ? {display:'none'}:null}>
+    <div className={styles.container} ref={containerRef} >
+      <div className={styles.subtotal}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
         <div className={styles.subtotalItems}>
-          <div className={styles.checkoutcontainer} style={location !== "/cart" ? {display:"none"}: null }>
-            <p className={styles.title}style={location !== "/cart" ? {display:"none"}: null }>Subtotal:</p>
-            <p className={styles.total}style={location !== "/cart" ? {display:"none"}: null }>{`$${total}`}</p>
+          <div className={styles.checkoutcontainer} >
+            <p className={styles.title}>Subtotal:</p>
+            <p className={styles.total}>{`$${total}`}</p>
             <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
               <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+              {/* <PayPalButtons createOrder={createOrder} onApprove={onApprove}></PayPalButtons> */}
             </div>
             <motion.img className={styles.clown} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-80%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
           </div>
@@ -61,6 +71,12 @@ function Footer({cartItems, location}) {
             *Taxes and shipping calculated at checkout*
           </p>
         </div>
+      </div>
+      <div className={styles.one}>
+        <FooterLeft></FooterLeft>
+      </div>
+      <div className={styles.two}>
+        <FooterRight></FooterRight>
       </div>
     </div>
   </>

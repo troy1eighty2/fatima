@@ -1,13 +1,18 @@
 .container {
+  /* border: black 2px solid; */
   z-index: 1;
   display: flex;
   width: 100%;
+  height: min-content;
+  justify-content:space-between;
 }
 
 
 
 .image {
-  width: 239px;
+  /* width: 239px; */
+  width: 30%;
+  flex-shrink:0;
   border: 1.5px solid black;
   overflow: hidden;
   aspect-ratio: 1/1.25;
@@ -46,11 +51,12 @@
 }
 
 .buttons {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: end;
   gap: 15px;
+  /* border: black 2px solid; */
 
 }
 

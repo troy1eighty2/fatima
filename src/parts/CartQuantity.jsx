@@ -1,4 +1,4 @@
-import styles from "./Quantity.module.css"
+import styles from "./CartQuantity.module.css"
 import { useState } from "react"
 function CartQuantity({ product, add, subtract }) {
 

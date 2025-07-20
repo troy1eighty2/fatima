@@ -3,37 +3,39 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
 }
 
 .container2 {
-  height: 100%;
   width: 100%;
   display: flex;
+
+  width: 100%;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.left {
-  flex: 1;
-  height: calc(80vh);
-  overflow-y: scroll;
-  border-right: solid black 1.5px;
-}
 
 .right {
   flex: 1;
   width: 100%;
-  height: min-content;
+  overflow-y: scroll;
+}
+.left {
+  flex: 1;
+  overflow-y: scroll;
+  border-right: solid black 1.5px;
 }
 
 .gif {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   border-bottom: solid 1.5px black;
-  display: block;
+  display: flex;
 }
 
 .gallery {
+  /* border: black solid 2px; */
   display: flex;
   height: min-content;
   flex-direction: column;
@@ -73,12 +75,13 @@
     /* Reduce padding */
     gap: 15px;
     /* Reduce gap between images */
+    border-top: black solid 1.5px;
   }
 
   .gif {
-    height: auto;
+    /* height: auto; */
     /* Make sure it scales properly */
-    width: 100%;
+    /* width: 100%; */
   }
 
   .display {
@@ -90,9 +93,6 @@
     display: block;
   }
 
-  .gallery {
-    border-top: 1px black solid;
-  }
 
   .mobileFooterLeft {
     display: block;

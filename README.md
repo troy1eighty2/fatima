@@ -119,4 +119,15 @@ Built with react mongoatlas react node axios
 - less space between shirt name and price
 - padding price image on product lessened (same as all prodeucts)
 - footer is one
--stack size boxes
+
+changes 
+- favicon 
+- cursor  
+- anchor pay button 
+- opacity of gallery
+
+# 7/15/2025
+- cursor
+- finish cart
+
+
