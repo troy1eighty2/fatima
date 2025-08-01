@@ -19,6 +19,7 @@ function NavBar({ cartItems }) {
   const [isShopHovered, setIsShopHovered] = useState(false);
   const [isCartHovered, setIsCartHovered] = useState(false);
   const [selected, setSelected] = useState();
+  // console.log(cartItems)
   const handleClick = (data) => {
     setSelected(data)
 
@@ -42,7 +43,7 @@ function NavBar({ cartItems }) {
       </Link>
       <Link to="/cart" className={styles.grid4} style={selected === "/cart" ? { backgroundColor: "#E46635" } : null} onMouseEnter={() => setIsCartHovered(true)} onMouseLeave={() => setIsCartHovered(false)} onClick={() => handleClick("/cart")}>
         <img src={isCartHovered ? cartanimate : cart} className={styles.icons} />
-        <p>Cart ({cartItems.length})</p>
+        <p>Cart ({cartItems.reduce((sum, item) => sum = sum + item.quantity, 0)})</p>
       </Link>
     </div>
   </>

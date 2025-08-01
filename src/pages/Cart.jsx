@@ -14,7 +14,7 @@ function Cart({ cartItems, mergeCart, removeItem, add, subtract, clearCart }) {
 
 
   useEffect(() => {
-    console.log("Cart updated")
+    // console.log("Cart updated")
   }, [cartItems]);
 
   return (

@@ -5,9 +5,10 @@ import FooterLeft from "../components/FooterLeft";
 import { Link, useLocation, useParams } from "react-router-dom";
 import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Back-26.svg"
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Back-27.svg"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import axios from "axios";
 import wrestler from "../assets/Assets/Assets/Deliverables/Illustrations/wwe.png"
+import ImageMagnifier from "./ImageMagnifier.jsx"
 function Product({ cartItems, updateCart, productID, setProductID }) {
   const [hover, setHover] = useState(false)
   // const [product, setProduct] = useState([])
@@ -20,8 +21,26 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
   const id = pathSegments[2]
   // console.log(id)
 
+  const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
+  const containerRef = useRef(null)
+  console.log(imgWidth)
 
+  useLayoutEffect(() => {
+    if (!item.pictures?.[0]) return;
 
+    const container = containerRef.current;
+    if (!container) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        setSize([width, height]);
+      }
+    });
+    resizeObserver.observe(container);
+
+    return () => resizeObserver.disconnect();
+  },[item.pictures]);
   useEffect(() => {
     if (!id) return;
     axios
@@ -37,7 +56,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
       })
       .catch((error) => {
         console.log(error)
-      })
+      });
   }, [id]);
   return <>
     <div className={styles.container}>
@@ -52,11 +71,20 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
           </div>
           <div className={styles.row}>
             <div className={styles.second}>
-              {item.pictures.map((item, index) => {
+              {item.pictures[0]?.url && (
+                <div className={styles.picture} ref={containerRef}>
+                  <ImageMagnifier
+                    src={item.pictures[0].url}
+                    width={imgWidth || 400}
+                    height={imgHeight || 400}
+                  />
+                </div>
+              )}
+              {item.pictures.slice(1).map((item, index) => {
                 if (item.url === "") {
-                  return
+                  return null
                 }
-                return <img className={styles.picture} src={item.url} key={index} />
+                return <div key={index} className={styles.picture} ><ImageMagnifier src={item.url} width={imgWidth} height={imgHeight} /></div>
               })}
             </div>
             <div className={styles.secondMobile}>
@@ -64,15 +92,15 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
             </div>
             <div className={styles.third}>
               <p className={styles.price}>{
-                new Intl.NumberFormat("en-US", {
+                new Intl.NumberFormat("en-us", {
                   style: "currency",
-                  currency: "USD",
+                  currency: "usd",
                 }).format(item.price)}</p>
               <p className={styles.name}>{item.name}</p>
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
                 <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
-                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
+                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productid={item._id} ></AddToCart>}
               </div>
 
             </div>

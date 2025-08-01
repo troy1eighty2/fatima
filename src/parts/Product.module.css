@@ -58,7 +58,7 @@
 
 
 .picture {
-  object-fit: cover;
+  position:relative;
   width: 100%;
   aspect-ratio: 430/539;
   border: solid 1px black;
@@ -89,6 +89,7 @@
 
 .secondMobile {
   display: none;
+  border: black solid 2px;
 }
 
 .description {

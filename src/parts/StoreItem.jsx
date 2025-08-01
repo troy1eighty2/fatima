@@ -1,9 +1,12 @@
 import styles from "./StoreItem.module.css"
 import { Link } from "react-router-dom";
-function StoreItem({ id, name, image, price, stock }) {
+import { useState, useEffect, useLayoutEffect, useRef} from "react";
+import ImageMagnifier from "./ImageMagnifier.jsx"
+function StoreItem({ id, name, image, price, stock, width, height }) {
   return <>
     <Link to={`/shop/${id}/${name}`}>
-      <div className={styles.container} style={{ backgroundImage: `url(${image})` }}>
+      <div className={styles.container}>
+        <ImageMagnifier src={image} width={width} height={height}></ImageMagnifier>
         <div className={styles.infobox}>
           <p className={styles.header}>{name}</p>
           <p className={styles.price}>{
@@ -13,7 +16,6 @@ function StoreItem({ id, name, image, price, stock }) {
             }).format(price)}
           </p>
         </div>
-
       </div>
     </Link>
   </>

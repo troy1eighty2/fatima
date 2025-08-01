@@ -6,9 +6,10 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
+  overflow:hidden;
 }
-
+.container:hover{
+}
 .infobox {
   position: absolute;
   bottom: 0;

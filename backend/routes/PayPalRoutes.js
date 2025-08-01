@@ -13,6 +13,7 @@ console.log("Client Secret:", clientSecret);
 
 async function createOrder(request) {
   const cartItems = request.body
+  console.log(cartItems)
   const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   const orderData = {
     "intent": "CAPTURE",
@@ -47,7 +48,6 @@ async function createOrder(request) {
     }],
   }
   try {
-
     const access_token = await getAccessToken();
     const response = await axios.post("https://api-m.sandbox.paypal.com/v2/checkout/orders", orderData, {
       headers: {
