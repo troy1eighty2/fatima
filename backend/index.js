@@ -6,6 +6,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import configRoutes from "./routes/configRoutes.js";
 import PayPalRoutes from "./routes/PayPalRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js"
+import faqRoutes from "./routes/faqRoutes.js"
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import { SECRET_KEY } from './routes/adminRoutes.js';
@@ -21,6 +22,7 @@ app.use('/api/order', orderRoutes);
 app.use('/api/config', configRoutes);
 app.use('/api/PayPal', PayPalRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/faqs', faqRoutes);
 
 export function authenticateToken(req, res, next){
   const authHeader = req.headers.authorization;

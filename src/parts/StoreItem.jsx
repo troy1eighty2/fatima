@@ -6,7 +6,8 @@ function StoreItem({ id, name, image, price, stock, width, height }) {
   return <>
     <Link to={`/shop/${id}/${name}`}>
       <div className={styles.container}>
-        <ImageMagnifier src={image} width={width} height={height}></ImageMagnifier>
+        {/* <ImageMagnifier src={image} width={width} height={height}></ImageMagnifier> */}
+        <img src={image} className={styles.image}/>
         <div className={styles.infobox}>
           <p className={styles.header}>{name}</p>
           <p className={styles.price}>{

@@ -8,7 +8,8 @@
   background-repeat: no-repeat;
   overflow:hidden;
 }
-.container:hover{
+.image{
+  width:100%;
 }
 .infobox {
   position: absolute;

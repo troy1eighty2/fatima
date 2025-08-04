@@ -19,11 +19,10 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
   const location = useLocation();
   const pathSegments = location.pathname.split("/");
   const id = pathSegments[2]
-  // console.log(id)
 
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const containerRef = useRef(null)
-  console.log(imgWidth)
+  // console.log(imgWidth)
 
   useLayoutEffect(() => {
     if (!item.pictures?.[0]) return;
@@ -100,7 +99,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
                 <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
-                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productid={item._id} ></AddToCart>}
+                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 
             </div>

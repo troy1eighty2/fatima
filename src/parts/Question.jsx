@@ -1,5 +1,20 @@
 import styles from "./Question.module.css"
-function Question({ question, answer }) {
+import axios from "axios";
+import {useEffect, useState} from "react";
+
+function Question() {
+  const [faqs, setFaqs] = useState(null)
+  useEffect(()=>{
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/faqs`)
+      .then((response) => {
+        const res = response.data
+        setFaqs(faqs)
+        console.log(res)
+
+      })
+
+  })
   return <>
     <div className={styles.containerouter}>
       <div className={styles.container}>

@@ -35,8 +35,7 @@ const configSchema = new mongoose.Schema(
         }
       }
 
-    ]
-
+    ],
   },
   { timestamps: true }
 )

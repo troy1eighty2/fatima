@@ -130,4 +130,16 @@ changes
 - cursor
 - finish cart
 
-
+# 8/1/2025
+~~ go button padding
+- static zoom on storepage
+- testimonials individual centering
+- faq percentage title
+-faq bottom padding mobile equal to sides
+- testimonials black
+- look at figma for mobile product
+- research font family (missing dollar sign)
+- remove button on product page
+- checkout button anchor to bottom mobile
+- checkout button mobile less padding otttom
+- more padding above and below back button cart

@@ -2,6 +2,7 @@ import styles from "./AdminLeftPanel.module.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import AdminShopCard from "./AdminShopCard"
+import AdminFaqCard from "./AdminFaqCard.jsx"
 import { v4 as uuidv4 } from "uuid"
 
 function AdminLeftPanel({token}) {
@@ -56,7 +57,19 @@ function AdminLeftPanel({token}) {
           .catch((error) => {
             console.error("Error updating product:", error.response.data.error);
           });
+
       }
+      axios.put(`${import.meta.env.VITE_API_URL}/faqs/put/${faqFormID}`, {faqs:faqs},{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then((response) => {
+          console.log("Product updated:", response);
+        })
+        .catch((error) => {
+          console.error("Error updating product:", error.response.data.error);
+        });
     });
     setStore(updatedStore);
   }
@@ -128,6 +141,8 @@ function AdminLeftPanel({token}) {
     testimonials: [],
     password: "",
   })
+  const [faqFormID, setFaqFormID] = useState(null)
+  const [faqs, setFaqs] = useState([])
   const [store, setStore] = useState([])
 
 
@@ -146,8 +161,15 @@ function AdminLeftPanel({token}) {
     };
     setStore((prevStore) => [...prevStore, item]);
   };
+  const handleAddFaq = () => {
+    const item = {
+      question: "",
+      answer: "",
+    };
+    setFaqs((prevFaqs) => ([...prevFaqs, item]));
+  };
   const handleDelete = (id) => {
-    console.log(`Delete this: ${id}`)
+    // console.log(`Delete this: ${id}`)
     axios
       .delete(`${import.meta.env.VITE_API_URL}/shop/delete/${id}`)
       .then((response) => {
@@ -156,7 +178,10 @@ function AdminLeftPanel({token}) {
       .catch((error) => {
         console.log(error)
       })
-
+  }
+  const handleFaqDelete = (id) =>{
+    const filtered_array = faqs.filter(item=>item._id !== id)
+    setFaqs(filtered_array)
   }
 
   useEffect(() => {
@@ -187,11 +212,18 @@ function AdminLeftPanel({token}) {
       .catch((error) => {
         console.log(error)
       })
-
-
-
-
-
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/faqs`)
+      .then((response) => {
+        const res = response.data.faqs
+        const object = response.data._id
+        setFaqs(res)
+        setFaqFormID(object)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(faqs)
   }, [])
   return <>
     <div className={styles.container}>
@@ -234,6 +266,14 @@ function AdminLeftPanel({token}) {
           <button className={styles.addproduct} onClick={handleAddProduct} type="button">Add Product</button>
           {store.map((item) => {
             return <div className={styles.product} key={item._id}><AdminShopCard handleDelete={() => handleDelete(item._id)} handleShopChange={handleShopChange} _id={item._id} name={item.name} description={item.description} pictures={item.pictures} price={item.price} stock={item.stock} ></AdminShopCard></div>
+          })}
+        </div>
+
+        <div className={styles.option}>
+          <h1 className={styles.label}>faqs</h1>
+          <button className={styles.addproduct} onClick={handleAddFaq} type="button">Add Faq</button>
+          {faqs.map((item, index) => {
+            return <div className={styles.product} key={index}><AdminFaqCard handleFaqDelete={handleFaqDelete} _id={item._id} question={item.question} answer={item.answer}></AdminFaqCard></div>
           })}
         </div>
 
