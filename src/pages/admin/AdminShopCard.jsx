@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AdminShopCard.module.css";
 
-function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _id, name, description, pictures, price, stock }) {
+function AdminShopCard({ handlePicturesChange, handleDelete, handleShopChange, _id, name, description, pictures, price, stock}) {
   return <>
     <div className={styles.container}>
       <button className={styles.delete} onClick={() => handleDelete(_id)} type="button">DELETE</button>

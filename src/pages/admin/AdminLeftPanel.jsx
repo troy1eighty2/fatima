@@ -134,6 +134,14 @@ function AdminLeftPanel({token}) {
       }))
     }
   }
+  const handleFaqChange = (e, temp_id) => {
+    const { name, value } = e.target
+    setFaqs((prevFaqs) => (
+      prevFaqs.map((item)=>(
+        item.temp_id === temp_id ? {...item, [name]: value} : item
+      ))
+    ))
+  }
   const [form, setForm] = useState({
     description: "",
     homeRightPictures: [],
@@ -162,7 +170,9 @@ function AdminLeftPanel({token}) {
     setStore((prevStore) => [...prevStore, item]);
   };
   const handleAddFaq = () => {
+    const temp_id = uuidv4()
     const item = {
+      temp_id: temp_id,
       question: "",
       answer: "",
     };
@@ -219,11 +229,11 @@ function AdminLeftPanel({token}) {
         const object = response.data._id
         setFaqs(res)
         setFaqFormID(object)
+        console.log(res)
       })
       .catch((error) => {
         console.log(error)
       })
-    console.log(faqs)
   }, [])
   return <>
     <div className={styles.container}>
@@ -273,7 +283,7 @@ function AdminLeftPanel({token}) {
           <h1 className={styles.label}>faqs</h1>
           <button className={styles.addproduct} onClick={handleAddFaq} type="button">Add Faq</button>
           {faqs.map((item, index) => {
-            return <div className={styles.product} key={index}><AdminFaqCard handleFaqDelete={handleFaqDelete} _id={item._id} question={item.question} answer={item.answer}></AdminFaqCard></div>
+            return <div className={styles.product} key={index}><AdminFaqCard handleFaqDelete={handleFaqDelete} temp_id={item.temp_id} _id={item._id} question={item.question} answer={item.answer} handleFaqChange={handleFaqChange}></AdminFaqCard></div>
           })}
         </div>
 

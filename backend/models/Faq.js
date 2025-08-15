@@ -10,6 +10,10 @@ const faqSchema = new mongoose.Schema(
         answer:{
           type: String,
           required: false
+        },
+        temp_id:{
+          type: String,
+          required: false
         }
       }
     ],

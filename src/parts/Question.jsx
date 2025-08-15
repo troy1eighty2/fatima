@@ -10,7 +10,6 @@ function Question() {
       .then((response) => {
         const res = response.data
         setFaqs(faqs)
-        console.log(res)
 
       })
 
