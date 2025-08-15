@@ -1,11 +1,10 @@
-.dropdownContent {
-  display: none;
+.dropdownWrapper {
+  position: relative;
+  overflow: hidden; /* hides content until it slides down */
+  width: 100%;      /* match button width if needed */
 }
-
-.contentOpen {
-  display: flex;
-  flex-direction: column;
-  width: 100.5%;
+.dropdownContent {
+  position:relative;
 }
 
 .eachblock {
@@ -15,6 +14,7 @@
   height: 37px;
   width: 100%;
   box-sizing: border-box;
+  font-size:14px;
 }
 
 .txt {

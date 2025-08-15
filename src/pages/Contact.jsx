@@ -4,7 +4,8 @@ import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-
 import submithover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit-Hover.svg";
 import Dropdown from "../parts/Dropdown";
 import fileaccent from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg";
-import monster from "../assets/Assets/Assets/Deliverables/Illustrations/monster.png"
+import monster from "../assets/Assets/Assets/Deliverables/Illustrations/monster.png";
+import axios from "axios";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -34,6 +35,19 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
+    const payload = { 
+      ...formData, 
+      access_key: import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY 
+    };
+    axios
+      .post("https://api.web3forms.com/submit", payload)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
   }
   const handlePlacementChange = (selectedOptions) => {
     setFormData({ ...formData, placement: selectedOptions })
@@ -108,6 +122,11 @@ function Contact() {
         <button className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           <img src={isSubmitHovered ? submithover : submit} />
         </button>
+        <input
+          type="hidden"
+          name="access_key"
+          value={import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY}
+        />
 
 
       </form>

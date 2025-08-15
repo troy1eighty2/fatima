@@ -13,7 +13,7 @@ import axios from "axios";
 
 import styles from "./App.module.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import CheckOut from "./pages/CheckOut.jsx";
@@ -37,6 +37,7 @@ function App() {
   const [rightContent, setRightContent] = useState(<HomeRight></HomeRight>);
   const [mobileContent, setMobileContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
+  const [show_order_conf, setShowOrderConf] = useState(false)
 
   const navigate = useNavigate();
 
@@ -76,6 +77,8 @@ function App() {
     }));
     setCartItems([...updatedCart]);
     navigate("/cart");
+
+
   }
   const clearCart = () => {
     localStorage.setItem("userCart", JSON.stringify({
@@ -165,8 +168,8 @@ function App() {
         setMobileContent(<Shop></Shop>);
         break;
       case "/cart":
-        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}></Cart>);
-        setMobileContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}></Cart>);
+        setRightContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart} show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Cart>);
+        setMobileContent(<Cart cartItems={cartItems} removeItem={removeItem} add={add} subtract={subtract} clearCart={clearCart}show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Cart>);
         break;
       case "/faq":
         setLeftContent(<Faq></Faq>);
@@ -174,7 +177,7 @@ function App() {
         break;
       case "/admin":
         setLeftContent(<AdminLeft authenticated={authenticated} token={token} setToken={setToken} verifyToken={verifyToken}></AdminLeft>);
-        setRightContent(<AdminRight authenticated={authenticated} verifyToken={verifyToken}></AdminRight>);
+        setRightContent(<AdminRight authenticated={authenticated} verifyToken={verifyToken} ></AdminRight>);
         break;
       default:
         if (url[1] === "shop" && url.length >= 4) {
@@ -190,8 +193,10 @@ function App() {
         break;
 
     }
+    // console.log(show_order_conf)
+
     verifyToken()
-  }, [location, cartItems, authenticated, token])
+  }, [location, cartItems, authenticated, token, setShowOrderConf])
   return (
     <>
       <PayPalScriptProvider options={initialOptions}>
@@ -217,7 +222,7 @@ function App() {
           </div>
         </div>
         <div className={styles.footer}>
-          <Footer cartItems={cartItems} location={location} rightContent={rightContent}></Footer>
+          <Footer cartItems={cartItems} location={location} rightContent={rightContent} clearCart={clearCart} show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Footer>
         </div>
       </PayPalScriptProvider >
     </>

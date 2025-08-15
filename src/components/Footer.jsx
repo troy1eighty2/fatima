@@ -8,11 +8,12 @@ import { useState, useEffect, useRef} from "react";
 import Cart from "../pages/Cart.jsx";
 import axios from "axios";
 
-function Footer({cartItems, location, rightContent}) {
+function Footer({cartItems, location, rightContent, clearCart, show_order_conf, setShowOrderConf}) {
   // console.log(location)
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef(null);
   const [container_width, setContainerWidth]= useState(0);
+
   //paypal
   const createOrder = async () => {
     try {
@@ -24,12 +25,14 @@ function Footer({cartItems, location, rightContent}) {
   }
   const onApprove = async (data) => {
     try {
-      console.log(data)
       const onApproveResponse = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`, data)
       const originalOrder = await axios.get(`${import.meta.env.VITE_API_URL}/PayPal/get-order/${onApproveResponse.data.id}`)
-      // console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+      console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
       const addToDatabase = await axios.post(`${import.meta.env.VITE_API_URL}/order/post`, { onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+      clearCart()
+      setShowOrderConf(true)
       return addToDatabase
+      
 
     } catch (error) {
       console.log(error)
@@ -46,14 +49,16 @@ function Footer({cartItems, location, rightContent}) {
 
   useEffect(()=>{
     const handleResize = () =>{
+
       if (containerRef.current) {
         setContainerWidth(containerRef.current.offsetWidth);
-        // console.log(containerRef.current.offsetWidth)
       }
     }
+
     handleResize()
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
   },[])
   return <>
     <div className={styles.container} ref={containerRef} >

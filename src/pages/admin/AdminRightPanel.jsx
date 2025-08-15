@@ -22,7 +22,7 @@ function AdminRightPanel() {
     <div className={styles.container}>
       <h1 className={styles.header}>Orders</h1>
       <div className={styles.orders}>
-        {orders.length === 0 ? <p>No orders yet.</p> : orders.map((order, index) => (
+        {orders.length === 0 ? <p>No orders yet.</p> : orders.toReversed().map((order, index) => (
           <div key={index} className={styles.item}>
             <h1 className={styles.label}>{order.id}</h1>
             <p>{`Status: ${order.status}`}</p>
