@@ -11,8 +11,9 @@
 
 .image {
   position: absolute;
-  width: 50%;
-  top: 30%;
+  z-index: -1;
+  width: 60%;
+  top: 25%;
   right: 170%;
 }
 

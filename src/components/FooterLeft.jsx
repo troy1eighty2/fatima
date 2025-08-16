@@ -15,7 +15,7 @@ function FooterLeft() {
         <Link to="/faq" className={styles.item5}>FAQ's</Link>
       </div>
       <div className={styles.jackintheboxviewport}>
-        <motion.img className={styles.jackinthebox} src={angel} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-105%", opacity: 1 } : { translateY: "0%", opacity: 1 }}>
+        <motion.img className={styles.jackinthebox} src={angel} initial={{ translateY: "0%" }} animate={isHovered ? { translateY: "-105%", opacity: 1 } : { translateY: "0%", opacity: 1 }}>
         </motion.img>
       </div>
     </div >

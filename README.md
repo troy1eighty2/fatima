@@ -143,3 +143,10 @@ changes
 - checkout button anchor to bottom mobile
 - checkout button mobile less padding otttom
 - more padding above and below back button cart
+
+# 8/15/2025
+~~ monster contact page opacity 
+~~ make monster bigger
+- pages on orders
+~~ order conf gif smaller
+~~ order conf arrow

@@ -3,10 +3,11 @@ import button from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forward
 import buttonhover from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/forwardblack.png"
 import ORDER_CONF from "../assets/Assets/Assets/Deliverables/Graphics Animation/Order-Conf.gif"
 import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 function CartEmpty({show_order_conf, setShowOrderConf}) {
 
   const [hover, setHover] = useState(false)
+  const navigate = useNavigate();
 
   
   useEffect(()=>{
@@ -20,7 +21,17 @@ function CartEmpty({show_order_conf, setShowOrderConf}) {
     {
       show_order_conf ? 
       <div className={styles.OrderConf}>
-        <img src={ORDER_CONF}/>
+        <div className={styles.first}>
+          <button
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            className={styles.button}
+            onClick={() => navigate("/homeright")}
+          >
+            <img src={hover ? buttonhover : button} className={styles.button} />
+          </button>
+        </div>
+        <img src={ORDER_CONF} className={styles.image}/>
       </div>:
       <div className={styles.container}>
         <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.first}>

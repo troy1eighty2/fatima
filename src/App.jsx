@@ -121,7 +121,8 @@ function App() {
   }
   // paypal
   const initialOptions = {
-    clientId: "ASYJhvlEOf5aDUGNPSfWj6_RE7HQ-zT-VClb9HpQoFnuHF0d1y5Awr0gC-YgiqWMaNnQpWs5n0ClNtPf",
+    // clientId:"AXy0aD1gVZyyJsAtgfyqh32dC1V2ltpiK9wfQmix4_EQWZ-75ELpWkMbj6GYybDF_L6eB_dvh2wPsjeK",
+    clientId:"AWS3vA-uzPKscaEU2pB9SdF-1KXokpDiTlBC14mUuKn4t62XUKdpuREM7gGlbs-ZALsYOglRn4tpyY78",
     "disable-funding": "paylater,venmo,card",
   };
 
