@@ -1,5 +1,5 @@
 .container {
-  width: min-content;
+  width: 100%;
   display: flex;
   gap: 9px;
   box-sizing: border-box;
@@ -41,17 +41,21 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .container {
     flex-direction: row;
-    width: 100%;
     gap: 12px;
     font-size: 16px;
+    width:100%;
   }
 
+  .quantity{
+    width:32%;
+  }
   .addtocart {
+    flex-grow:1;
 
-    width: 100%;
+  
   }
 
 }

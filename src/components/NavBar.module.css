@@ -3,12 +3,12 @@
   grid-template-columns: repeat(4, 1fr);
   height: 50px;
   width: 50%;
-  z-index: 3;
+  z-index: 4;
   right: 0;
   position: fixed;
   background-color: #FFFEF6;
   border-bottom: 1.5px solid black;
-  /* font-size: 1vw; */
+  font-size: 120%;
 }
 
 .icons {

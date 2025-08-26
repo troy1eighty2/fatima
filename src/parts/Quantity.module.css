@@ -9,27 +9,23 @@
   box-sizing: border-box;
 }
 
-
-/* .container:hover { */
-/*   border: black solid 2px; */
-/* } */
-
+.moreless{
+  width:100%;
+  height:100%;
+}
 .container>* {
   text-align: center;
 }
 
-/* .container>*:hover { */
-/*   font-weight: bold; */
-/* } */
 @media screen and (max-width: 1600px) {
   .container {
     width: 192px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:1000px) {
   .container {
-    width: 119px;
+    width: 100%;
     font-size: 16px;
   }
 }

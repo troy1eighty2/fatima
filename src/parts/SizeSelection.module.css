@@ -23,7 +23,7 @@
   background-color: unset;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width:1600px) {
   .container {
 
     grid-template-columns: 1fr 1fr 1fr;
@@ -34,7 +34,7 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .container {
     width: 100%;
     grid-template-columns: repeat(6, 1fr);

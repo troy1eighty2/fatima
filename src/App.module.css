@@ -14,15 +14,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Franklin';
+  src: url('./assets/Franklin Gothic Book Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   margin: 0;
-  line-height: 1;
+  line-height: 1.25;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: 'Greenhouse-Regular', Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Greenhouse-Regular', 'Franklin';
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: url('./assets/Assets/Assets/Illos/cursor.png') 30 18, auto;

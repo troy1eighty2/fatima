@@ -22,20 +22,15 @@
   height: 11px;
 }
 
-.txt {
-  display: flex;
-  /* font-size: 1px; */
-  flex-wrap: nowrap;
-  border: black solid 1px;
-}
 
 .dropDownButton {
+  box-sizing: border-box;
   display: flex;
   text-wrap: nowrap;
   flex-wrap: nowrap;
   border: solid black 1px;
-  width: calc(100% - 30px);
   height: 37px;
+  width:100%;
   align-items: center;
   justify-content: space-between;
   padding: 0 15px;

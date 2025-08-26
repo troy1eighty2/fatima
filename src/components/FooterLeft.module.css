@@ -105,11 +105,8 @@ a:visited {
 /*   } */
 /* } */
 @media screen and (max-width:1340px) {
-  .jackinthebox{
-    top:95%;
-  }
   .jackintheboxviewport {
-    height:45vw;
+    display:none;
   }
 }
 @media screen and (max-width:768px) {

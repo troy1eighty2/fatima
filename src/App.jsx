@@ -121,8 +121,10 @@ function App() {
   }
   // paypal
   const initialOptions = {
-    // clientId:"AXy0aD1gVZyyJsAtgfyqh32dC1V2ltpiK9wfQmix4_EQWZ-75ELpWkMbj6GYybDF_L6eB_dvh2wPsjeK",
-    clientId:"AWS3vA-uzPKscaEU2pB9SdF-1KXokpDiTlBC14mUuKn4t62XUKdpuREM7gGlbs-ZALsYOglRn4tpyY78",
+    // prod
+    clientId:"AXy0aD1gVZyyJsAtgfyqh32dC1V2ltpiK9wfQmix4_EQWZ-75ELpWkMbj6GYybDF_L6eB_dvh2wPsjeK",
+    // dev
+    // clientId:"AWS3vA-uzPKscaEU2pB9SdF-1KXokpDiTlBC14mUuKn4t62XUKdpuREM7gGlbs-ZALsYOglRn4tpyY78",
     "disable-funding": "paylater,venmo,card",
   };
 

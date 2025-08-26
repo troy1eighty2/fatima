@@ -45,7 +45,6 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
       <div className={styles.quantity}>
         <Quantity count={count} setCount={setCount} />
       </div>
-
       <button
         className={styles.addtocart}
         onClick={() => handleClick()}

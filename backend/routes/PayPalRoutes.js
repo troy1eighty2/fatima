@@ -13,7 +13,7 @@ console.log("Client Secret:", clientSecret);
 
 async function createOrder(request) {
   const cartItems = request.body
-  console.log(cartItems)
+  // console.log(cartItems)
   const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   const orderData = {
     "intent": "CAPTURE",
@@ -49,8 +49,8 @@ async function createOrder(request) {
   }
   try {
     const access_token = await getAccessToken();
-    const response = await axios.post("https://api-m.sandbox.paypal.com/v2/checkout/orders", orderData, {
-    // const response = await axios.post("https://api-m.paypal.com/v2/checkout/orders", orderData, {
+    // const response = await axios.post("https://api-m.sandbox.paypal.com/v2/checkout/orders", orderData, {
+    const response = await axios.post("https://api-m.paypal.com/v2/checkout/orders", orderData, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${access_token}`,
@@ -66,14 +66,17 @@ async function createOrder(request) {
 }
 async function captureOrder(request) {
   const orderID = request.body.orderID
+  console.log("here")
+  console.log(orderID)
+  console.log("here")
   const PayPalRequestID = uuidv4()
   const captureData = {
     "id": orderID
   }
   try {
     const access_token = await getAccessToken();
-    const response = await axios.post(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}/capture`, captureData, {
-    // const response = await axios.post(`https://api-m.com/v2/checkout/orders/${orderID}/capture`, captureData, {
+    // const response = await axios.post(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}/capture`, captureData, {
+    const response = await axios.post(`https://api-m.paypal.com/v2/checkout/orders/${orderID}/capture`,captureData, {
       headers: {
         "Content-Type": "application/json",
         "PayPal-Request-Id": `${PayPalRequestID}`,
@@ -92,8 +95,8 @@ async function captureOrder(request) {
 async function getAccessToken() {
   try {
     const response = await axios.post(
-      "https://api-m.sandbox.paypal.com/v1/oauth2/token",
-      // "https://api-m.paypal.com/v1/oauth2/token",
+      // "https://api-m.sandbox.paypal.com/v1/oauth2/token",
+      "https://api-m.paypal.com/v1/oauth2/token",
       "grant_type=client_credentials",
       {
         headers: {
@@ -120,8 +123,8 @@ async function getAccessToken() {
 async function showDetails(orderID) {
   try {
     const access_token = await getAccessToken();
-    const findOrderResponse = await axios.get(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}`, {
-    // const findOrderResponse = await axios.get(`https://api-m.paypal.com/v2/checkout/orders/${orderID}`, {
+    // const findOrderResponse = await axios.get(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}`, {
+    const findOrderResponse = await axios.get(`https://api-m.paypal.com/v2/checkout/orders/${orderID}`, {
       headers: {
         "Authorization": `Bearer ${access_token}`,
       }

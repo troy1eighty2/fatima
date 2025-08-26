@@ -69,7 +69,7 @@
 }
 
 .name {
-  font-size: 26px;
+  font-size: 32px;
   margin-bottom: 25px;
 
 }
@@ -89,18 +89,17 @@
 
 .secondMobile {
   display: none;
-  border: black solid 2px;
 }
 
 .description {
   font-size: 16px;
-  width: 80%;
+  width: 100%;
 
 }
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
   .container {
     padding: 26px 15px 35px 15px;

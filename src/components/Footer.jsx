@@ -27,7 +27,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
     try {
       const onApproveResponse = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/capture-paypal-order`, data)
       const originalOrder = await axios.get(`${import.meta.env.VITE_API_URL}/PayPal/get-order/${onApproveResponse.data.id}`)
-      console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+      // console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
       const addToDatabase = await axios.post(`${import.meta.env.VITE_API_URL}/order/post`, { onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
       clearCart()
       setShowOrderConf(true)
