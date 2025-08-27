@@ -60,7 +60,7 @@
 
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1000px) {
 
   .container {
     gap: 20px;

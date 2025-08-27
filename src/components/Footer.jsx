@@ -42,6 +42,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
     "shape": "sharp",
     "layout": "vertical",
     "label": "checkout",
+    "height": 47
     // "height": 55,
     // "width": 455,
   }
@@ -63,19 +64,33 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
   return <>
     <div className={styles.container} ref={containerRef} >
       <div className={styles.subtotal}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
-        <div className={styles.subtotalItems}>
-          <div className={styles.checkoutcontainer} >
+        <div className={styles.checkoutcontainer} >
+          <div className={styles.bro}>
             <p className={styles.title}>Subtotal:</p>
             <p className={styles.total}>{`$${total}`}</p>
             <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-              <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
-              {/* <PayPalButtons createOrder={createOrder} onApprove={onApprove}></PayPalButtons> */}
+              <div className={styles.paypal}>
+                <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+                <div className={styles.disclaimer}>Taxes and shipping calculated at checkout</div>
+              </div>
             </div>
-            <motion.img className={styles.clown} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-80%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
           </div>
-          <p className={styles.disclaimer}>
-            *Taxes and shipping calculated at checkout*
-          </p>
+          <div className={styles.DisclaimerBuffer}></div>
+        </div>
+        <motion.img className={styles.clown} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-140%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
+      </div>
+      <div className={styles.MobileSubtotal}>
+        <div className={styles.subtotal}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
+          <div className={styles.MobileCheckout} >
+              <p className={styles.title}>Subtotal:</p>
+              <p className={styles.total}>{`$${total}`}</p>
+          </div>
+          <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+            <div className={styles.paypal}>
+              <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+              <div className={styles.disclaimer}>Taxes and shipping calculated at checkout</div>
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles.one}>

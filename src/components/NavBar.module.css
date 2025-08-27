@@ -59,7 +59,7 @@
   background-color: #E46635;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
   .grid1:hover,
   .grid2:hover,
