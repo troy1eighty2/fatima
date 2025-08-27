@@ -3,7 +3,7 @@
   z-index:0;
   display: flex;
   width: 100%;
-  /* height: 82vh; */
+  height:100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -37,14 +37,7 @@
 
 
 .third {
-  margin-bottom: 30px;
-  overflow: hidden;
-  padding-top: 200px;
-  flex-grow: 1;
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  height: 100%;
+  height: 300px;
 }
 
 
@@ -74,7 +67,6 @@
 
 .subtotal {
   gap: 20px;
-  /* border-top: black solid 1px; */
   width: 100%;
   font-size: 32px;
   display: flex;
@@ -87,9 +79,9 @@
   .first {
     display: none;
   }
-  /* .third{ */
-  /*   display:none; */
-  /* } */
+  .third{
+    height:97px;
+  }
 
   .list {
     padding: 25px;

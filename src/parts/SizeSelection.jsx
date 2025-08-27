@@ -13,7 +13,6 @@ function SizeSelection({ size_choice, setSelected }) {
           setSelected(size)
         }} onMouseEnter={() => setHover(index)} onMouseLeave={() => setHover(null)}>
           <p>{size}</p>
-
         </button>
       ))}
     </div >

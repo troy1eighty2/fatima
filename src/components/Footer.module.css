@@ -21,7 +21,7 @@
   right: 18%;
   z-index: 2;
 }
-.subtotal{
+.subtotal, .subtotalmobile{
   position: absolute;
   top:-100%;
   right: 0;
@@ -98,7 +98,7 @@
   .clown{
     display:none;
   }
-  .subtotal{
+  .subtotal, .subtotalmobile{
     display:flex;
     position:relative;
     /* justify-content:center; */
@@ -109,7 +109,6 @@
     display:flex;
     justify-content:space-between;
     padding-left:40px;
-
     font-size: 3vw;
   }
   .paypalButtonstyle {
@@ -142,25 +141,32 @@
     height:100%;
     font-size:24px;
   }
-  .subtotal{
+  .subtotal, .subtotalmobile{
     display:flex;
     flex-direction:column;
+    width:100%;
+  }
+  .subtotalmobile{
+    border-top:solid 0px black;
   }
   .MobileCheckout{
     display:flex;
     width:100%;
-    padding:19px;
-    justify-content:space-between;
+    padding-left:25px;
+    padding-top:19px;
+    padding-bottom:19px;
     padding-right:100px;
+  }
+  .total{
+    padding-left:100px;
   }
   .paypalButtonstyle{
     width:100%;
-    display:flex;
-    justify-content:center;
     margin-bottom:38px;
   }
   .paypal{
-    width:80%;
+    width:96%;
+    padding-left:25px;
   }
 
 }

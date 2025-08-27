@@ -50,12 +50,10 @@
   }
 
   .quantity{
-    width:32%;
+    width:31%;
   }
   .addtocart {
     flex-grow:1;
-
-  
   }
 
 }
