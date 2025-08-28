@@ -48,6 +48,12 @@
   align-content: center;
 }
 
+@media screen and (max-width:1000px) {
+  .container{
+    height:100vh;
+    
+  }
+}
 @media screen and (max-width:768px) {
   .first {
     display: none;
@@ -61,6 +67,6 @@
     width: 270px;
   }
   .container{
-    height:100vh;
+    height:70vh;
   }
 }

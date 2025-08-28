@@ -47,7 +47,6 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
       .then((response) => {
         const item = response.data;
         const itemID = item._id;
-        // console.log(item)
 
         setItem(item);
         setProductID(itemID);
@@ -98,7 +97,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
               <p className={styles.name}>{item.name}</p>
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
-                <SizeSelection size_choice={selected} setSelected={setSelected}></SizeSelection>
+                <SizeSelection size_choice={selected} setSelected={setSelected} item={item}></SizeSelection>
                 {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 

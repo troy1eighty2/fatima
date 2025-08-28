@@ -11,7 +11,7 @@
   width: 20px;
 }
 
-.addtocart {
+.addtocart, .soldout {
   box-sizing: border-box;
   border: solid black 1px;
   height: 50px;
@@ -35,7 +35,7 @@
     flex-direction: column;
   }
 
-  .addtocart {
+  .addtocart, .soldout {
     width: 192px;
     height: 50px;
   }
@@ -52,7 +52,7 @@
   .quantity{
     width:31%;
   }
-  .addtocart {
+  .addtocart, .soldout {
     flex-grow:1;
   }
 

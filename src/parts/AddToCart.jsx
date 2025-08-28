@@ -36,6 +36,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
       .get(`${import.meta.env.VITE_API_URL}/shop/${productID}`)
       .then((response) => {
         setProduct(response.data); // Store product data separately
+        console.log(response.data.stock["xs"])
       })
       .catch((error) => console.log(error));
   }, []);
@@ -45,6 +46,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
       <div className={styles.quantity}>
         <Quantity count={count} setCount={setCount} />
       </div>
+      {product && (product.stock["xs"] === 0 && product.stock["s"] === 0 && product.stock["m"] === 0 && product.stock["l"] === 0 && product.stock["xl"] === 0 && product.stock["xxl"] === 0? <div className={styles.soldout}>SOLD OUT</div>:
       <button
         className={styles.addtocart}
         onClick={() => handleClick()}
@@ -52,7 +54,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
       >
         <p>Add to </p>
         <img src={isHover ? cartanimate : cartstatic} className={styles.img} />
-      </button>
+      </button>)}
     </div>
   );
 }
