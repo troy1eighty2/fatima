@@ -14,17 +14,17 @@ function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.first}>
-        <button
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={styles.button}
-          onClick={() => navigate("/homeright")}
-        >
-          <img src={hover ? buttonhover : button} className={styles.button} />
-        </button>
-      </div>
       <div className={styles.second}>
+        <div className={styles.first}>
+          <button
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            className={styles.button}
+            onClick={() => navigate("/homeright")}
+          >
+            <img src={hover ? buttonhover : button} className={styles.button} />
+          </button>
+        </div>
         <div className={styles.list}>
           {cartItems.map((item) => (
             <CartItem product={item} key={item.cartItemID} removeItem={removeItem} add={add} subtract={subtract} />

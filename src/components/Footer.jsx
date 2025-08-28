@@ -56,7 +56,6 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
       }
     }
 
-    window.addEventListener("resize", handleResize);
     handleResize()
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -81,7 +80,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
         <motion.img className={styles.clown} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-140%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
       </div>
       <div className={styles.MobileSubtotal}>
-        <div className={styles.subtotalmobile}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
+        <div className={styles.subtotal}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
           <div className={styles.MobileCheckout} >
               <p className={styles.title}>Subtotal:</p>
               <p className={styles.total}>{`$${total}`}</p>

@@ -67,7 +67,7 @@
   }
 
   .image {
-    width: 48.5%;
+    width: 50%;
   }
 
   .info {
@@ -91,6 +91,8 @@
   }
 
   .buttons {
+    width: 100%;
+
     align-items: start;
   }
 

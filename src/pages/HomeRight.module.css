@@ -55,7 +55,7 @@
 }
 
 /* MOBILE RESPONSIVE STYLES */
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 768px) {
 
   /* Adjust layout for smaller screens */
   .container2 {

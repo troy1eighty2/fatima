@@ -64,12 +64,8 @@ function Contact() {
       console.log(formData.quantity.trim())
       return
     }
-    const payload = { 
-      ...formData, 
-      access_key: import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY 
-    };
     axios
-      .post("https://api.web3forms.com/submit", payload)
+      .post(`${import.meta.env.VITE_API_URL}/web3`, formData)
       .then((response) => {
         setSubmitted(true)
         setFormData({name:"",email:"",phone:"",quantity:"",placement:[],details:"",artwork:[]})
@@ -164,8 +160,6 @@ function Contact() {
           name="access_key"
           value={import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY}
         />
-
-
       </form>
 
     </div>
