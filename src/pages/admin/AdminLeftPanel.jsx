@@ -72,6 +72,7 @@ function AdminLeftPanel({token}) {
         });
     });
     setStore(updatedStore);
+    sessionStorage.removeItem("token");
   }
   const handleShopChange = (e, _id, pictureIndex) => {
     const { name, value } = e.target;

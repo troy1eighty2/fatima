@@ -13,6 +13,9 @@
 .container::-webkit-scrollbar {
   display: none;
 }
+.container label{
+  white-space:nowrap;
+}
 
 
 .uploadLabel {
@@ -156,6 +159,7 @@ textarea::placeholder {
 
 
 .customFileLabel {
+  font-size:20px;
   background-color:#FFFEF6;
   width: 100%;
   margin-bottom: 11px;
@@ -226,7 +230,7 @@ textarea::placeholder {
   }
 
   .form {
-    padding: 0px 100px 800px 100px;
+    padding: 0px 25px 32px 25px;
   }
 
   input::placeholder {

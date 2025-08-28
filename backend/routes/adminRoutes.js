@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken"
 import express from "express"
 import dotenv from "dotenv"
+import axios from "axios"
 
 dotenv.config()
 
@@ -11,8 +12,11 @@ export const SECRET_KEY = process.env.JWT_SECRET;
 admin_router.post("/", async (req, res) => {
   try {
     const { password } = req.body;
-    console.log(password)
-    if (password !== ADMIN_PASSWORD) {
+    console.log(`HES IN ADMIN: ${password}`)
+    const config = await axios.get(`${process.env.API_URL}/config`)
+    const password_from_db = config.data[0].password
+
+    if (password !== password_from_db) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
     const token = jwt.sign({}, SECRET_KEY, { expiresIn: "1hr" });

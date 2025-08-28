@@ -1,55 +1,59 @@
 import styles from "./AdminRightPanel.module.css"
 import axios from "axios";
+import Orders from "../../parts/Orders.jsx"
 import { useState, useEffect } from "react";
 function AdminRightPanel() {
 
   const [orders, setOrders] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [curr_orders, setCurrOrders] = useState([])
+  const [search, setSearch] = useState("")
+  const ordersPerPage = 20
+  const indexLastOrder = currentPage * ordersPerPage
+  const indexFirstOrder = indexLastOrder - ordersPerPage
+  const max_pages = Math.ceil(curr_orders.length / ordersPerPage);
+  
+  const handleChange = (e) =>{
+    setSearch(e.target.value);
+  }
 
-  useEffect(() => {
+  useEffect(()=>{
     axios
       .get(`${import.meta.env.VITE_API_URL}/order`)
       .then((response) => {
-        setOrders(response.data)
+        setOrders(response.data.toReversed())
 
       })
       .catch((error) => {
         console.log(error)
 
       })
+  },[])
+  useEffect(() => {
 
-  }, [])
+    // filter orders if necessary
+    if (search.trim() == ""){
+      setCurrOrders(orders)
+    }else{
+      //partial matches
+      setCurrOrders(orders.filter((order)=> order.id.toLowerCase().includes(search.toLowerCase())))
+    }
+  }, [search, orders])
   return <>
     <div className={styles.container}>
       <h1 className={styles.header}>Orders</h1>
+      <div className={styles.row}>
+        <div className={styles.search}>
+          <input placeholder={'search by id'} className={styles.input} value={search} onChange={handleChange}/>
+        </div>
+        <div className={styles.buttons}>
+          <button className={styles.increment} onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}>-</button>
+          <p>page {currentPage}</p>
+          <button className={styles.increment} onClick={() => setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.floor(max_pages)))}>+</button>
+        </div>
+      </div>
       <div className={styles.orders}>
-        {orders.length === 0 ? <p>No orders yet.</p> : orders.toReversed().map((order, index) => (
-          <div key={index} className={styles.item}>
-            <h1 className={styles.label}>{order.id}</h1>
-            <p>{`Status: ${order.status}`}</p>
-            <p>{`Create Time: ${order.create_time}`}</p>
-            <p>{`Update Time: ${order.update_time}`}</p>
-            <p>{`Customer: ${order.payer.name.given_name} ${order.payer.name.surname}`}</p>
-            <p>{`Customer Email: ${order.payer.name.given_name} ${order.payer.email_address}`}</p>
-            <p>{`Shipping: ${order.purchase_units[0].shipping.address.address_line_1} ${order.purchase_units[0].shipping.address.admin_area_2} ${order.purchase_units[0].shipping.address.admin_area_1} ${order.purchase_units[0].shipping.address.country_code} ${order.purchase_units[0].shipping.address.postal_code} `}</p>
-
-            <div className={styles.receipt}>
-              <h1 className={styles.label2}>receipt</h1>
-              {order.purchase_units[0].items.map((item) => {
-                return <div className={styles.receiptItem} key={item._id}>
-                  <p>{`${item.name} x ${item.quantity}`}</p>
-                </div>
-              })}
-              <p>------------------------------------------</p>
-              <p>{`Subtotal: ${order.purchase_units[0].amount.breakdown.item_total.value} ${order.purchase_units[0].amount.breakdown.item_total.currency_code}`}</p>
-              <p>{`Tax: ${order.purchase_units[0].amount.breakdown.tax_total.value} ${order.purchase_units[0].amount.breakdown.tax_total.currency_code}`}</p>
-              <p>{`Shipping: ${order.purchase_units[0].amount.breakdown.shipping.value} ${order.purchase_units[0].amount.breakdown.shipping.currency_code}`}</p>
-              <p>{`Total: ${order.purchase_units[0].amount.value} ${order.purchase_units[0].amount.currency_code}`}</p>
-            </div>
-
-
-
-          </div>
-        ))}
+        <Orders orders={curr_orders.slice(indexFirstOrder, indexLastOrder)}></Orders>
       </div>
     </div>
   </>
