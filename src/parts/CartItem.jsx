@@ -25,7 +25,7 @@ function CartItem({ product, removeItem, add, subtract }) {
         <div className={styles.control}>
           <div className={styles.buttons}>
             <CartQuantity product={product} add={add} subtract={subtract}></CartQuantity>
-            <Remove cartItemID={product.cartItemID} removeItem={removeItem}></Remove>
+            <Remove product={product} cartItemID={product.cartItemID} removeItem={removeItem}></Remove>
           </div>
         </div>
       </div>

@@ -11,7 +11,6 @@ import wrestler from "../assets/Assets/Assets/Deliverables/Illustrations/wwe.png
 import ImageMagnifier from "./ImageMagnifier.jsx"
 function Product({ cartItems, updateCart, productID, setProductID }) {
   const [hover, setHover] = useState(false)
-  // const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState(null);
   const [item, setItem] = useState([]);
@@ -22,7 +21,6 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
 
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const containerRef = useRef(null)
-  // console.log(imgWidth)
 
   useLayoutEffect(() => {
     if (!item.pictures?.[0]) return;
@@ -55,7 +53,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
       .catch((error) => {
         console.log(error)
       });
-  }, [id]);
+  }, [id, cartItems]);
   return <>
     <div className={styles.container}>
       {loading ? <div className={styles.loadingcontainer}><img src={wrestler} className={styles.loadingimg} /></div> :
@@ -97,7 +95,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
               <p className={styles.name}>{item.name}</p>
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
-                <SizeSelection size_choice={selected} setSelected={setSelected} item={item}></SizeSelection>
+                <SizeSelection cartItems={cartItems} size_choice={selected} setSelected={setSelected} item={item}></SizeSelection>
                 {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 

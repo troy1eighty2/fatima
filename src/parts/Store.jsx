@@ -28,7 +28,7 @@ function Store({ products }) {
     <div className={styles.container} ref={containerRef}>
       <p className={styles.header}>All Products</p>
       <div className={styles.products}>
-        {products.map((item, index) => <div className={styles.product} key={item._id}><StoreItem id={item._id} name={item.name} image={item.pictures[0].url} price={item.price} description={item.description} stock={item.stock}></StoreItem></div>)}
+        {products.map((item, index) => <div className={styles.product} key={item._id}><StoreItem id={item._id} name={item.name} image={item.pictures[0].url} price={item.price} description={item.description} stock={item.stock} ></StoreItem></div>)}
       </div>
     </div>
   </>

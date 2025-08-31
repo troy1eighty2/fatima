@@ -65,10 +65,14 @@ function App() {
       items: updatedCart // Update only the items
     }));
     setCartItems(updatedCart);
-    navigate("/cart");
+    navigate(`/shop/${newItem.productID}/${newItem.name}`);
+    setTimeout(() => {
+      navigate("/cart");
+    }, 100);
 
   };
-  const removeItem = (itemKey) => {
+  const removeItem = (itemKey, product) => {
+    console.log(product)
     const latestCart = JSON.parse(localStorage.getItem("userCart"));
     const updatedCart = latestCart.items.filter((item) => item.cartItemID !== itemKey);
     localStorage.setItem("userCart", JSON.stringify({
@@ -76,7 +80,10 @@ function App() {
       items: updatedCart // Update only the items
     }));
     setCartItems([...updatedCart]);
-    navigate("/cart");
+    navigate(`/shop/${product.productID}/${product.name}`);
+    setTimeout(() => {
+      navigate("/cart");
+    }, 100);
 
 
   }

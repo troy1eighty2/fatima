@@ -230,7 +230,6 @@ function AdminLeftPanel({token}) {
         const object = response.data._id
         setFaqs(res)
         setFaqFormID(object)
-        console.log(res)
       })
       .catch((error) => {
         console.log(error)

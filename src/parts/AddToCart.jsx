@@ -11,7 +11,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
   const [isHover, setIsHover] = useState(false);
   const [count, setCount] = useState(1);
   const [product, setProduct] = useState(null);
-  const navigate = useNavigate();
+  console.log("hi")
 
   const handleClick = () => {
 
@@ -36,7 +36,6 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
       .get(`${import.meta.env.VITE_API_URL}/shop/${productID}`)
       .then((response) => {
         setProduct(response.data); // Store product data separately
-        console.log(response.data.stock["xs"])
       })
       .catch((error) => console.log(error));
   }, []);
@@ -44,7 +43,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
   return (
     <div className={styles.container}>
       <div className={styles.quantity}>
-        <Quantity count={count} setCount={setCount} />
+        {product && <Quantity cartItems={cartItems} product={product} count={count} setCount={setCount}/>}
       </div>
       {product && (product.stock["xs"] === 0 && product.stock["s"] === 0 && product.stock["m"] === 0 && product.stock["l"] === 0 && product.stock["xl"] === 0 && product.stock["xxl"] === 0? <div className={styles.soldout}>SOLD OUT</div>:
       <button
