@@ -7,11 +7,9 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-function AddToCart({ cartItems, selected, updateCart, productID }) {
+function AddToCart({ count, setCount, isCartEmptyingStock, cartItems, selected, setSelected, updateCart, productID }) {
   const [isHover, setIsHover] = useState(false);
-  const [count, setCount] = useState(1);
   const [product, setProduct] = useState(null);
-  console.log("hi")
 
   const handleClick = () => {
 
@@ -28,6 +26,8 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
     };
 
     updateCart(userCartItem);
+    setSelected(null)
+    setCount(1)
   }
   useEffect(() => {
     if (!productID) return; // Prevent API call if productID is missing
@@ -43,7 +43,7 @@ function AddToCart({ cartItems, selected, updateCart, productID }) {
   return (
     <div className={styles.container}>
       <div className={styles.quantity}>
-        {product && <Quantity cartItems={cartItems} product={product} count={count} setCount={setCount}/>}
+        {product && <Quantity isCartEmptyingStock={isCartEmptyingStock}selected={selected}cartItems={cartItems} product={product} count={count} setCount={setCount}/>}
       </div>
       {product && (product.stock["xs"] === 0 && product.stock["s"] === 0 && product.stock["m"] === 0 && product.stock["l"] === 0 && product.stock["xl"] === 0 && product.stock["xxl"] === 0? <div className={styles.soldout}>SOLD OUT</div>:
       <button

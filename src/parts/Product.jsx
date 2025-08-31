@@ -12,8 +12,10 @@ import ImageMagnifier from "./ImageMagnifier.jsx"
 function Product({ cartItems, updateCart, productID, setProductID }) {
   const [hover, setHover] = useState(false)
   const [loading, setLoading] = useState(true)
+  //size
   const [selected, setSelected] = useState(null);
   const [item, setItem] = useState([]);
+  const [count, setCount] = useState(1);
 
   const location = useLocation();
   const pathSegments = location.pathname.split("/");
@@ -21,6 +23,13 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
 
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const containerRef = useRef(null)
+
+  const isCartEmptyingStock = (size) =>{
+    const filtered = cartItems.filter((cartItem)=> cartItem.productID === item._id && cartItem.size === size)
+    const item_count_cart = filtered.reduce((sum, curr)=> sum + curr.quantity, 0)
+
+    return item.stock[size.toLowerCase()] - item_count_cart
+  }
 
   useLayoutEffect(() => {
     if (!item.pictures?.[0]) return;
@@ -95,8 +104,8 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
               <p className={styles.name}>{item.name}</p>
               <p className={styles.description}>{item.description}</p>
               <div className={styles.buttons}>
-                <SizeSelection cartItems={cartItems} size_choice={selected} setSelected={setSelected} item={item}></SizeSelection>
-                {item._id && <AddToCart cartItems={cartItems} selected={selected} updateCart={updateCart} productID={item._id} ></AddToCart>}
+                <SizeSelection count={count} setCount={setCount}isCartEmptyingStock={isCartEmptyingStock} cartItems={cartItems} size_choice={selected} setSelected={setSelected} item={item}></SizeSelection>
+                {item._id && <AddToCart count={count} setCount={setCount}isCartEmptyingStock={isCartEmptyingStock}cartItems={cartItems} selected={selected} setSelected={setSelected} updateCart={updateCart} productID={item._id} ></AddToCart>}
               </div>
 
             </div>
