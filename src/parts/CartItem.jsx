@@ -4,7 +4,6 @@ import Remove from "./Remove.jsx"
 function CartItem({ product, removeItem, add, subtract }) {
 
 
-  // console.log(product)
   return <>
     <div className={styles.container}>
       <div className={styles.image}>

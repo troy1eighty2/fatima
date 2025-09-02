@@ -45,15 +45,8 @@ function AddToCart({ count, setCount, isCartEmptyingStock, cartItems, selected, 
       <div className={styles.quantity}>
         {product && <Quantity isCartEmptyingStock={isCartEmptyingStock}selected={selected}cartItems={cartItems} product={product} count={count} setCount={setCount}/>}
       </div>
-      {product && (product.stock["xs"] === 0 && product.stock["s"] === 0 && product.stock["m"] === 0 && product.stock["l"] === 0 && product.stock["xl"] === 0 && product.stock["xxl"] === 0? <div className={styles.soldout}>SOLD OUT</div>:
-      <button
-        className={styles.addtocart}
-        onClick={() => handleClick()}
-        onMouseLeave={() => setIsHover(false)} onMouseEnter={() => setIsHover(true)}
-      >
-        <p>Add to </p>
-        <img src={isHover ? cartanimate : cartstatic} className={styles.img} />
-      </button>)}
+      {product && (product.stock["xs"] === 0 && product.stock["s"] === 0 && product.stock["m"] === 0 && product.stock["l"] === 0 && product.stock["xl"] === 0 && product.stock["xxl"] === 0 ? <div className={styles.soldout}>SOLD OUT</div>:
+      <button className={styles.addtocart}onClick={() => handleClick()}onMouseLeave={() => setIsHover(false)} onMouseEnter={() => setIsHover(true)} style={!selected ? {backgroundColor:"#FFFEF6"}:null}><p>Add to </p><img src={isHover ? cartanimate : cartstatic} className={styles.img} /></button>)}
     </div>
   );
 }

@@ -10,7 +10,6 @@ import { v4 as uuidv4 } from "uuid";
 function CartFull({ cartItems, removeItem, add, subtract, clearCart }) {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
-  // console.log(cartItems)
 
   return (
     <div className={styles.container}>

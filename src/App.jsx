@@ -38,6 +38,9 @@ function App() {
   const [mobileContent, setMobileContent] = useState(<HomeRight></HomeRight>);
   const [productID, setProductID] = useState(url.length < 3 ? null : url[2])
   const [show_order_conf, setShowOrderConf] = useState(false)
+  //
+  //stock
+  const [products, setProducts] = useState([])
 
   const navigate = useNavigate();
 
@@ -95,7 +98,17 @@ function App() {
     setCartItems([])
     navigate("/cart");
   }
-  const add = (cartItemID) => {
+  const add = (product) => {
+    const cartItemID = product.cartItemID
+    const productWeAreAdding = products.find((element)=>element._id === product.productID)
+
+    const filtered = cartItems.filter((cartItem)=> cartItem.productID === product.productID && cartItem.size === product.size)
+    const item_count_cart = filtered.reduce((sum, curr)=> sum + curr.quantity, 0)
+
+    if (productWeAreAdding.stock[product.size.toLowerCase()] - item_count_cart <= 0){
+      return
+    }
+  // }
     const latestCart = JSON.parse(localStorage.getItem("userCart"))
 
     const updatedCart = latestCart.items.map((item) =>
@@ -106,9 +119,13 @@ function App() {
       items: updatedCart // Update only the items
     }));
     setCartItems([...updatedCart]);
-    navigate("/cart");
+    navigate(`/shop/${product.productID}/${product.name}`);
+    setTimeout(() => {
+      navigate("/cart");
+    }, 100);
   }
-  const subtract = (cartItemID) => {
+  const subtract = (product) => {
+    const cartItemID = product.cartItemID
     const latestCart = JSON.parse(localStorage.getItem("userCart"))
     // const item_exists = latestCart.items.find((item) => item.productID === newItem.productID && item.size === newItem.size)
     const item = latestCart.items.find((item) => item.cartItemID === cartItemID)
@@ -124,8 +141,12 @@ function App() {
       items: updatedCart // Update only the items
     }));
     setCartItems([...updatedCart]);
-    navigate("/cart");
+    navigate(`/shop/${product.productID}/${product.name}`);
+    setTimeout(() => {
+      navigate("/cart");
+    }, 100);
   }
+
   // paypal
   const initialOptions = {
     // prod
@@ -203,6 +224,15 @@ function App() {
         break;
 
     }
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/shop`)
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     // console.log(show_order_conf)
 
     verifyToken()
