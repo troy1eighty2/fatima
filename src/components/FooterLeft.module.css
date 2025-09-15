@@ -25,6 +25,9 @@ a:visited {
   grid-template-columns: 1fr 1fr;
   flex-shrink: 0;
 }
+.footer>*:hover{
+  cursor: url('../assets/Assets/Assets/Illos/Cursor-Hover.png') 30 15, auto;
+}
 
 .item1 {
   grid-row: 1;

@@ -60,7 +60,7 @@
   position:relative;
   width: 100%;
   aspect-ratio: 430/539;
-  border: solid 1px black;
+  border: solid 1.5px black;
 }
 
 .price {

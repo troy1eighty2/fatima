@@ -122,12 +122,10 @@ Built with react mongoatlas react node axios
 
 changes 
 - favicon 
-- cursor  
 - anchor pay button 
 - opacity of gallery
 
 # 7/15/2025
-- cursor
 - finish cart
 
 # 8/1/2025

@@ -69,6 +69,12 @@ input {
   font-size:10px;
 
 }
+.requiredTooltipPageBottom{
+  font-size:10px;
+  color: #F86381;
+  display:none;
+  width:100%;
+}
 
 .question, .dropdown {
   position:relative;
@@ -136,10 +142,6 @@ input::placeholder {
 
 }
 
-/* input:focus { */
-/*   cursor: url('./assets/Assets/Assets/Illos/rat_64.png') 30 18, auto; */
-/* } */
-
 button {
   all: unset;
 }
@@ -158,29 +160,52 @@ textarea::placeholder {
 }
 
 
-.customFileLabel {
+/* .customFileLabel { */
+/*   font-size:20px; */
+/*   background-color:#FFFEF6; */
+/*   width: 100%; */
+/*   margin-bottom: 11px; */
+/*   border: 1.5px solid black; */
+/*   height: 39px; */
+/*   align-items: center; */
+/*   justify-content: center; */
+/*   display: flex; */
+/*   position: relative; */
+/*   z-index: 5; */
+/* } */
+/* .customFileLabel:hover{ */
+/*   background-color: #E46635; */
+/* } */
+
+
+.fileinput {
+  display:flex;
+  border:1.5px black solid;
+  justify-content:center;
+}
+.fileinput::file-selector-button{
+  all:unset;
   font-size:20px;
+  font-weight:normal;
   background-color:#FFFEF6;
   width: 100%;
   margin-bottom: 11px;
-  border: 1.5px solid black;
   height: 39px;
   align-items: center;
   justify-content: center;
   display: flex;
-}
+  position: relative;
+  z-index: 5;
+  padding-left:0px;
 
-
-.fileinput {
-  display: none;
 }
 
 .filesselected {
   font-size: 10px;
+  margin-top:5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
 }
 
 .artworkHeader {
@@ -290,6 +315,16 @@ textarea::placeholder {
   .monster {
     display: flex;
   }
+  .requiredTooltipPageBottom{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    padding:10px;
+  }
+  .requiredTooltip{
+    display:none;
+  }
+
 
 
 }

@@ -22,6 +22,12 @@
   justify-content: center;
   border-right: solid 1.5px black;
 }
+.grid1:hover,
+.grid2:hover,
+.grid3:hover,
+.grid4:hover{
+  cursor: url('../assets/Assets/Assets/Illos/Cursor-Hover.png') 30 15, auto;
+}
 
 .grid2 {
   display: flex;

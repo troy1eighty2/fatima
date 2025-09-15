@@ -16,12 +16,5 @@ multer_router.post("/", uploads.array("files"), async(req, res)=>{
     console.log(error)
   }
 })
-// multer_router.get("/:id", async (req, res)=>{
-//   try{
-//     console.log(req)
-//   }catch (error){
-//     console.log(error)
-//   }
-// })
 
 export default multer_router;

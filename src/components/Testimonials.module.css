@@ -39,8 +39,9 @@
   justify-content: space-between;
   top: 0;
 }
-
-
+.navigate:hover{
+  cursor: url('../assets/Assets/Assets/Illos/Cursor-Hover.png') 30 15, auto;
+}
 .button {
   width: 20%;
 }

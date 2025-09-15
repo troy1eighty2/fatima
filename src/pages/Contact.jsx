@@ -105,6 +105,7 @@ function Contact() {
   }
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
+    console.log(selectedFiles)
     setFiles(selectedFiles);
 
   }
@@ -159,24 +160,22 @@ function Contact() {
               <img src={monster} className={styles.image} />
             </div>
           </div>
-          <label htmlFor="artwork" className={styles.customFileLabel}>
-            Browse Files
-          </label>
           <input
             type="file"
             id="artwork"
             name="artwork"
             multiple
-            accept=".png,.jpg,.jpeg,.pdf"
+            accept="image/*"
             className={styles.fileinput}
             onChange={handleFileChange}
           />
-          <div className={styles.filesselected}>{files.length == 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}
+          <div className={styles.filesselected}>{files.length === 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button type="button"onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}
           </div>
         </div>
         <button id="submitAll" disabled={submitted} className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           {submitted ?<img src={done} style={{width:"110px", zIndex:"2",alignSelf: "center"}}/>:<img src={isSubmitHovered ? submithover : submit} />}
         </button>
+        {nameReq || (phoneReq.length && emailReq.length) || quantityReq?<p className={styles.requiredTooltipPageBottom}>*Please fill out required information</p>: null}
         <input
           type="hidden"
           name="access_key"

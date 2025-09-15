@@ -6,6 +6,9 @@
   height: 55px;
   margin-top: 2%;
 }
+.gobutton:hover{
+  cursor: url('../assets/Assets/Assets/Illos/Cursor-Hover.png') 30 15, auto;
+}
 
 .container {
   height: min-content;

@@ -9,7 +9,7 @@ function ImageMagnifier({
   magnifierWidth = 100,
   zoomLevel = 3
 }) {
-  // curr position of cursor
+  // curr position of csor
   const [[x, y], setXY] = useState([0, 0]);
   // actual dimensions of image
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);

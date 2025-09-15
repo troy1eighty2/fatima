@@ -23,15 +23,15 @@
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
 
-  border-top: solid black 1px;
-  border-left: solid black 1px;
+  border-top: solid black 1.5px;
+  border-left: solid black 1.5px;
 }
 
 .product {
   aspect-ratio: 3/4;
 
-  border-bottom: solid black 1px;
-  border-right: solid black 1px;
+  border-bottom: solid black 1.5px;
+  border-right: solid black 1.5px;
 }
 
 @media screen and (max-width: 1000px) {

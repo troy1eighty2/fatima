@@ -31,7 +31,12 @@
   font-family: 'Greenhouse-Regular', 'Franklin';
   -ms-overflow-style: none;
   scrollbar-width: none;
-  cursor: url('./assets/Assets/Assets/Illos/cursor.png') 30 20, auto;
+  cursor: url('./assets/Assets/Assets/Illos/Cursor.png') 30 15, auto;
+}
+input:hover,
+textarea:hover{
+  cursor: url('./assets/Assets/Assets/Illos/Cursor-Hover.png') 30 15, auto;
+
 }
 
 *::-webkit-scrollbar {
@@ -102,7 +107,6 @@ a:visited {
   display: none;
 }
 
-/* @media screen and (max-width: 1000px) { */
 @media screen and (max-width:1000px) {
 
   .container {
