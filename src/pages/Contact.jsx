@@ -42,7 +42,7 @@ function Contact() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.name.trim() === ""){
       setNameReq(true)
@@ -69,23 +69,20 @@ function Contact() {
     //  update web3form
     //  submit web3form
 
+    let newArtwork = []
+    let newArtworkDelimiter = []
     if (files.length != 0){
       const convert_files_to_formdata = new FormData();
       for (const f of files){
         convert_files_to_formdata.append("files", f);
       }
-      axios
-        .post(`${import.meta.env.VITE_API_URL}/multer`, convert_files_to_formdata)
-        .then((response)=>{
-          setFormData({...formData, artwork: response.data.map((item, index)=> item.static_hosting_link)})
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/multer`, convert_files_to_formdata)
+      newArtwork = response.data.map((item) => item.static_hosting_link)
+      newArtworkDelimiter = newArtwork.join("\n")
     }
-    //web3forms send
-    const payload = { 
+    const payload = {
       ...formData, 
+      artwork: newArtworkDelimiter.length ?  newArtworkDelimiter: [],
       access_key: import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY 
     };
     axios
