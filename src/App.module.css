@@ -31,12 +31,17 @@
   font-family: 'Greenhouse-Regular', 'Franklin';
   -ms-overflow-style: none;
   scrollbar-width: none;
-  cursor: url('./assets/Assets/Assets/Illos/cursor.png') 30 18, auto;
+  cursor: url('./assets/Assets/Assets/Illos/cursor.png') 30 20, auto;
 }
-
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+button, input, textarea{
+  box-sizing: border-box;
+  display:inline-block;
+  border-radius:0px;
 }
 
 a:visited {

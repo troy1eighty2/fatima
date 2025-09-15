@@ -56,6 +56,7 @@ async function createOrder(request) {
         "Authorization": `Bearer ${access_token}`,
       }
     })
+    console.log(response.data)
     return response.data;
 
   } catch (error) {
@@ -65,7 +66,7 @@ async function createOrder(request) {
 
 }
 async function captureOrder(request) {
-  const orderID = request.body.orderID
+  const orderID = request.body.OrderID;
   console.log("here")
   console.log(orderID)
   console.log("here")
@@ -95,7 +96,6 @@ async function captureOrder(request) {
 async function getAccessToken() {
   try {
     const response = await axios.post(
-      // "https://api-m.sandbox.paypal.com/v1/oauth2/token",
       "https://api-m.paypal.com/v1/oauth2/token",
       "grant_type=client_credentials",
       {
@@ -140,7 +140,7 @@ PayPal_router.post("/create-paypal-order", async (request, response) => {
   try {
     const order = await createOrder(request);
 
-    response.json({ orderID: order.id });
+    response.json({id: order.id });
 
   } catch (error) {
     console.log(error);

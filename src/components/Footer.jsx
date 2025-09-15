@@ -9,7 +9,6 @@ import Cart from "../pages/Cart.jsx";
 import axios from "axios";
 
 function Footer({cartItems, location, rightContent, clearCart, show_order_conf, setShowOrderConf}) {
-  // console.log(location)
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef(null);
   const [container_width, setContainerWidth]= useState(0);
@@ -18,9 +17,10 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
   const createOrder = async () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/PayPal/create-paypal-order`, cartItems)
-      return response.data.orderID;
+      return response.data.id;
     } catch (error) {
       console.log(error)
+      throw(error)
     }
   }
   const onApprove = async (data) => {
@@ -36,6 +36,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
 
     } catch (error) {
       console.log(error)
+      throw(error)
     }
   }
   const buttonInit = {
@@ -64,14 +65,14 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
   },[])
   return <>
     <div className={styles.container} ref={containerRef} >
-      <div className={styles.subtotal}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
+      <div className={styles.subtotal}style={cartItems.length === 0 || !rightContent?.props?.clearCart || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
         <div className={styles.checkoutcontainer} >
           <div className={styles.bro}>
             <p className={styles.title}>Subtotal:</p>
             <p className={styles.total}>{`$${total}`}</p>
             <div className={styles.paypalButtonstyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
               <div className={styles.paypal}>
-                <PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>
+                {<PayPalButtons style={buttonInit} createOrder={createOrder} onApprove={onApprove}></PayPalButtons>}
                 <div className={styles.disclaimer}>Taxes and shipping calculated at checkout</div>
               </div>
             </div>
@@ -81,7 +82,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
         <motion.img className={styles.clown} initial={{ width: "20%", translateY: "0%" }} animate={isHovered ? { translateY: "-140%", opacity: 1 } : { translateY: "0%", opacity: 1 }} src={clown} ></motion.img>
       </div>
       <div className={styles.MobileSubtotal}>
-        <div className={styles.subtotalmobile}style={cartItems.length === 0 || rightContent?.type.name !== "Cart" || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
+        <div className={styles.subtotalmobile}style={cartItems.length === 0 || !rightContent?.props?.clearCart || (container_width <= 768 && location !== "/cart") ? {display:'none'}:null}>
           <div className={styles.MobileCheckout} >
               <p className={styles.title}>Subtotal:</p>
               <p className={styles.total}>{`$${total}`}</p>

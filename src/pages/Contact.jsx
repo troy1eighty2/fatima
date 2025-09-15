@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Contact.module.css";
 
 import submit from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Fatima-Web-Buttons-Submit.svg";
@@ -14,12 +14,14 @@ function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+
     phone: '',
     quantity: '',
     placement: [],
     details: '',
     artwork: []
   });
+  const [files, setFiles] = useState([])
   const options = [
     "Upper Chest",
     "Left Chest",
@@ -42,7 +44,6 @@ function Contact() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
     if (formData.name.trim() === ""){
       setNameReq(true)
     }
@@ -58,12 +59,31 @@ function Contact() {
       }
     }
     if (formData.name.trim() === "" || (formData.phone.trim() === "" && formData.email.trim() === "") || formData.quantity.trim() == ""){
-      console.log(formData.name.trim())
-      console.log(formData.phone.trim())
-      console.log(formData.email.trim())
-      console.log(formData.quantity.trim())
       return
     }
+
+    // onClick
+    //  submit files separately to static hosting server
+    //  static hosting server uses multer to post locally and returns links
+    //  
+    //  update web3form
+    //  submit web3form
+
+    if (files.length != 0){
+      const convert_files_to_formdata = new FormData();
+      for (const f of files){
+        convert_files_to_formdata.append("files", f);
+      }
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/multer`, convert_files_to_formdata)
+        .then((response)=>{
+          setFormData({...formData, artwork: response.data.map((item, index)=> item.static_hosting_link)})
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+    }
+    //web3forms send
     const payload = { 
       ...formData, 
       access_key: import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY 
@@ -82,6 +102,7 @@ function Contact() {
         console.log(error)
       })
   }
+
   const handlePlacementChange = (selectedOptions) => {
     setFormData({ ...formData, placement: selectedOptions })
   }
@@ -93,7 +114,6 @@ function Contact() {
   const handleFileRemove = (index) => {
     setFiles(files.filter((element, i) => i != index));
   }
-  const [files, setFiles] = useState([])
   return <>
     <div className={styles.container}>
       <p className={styles.header}>Got an idea? Tell us more!</p>
@@ -102,7 +122,7 @@ function Contact() {
         <p>Email: fatima.printed@gmail.com</p>
       </div>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form} id="form1">
         <div className={styles.question}>
           <label>Your Name</label>
           <input type="text" name="name" placeholder="First and Last" value={formData.name} onChange={handleChange} style={nameReq ? {border:"#F86381 solid 1.5px"} : null}/>
@@ -150,13 +170,14 @@ function Contact() {
             id="artwork"
             name="artwork"
             multiple
+            accept=".png,.jpg,.jpeg,.pdf"
             className={styles.fileinput}
             onChange={handleFileChange}
           />
           <div className={styles.filesselected}>{files.length == 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}
           </div>
         </div>
-        <button disabled={submitted} className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
+        <button id="submitAll" disabled={submitted} className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           {submitted ?<img src={done} style={{width:"110px", zIndex:"2",alignSelf: "center"}}/>:<img src={isSubmitHovered ? submithover : submit} />}
         </button>
         <input
@@ -164,10 +185,7 @@ function Contact() {
           name="access_key"
           value={import.meta.env.VITE_WEB3_FORMS_ACCESS_KEY}
         />
-
-
       </form>
-
     </div>
   </>
 }

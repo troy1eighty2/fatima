@@ -7,22 +7,32 @@ import configRoutes from "./routes/configRoutes.js";
 import PayPalRoutes from "./routes/PayPalRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js"
 import faqRoutes from "./routes/faqRoutes.js"
+import multerRoutes from "./routes/multerRoutes.js"
 import cors from "cors";
 import jwt from "jsonwebtoken";
+import path from "path";
 import { SECRET_KEY } from './routes/adminRoutes.js';
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
+console.log(import.meta.url)
+const __filename = fileURLToPath(import.meta.url);
+console.log(__filename)
+const __dirname = path.dirname(__filename);
+console.log(__dirname)
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/uploads", express.static(path.join(__dirname,"uploads")));
 app.use('/api/shop', shopRoutes);
 app.use('/api/order', orderRoutes);
 app.use('/api/config', configRoutes);
 app.use('/api/PayPal', PayPalRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/faqs', faqRoutes);
+app.use('/api/multer', multerRoutes);
 
 export function authenticateToken(req, res, next){
   const authHeader = req.headers.authorization;

@@ -136,9 +136,9 @@ input::placeholder {
 
 }
 
-input:focus {
-  cursor: url('./assets/Assets/Assets/Illos/rat_64.png') 30 18, auto;
-}
+/* input:focus { */
+/*   cursor: url('./assets/Assets/Assets/Illos/rat_64.png') 30 18, auto; */
+/* } */
 
 button {
   all: unset;

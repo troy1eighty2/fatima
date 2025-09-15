@@ -6,26 +6,27 @@
   overflow: hidden;
   box-sizing: border-box;
   font-size: 20px;
-  /* border:black solid 9px; */
 }
 
 .slider {
   box-sizing: border-box;
   display: flex;
   transition: transform 0.5s ease-in-out;
-
 }
 
 .quote {
   margin-bottom: 10px;
+  text-align:center;
 }
 
 .testimonial {
-
   box-sizing: border-box;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
   flex: 0 0 85%;
   margin: 7.5% 7.5% 2% 7.5%;
-  text-align: center;
 }
 
 
