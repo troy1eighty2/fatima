@@ -44,6 +44,10 @@ function Contact() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setNameReq(false)
+    setEmailReq(false)
+    setPhoneReq(false)
+    setQuantityReq(false)
     if (formData.name.trim() === ""){
       setNameReq(true)
     }
@@ -90,6 +94,7 @@ function Contact() {
       .then((response) => {
         setSubmitted(true)
         setFormData({name:"",email:"",phone:"",quantity:"",placement:[],details:"",artwork:[]})
+        setFiles([])
         setPhoneReq(false)
         setEmailReq(false)
         setQuantityReq(false)
@@ -175,7 +180,7 @@ function Contact() {
         <button id="submitAll" disabled={submitted} className={styles.button} type="submit" onMouseEnter={() => setIsSubmitHovered(true)} onMouseLeave={() => setIsSubmitHovered(false)}>
           {submitted ?<img src={done} style={{width:"110px", zIndex:"2",alignSelf: "center"}}/>:<img src={isSubmitHovered ? submithover : submit} />}
         </button>
-        {nameReq || (phoneReq.length && emailReq.length) || quantityReq?<p className={styles.requiredTooltipPageBottom}>*Please fill out required information</p>: null}
+        {nameReq || (emailReq || phoneReq) || quantityReq?<p className={styles.requiredTooltipPageBottom}>*Please fill out required information</p>: null}
         <input
           type="hidden"
           name="access_key"
