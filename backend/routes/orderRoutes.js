@@ -18,6 +18,7 @@ order_router.post("/post", async (request, response) => {
   try {
     const onApproveResponse = request.body.onApproveResponse
     const originalOrder = request.body.originalOrder
+    // console.log(" made it here ")
     const itemsFromOriginalOrder = originalOrder.purchase_units[0].items.map((item) => ({
       name: item.name,
       quantity: item.quantity
@@ -31,6 +32,7 @@ order_router.post("/post", async (request, response) => {
       update_time: originalOrder.update_time,
       purchase_units:
         [{
+          invoice_id: originalOrder.purchase_units[0].invoice_id,
           amount: {
             currency_code: originalOrder.purchase_units[0].amount.currency_code,
             value: originalOrder.purchase_units[0].amount.value,
@@ -74,6 +76,7 @@ order_router.post("/post", async (request, response) => {
       status: originalOrder.status
 
     }
+    console.log(newOrder)
     const orderInstance = new Order(newOrder)
     await orderInstance.save()
     return response.json(newOrder)

@@ -68,5 +68,16 @@ router.delete("/delete/:id", async (request, response) => {
     return response.status(500).json({ error: "delete shop error" });
   }
 })
+router.patch("/patch/:id", async (request, response) => {
+  try {
+    const { id } = request.params
+    // new:true returns updated product
+    const updatedProduct = await Product.findByIdAndUpdate(id, request.body, {new:true})
+    response.json(updatedProduct);
+  } catch (error) {
+    console.log("patch error")
+  }
+
+})
 
 export default router;

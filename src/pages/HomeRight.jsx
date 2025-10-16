@@ -1,5 +1,4 @@
 import styles from "./HomeRight.module.css";
-import {motion} from "motion/react";
 import { useLayoutEffect, useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Intro from "../parts/Intro.jsx";
@@ -11,9 +10,10 @@ import axios from "axios";
 
 function HomeRight() {
   const location = useLocation();
-  const [page, setPage] = useState(<Intro></Intro>);
   const [homeRightPictures, setHomeRightPictures] = useState([])
   const [gif, setGif] = useState("")
+  const [window_height, setWindowHeight] = useState(0)
+  const [page, setPage] = useState(<Intro window_height={window_height} setWindowHeight={setWindowHeight}></Intro>);
 
   //set gallery height
   // const rightRef = useRef(null);
@@ -22,10 +22,10 @@ function HomeRight() {
 
   useEffect(() => {
     if (location.pathname === "/contact") {
-      setPage(<Logo></Logo>)
+      setPage(<Logo window_height={window_height}></Logo>)
     }
     else {
-      setPage(<Intro></Intro>);
+      setPage(<Intro window_height={window_height} setWindowHeight={setWindowHeight}></Intro>);
     }
     axios
       .get(`${import.meta.env.VITE_API_URL}/config`)
@@ -47,20 +47,20 @@ function HomeRight() {
       <div className={styles.container2}>
         {/* <div className={styles.left} style={{height:rightHeight}}> */}
         <div className={styles.left}>
-          <motion.div className={styles.gallery} initial={{y:-500}}animate={{y:0}}transition={{duration:.5, ease:"easeOut"}}>
+          <div className={styles.gallery}>
             {homeRightPictures.map((item, index) => {
               if (item === "") {
                 return
               }
               return <img key={index} src={item} className={styles.display} />
             })}
-          </motion.div>
+          </div>
         </div>
         {/* <div className={styles.right} ref={rightRef}> */}
-        <motion.div className={styles.right}initial={{y:-500}}animate={{y:0}}transition={{duration:.5, ease:"easeOut"}}>
+        <div className={styles.right}>
           <img className={styles.gif} src={gif} />
           <Testimonials></Testimonials>
-        </motion.div>
+        </div>
       </div>
     </div >
 

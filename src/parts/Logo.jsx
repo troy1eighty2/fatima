@@ -2,11 +2,11 @@ import logo from "../assets/Assets/Assets/Deliverables/Logos/Web/Fatima-Logo-Web
 import styles from "./Logo.module.css";
 import { Link } from "react-router-dom"
 
-function Logo() {
+function Logo({window_height}) {
 
   return <>
     <Link to="/">
-      <div className={styles.container}>
+      <div className={styles.container} style={{height:window_height}}>
         <img src={logo} className={styles.logo} />
       </div>
     </Link>

@@ -8,8 +8,8 @@ const orderSchema = new mongoose.Schema(
     update_time: String,
     purchase_units: [
       {
+        invoice_id: String,
         amount: {
-
           currency_code: String,
           value: String,
           breakdown: {

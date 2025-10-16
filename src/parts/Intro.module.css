@@ -11,7 +11,6 @@
 }
 
 .container {
-  height: min-content;
   border-bottom: solid black 1.5px;
   -ms-overflow-style: none;
   overflow: off;

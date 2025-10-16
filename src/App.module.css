@@ -53,6 +53,10 @@ a:visited {
   text-decoration: none;
 }
 
+.page{
+  height:100%;
+  width:100%;
+}
 .container {
   display: flex;
   height: 100vh;

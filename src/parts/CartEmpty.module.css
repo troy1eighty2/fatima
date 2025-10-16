@@ -19,8 +19,9 @@
 }
 
 .button {
+  width:10px;
   height: 25px;
-  width: min-content;
+  width: 54px;
 }
 
 .header {

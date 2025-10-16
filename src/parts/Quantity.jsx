@@ -1,9 +1,9 @@
 import styles from "./Quantity.module.css"
 function Quantity({isCartEmptyingStock, selected, cartItems, product, count, setCount }) {
  
-  if (selected){
-    console.log(isCartEmptyingStock(selected))
-  }
+  // if (selected){
+  //   console.log(isCartEmptyingStock(selected))
+  // }
   return <>
     <div className={styles.container}>
       <button className={styles.moreless} onClick={() => count > 1 && setCount(count - 1)} >

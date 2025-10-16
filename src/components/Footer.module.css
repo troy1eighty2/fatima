@@ -152,10 +152,11 @@
   .MobileCheckout{
     display:flex;
     width:100%;
+    justify-content:space-between;
     padding-left:25px;
+    padding-right:25px;
     padding-top:19px;
     padding-bottom:19px;
-    padding-right:100px;
   }
   .total{
     padding-left:100px;

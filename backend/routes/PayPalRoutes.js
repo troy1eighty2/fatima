@@ -13,14 +13,15 @@ console.log("Client Secret:", clientSecret);
 
 async function createOrder(request) {
   const cartItems = request.body
-  // console.log(cartItems)
+  const invoiceID = uuidv4().split("-")[0]
   const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   const orderData = {
     "intent": "CAPTURE",
     "purchase_units": [{
+      "invoice_id": invoiceID,
       "amount": {
         "currency_code": "USD",
-        "value": (totalPrice + parseFloat(process.env.FLAT_SHIPPING_RATE) + (totalPrice * parseFloat(process.env.FLAT_TAX_RATE))).toFixed(2).toString(),
+        "value": (totalPrice + parseFloat(process.env.FLAT_SHIPPING_RATE) + (totalPrice * parseFloat(process.env.FLAT_TAX_RATE) * .01)).toFixed(2).toString(),
         "breakdown": {
           "item_total": {
             "currency_code": "USD",
@@ -32,7 +33,7 @@ async function createOrder(request) {
           },
           "tax_total": {
             "currency_code": "USD",
-            "value": (totalPrice * parseFloat(process.env.FLAT_TAX_RATE)).toFixed(2).toString()
+            "value": (totalPrice * parseFloat(process.env.FLAT_TAX_RATE) * .01).toFixed(2).toString()
           },
 
         },
@@ -56,7 +57,7 @@ async function createOrder(request) {
         "Authorization": `Bearer ${access_token}`,
       }
     })
-    console.log(response.data)
+    // console.log(response.data)
     return response.data;
 
   } catch (error) {
@@ -66,10 +67,12 @@ async function createOrder(request) {
 
 }
 async function captureOrder(request) {
-  const orderID = request.body.OrderID;
-  console.log("here")
-  console.log(orderID)
-  console.log("here")
+  const orderID = request.body.orderID;
+  // const orderID = request.body.OrderID;
+
+  // console.log("here")
+  // console.log(request.body)
+  // console.log("here")
   const PayPalRequestID = uuidv4()
   const captureData = {
     "id": orderID
@@ -86,7 +89,8 @@ async function captureOrder(request) {
     })
     return response.data;
   } catch (error) {
-    console.log(error)
+    // console.log(error)
+    console.log("captureOrder error")
 
 
   }
@@ -133,7 +137,8 @@ async function showDetails(orderID) {
 
 
   } catch (error) {
-    console.log(error)
+    // console.log(error)
+    console.log("show details error")
   }
 }
 PayPal_router.post("/create-paypal-order", async (request, response) => {
@@ -143,7 +148,8 @@ PayPal_router.post("/create-paypal-order", async (request, response) => {
     response.json({id: order.id });
 
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    console.log("create Paypal order error");
     response.status(500).json({ error: "error creating PayPal order" });
   }
 })
@@ -154,7 +160,8 @@ PayPal_router.post("/capture-paypal-order", async (request, response) => {
     response.json(order);
 
   } catch (error) {
-    console.log(error)
+    console.log("capture paypal order error")
+    // console.log(error)
 
   }
 })
@@ -166,7 +173,8 @@ PayPal_router.get("/get-order/:id", async (request, response) => {
     response.json(order);
 
   } catch (error) {
-    console.log(error)
+    // console.log(error)
+    console.log("get order :id error")
 
   }
 })

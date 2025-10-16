@@ -13,6 +13,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
   const containerRef = useRef(null);
   const [container_width, setContainerWidth]= useState(0);
 
+  console.log(cartItems);
   //paypal
   const createOrder = async () => {
     try {
@@ -29,6 +30,12 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
       const originalOrder = await axios.get(`${import.meta.env.VITE_API_URL}/PayPal/get-order/${onApproveResponse.data.id}`)
       // console.log({ onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
       const addToDatabase = await axios.post(`${import.meta.env.VITE_API_URL}/order/post`, { onApproveResponse: onApproveResponse.data, originalOrder: originalOrder.data })
+
+      for (const item of cartItems) {
+        await axios.patch(`${import.meta.env.VITE_API_URL}/shop/patch/${item.productID}`, {
+          $inc: { [`stock.${item.size.toLowerCase()}`]: -item.quantity }
+        });
+      }
       clearCart()
       setShowOrderConf(true)
       return addToDatabase

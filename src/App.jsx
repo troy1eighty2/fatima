@@ -10,6 +10,7 @@ import AdminRight from "./pages/admin/AdminRight.jsx";
 import Logo from "./parts/Logo.jsx";
 import Footer from "./components/Footer.jsx"
 import axios from "axios";
+import {motion} from "motion/react";
 
 import styles from "./App.module.css";
 
@@ -75,7 +76,7 @@ function App() {
 
   };
   const removeItem = (itemKey, product) => {
-    console.log(product)
+    // console.log(product)
     const latestCart = JSON.parse(localStorage.getItem("userCart"));
     const updatedCart = latestCart.items.filter((item) => item.cartItemID !== itemKey);
     localStorage.setItem("userCart", JSON.stringify({
@@ -238,10 +239,10 @@ function App() {
     verifyToken()
   }, [location, cartItems, authenticated, token, setShowOrderConf])
   return (
-    <>
+    <motion.div className={styles.page}initial={{y:-500}}animate={{y:0}}transition={{duration:1.5, ease:"easeOut"}}>
       <PayPalScriptProvider options={initialOptions}>
         <NavBar cartItems={cartItems}></NavBar>
-        <div className={styles.container}>
+        <div className={styles.container} >
           <div className={styles.left}>
             <div className={styles.contentleft}>
               {leftContent}
@@ -265,7 +266,7 @@ function App() {
           <Footer cartItems={cartItems} location={location} rightContent={rightContent} clearCart={clearCart} show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Footer>
         </div>
       </PayPalScriptProvider >
-    </>
+    </motion.div>
   )
 }
 

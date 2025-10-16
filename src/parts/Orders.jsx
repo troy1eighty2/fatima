@@ -1,9 +1,10 @@
 import styles from "./Orders.module.css"
 function Orders({orders}){
+  console.log(orders)
   return <div className={styles.container}>
     {orders.length === 0 ? <p>No orders found.</p> : orders.map((order, index) => (
       <div key={index} className={styles.item}>
-        <h1 className={styles.label}>{order.id}</h1>
+        <h1 className={styles.label}>{order.purchase_units[0].invoice_id}</h1>
         <p>{`Status: ${order.status}`}</p>
         <p>{`Create Time: ${order.create_time}`}</p>
         <p>{`Update Time: ${order.update_time}`}</p>

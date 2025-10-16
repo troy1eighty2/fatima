@@ -9,6 +9,8 @@
   background-color: #FFFEF6;
   border-bottom: 1.5px solid black;
   font-size: 120%;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .icons {
