@@ -12,7 +12,7 @@ function HomeRight() {
   const location = useLocation();
   const [homeRightPictures, setHomeRightPictures] = useState([])
   const [gif, setGif] = useState("")
-  const [window_height, setWindowHeight] = useState(0)
+  const [window_height, setWindowHeight] = useState(290)
   const [page, setPage] = useState(<Intro window_height={window_height} setWindowHeight={setWindowHeight}></Intro>);
 
   //set gallery height

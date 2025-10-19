@@ -165,15 +165,18 @@ function Contact() {
               <img src={monster} className={styles.image} />
             </div>
           </div>
-          <input
-            type="file"
-            id="artwork"
-            name="artwork"
-            multiple
-            accept="image/*"
-            className={styles.fileinput}
-            onChange={handleFileChange}
-          />
+          <div className={styles.fileinputwrapper}>
+            <input
+              type="file"
+              id="artwork"
+              name="artwork"
+              multiple
+              accept="image/*"
+              className={styles.fileinput}
+              onChange={handleFileChange}
+            />
+            <p className={styles.label}>Browse Files</p>
+          </div>
           <div className={styles.filesselected}>{files.length === 0 ? "No Files Selected" : files.map((file, index) => (<span key={index} className={styles.eachfile}><button type="button"onClick={() => handleFileRemove(index)}><img src={fileaccent} className={styles.fileaccent} /></button>{file.name}</span>))}
           </div>
         </div>

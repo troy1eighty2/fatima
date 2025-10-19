@@ -13,7 +13,7 @@ function Footer({cartItems, location, rightContent, clearCart, show_order_conf, 
   const containerRef = useRef(null);
   const [container_width, setContainerWidth]= useState(0);
 
-  console.log(cartItems);
+  // console.log(cartItems);
   //paypal
   const createOrder = async () => {
     try {

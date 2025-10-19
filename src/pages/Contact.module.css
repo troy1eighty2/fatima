@@ -53,6 +53,7 @@
 
 
 input {
+  /* opacity: 0; */
   font-size: 20px;
   padding: 0 10px;
   line-height: normal;
@@ -178,13 +179,34 @@ textarea::placeholder {
 /* } */
 
 
-.fileinput {
+.fileinputwrapper{
+  font-size:20px;
   display:flex;
+  width:100%;
+  height:37px;
   border:1.5px black solid;
   justify-content:center;
   position:relative;
-  overflow:hidden;
+  /* overflow:hidden; */
   z-index:1;
+}
+.fileinput {
+  opacity:0;
+  /* width:100%; */
+  /* height:100%; */
+  /* justify-content:center; */
+  position:relative;
+  z-index:1;
+}
+.label{
+  position:absolute;
+  width:100%;
+  height:100%;
+  justify-content:center;
+
+  align-items:center;
+  display:flex;
+  z-index:0;
 }
 .fileinput::file-selector-button{
   all:unset;
