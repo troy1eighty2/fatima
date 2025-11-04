@@ -59,6 +59,7 @@
 .picture {
   position:relative;
   width: 100%;
+  max-height: 539px;
   aspect-ratio: 430/539;
   border: solid 1.5px black;
 }

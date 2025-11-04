@@ -24,7 +24,8 @@ function Shop() {
 
   return <>
     <div className={styles.container}>
-      {loading || products.length === 0 ? <div className={styles.imgcontainer}><img src={wrestler} className={styles.loadingimg} /></div> : <Store products={products}></Store>}
+      {/* {loading || products.length === 0 ? <div className={styles.imgcontainer}><img src={wrestler} className={styles.loadingimg} /></div> : <Store products={products}></Store>} */}
+      {loading || products.length === 0 ? null : <Store products={products}></Store>}
     </div>
   </>
 }

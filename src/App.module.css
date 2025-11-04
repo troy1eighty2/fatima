@@ -56,6 +56,16 @@ a:visited {
 .page{
   height:100%;
   width:100%;
+  position:relative;
+  overflow:hidden;
+}
+.curtain{
+  height:100%;
+  width:100%;
+  position:absolute;
+  background-color:white;
+  z-index:5;
+
 }
 .container {
   display: flex;

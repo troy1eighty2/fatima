@@ -65,7 +65,7 @@ function Product({ cartItems, updateCart, productID, setProductID }) {
   }, [id, cartItems]);
   return <>
     <div className={styles.container}>
-      {loading ? <div className={styles.loadingcontainer}><img src={wrestler} className={styles.loadingimg} /></div> :
+      {loading ? null :
         <div>
           <div className={styles.first}>
             <button onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={styles.button}>

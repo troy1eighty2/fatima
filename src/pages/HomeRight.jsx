@@ -45,7 +45,6 @@ function HomeRight() {
     <div className={styles.container}>
       {page}
       <div className={styles.container2}>
-        {/* <div className={styles.left} style={{height:rightHeight}}> */}
         <div className={styles.left}>
           <div className={styles.gallery}>
             {homeRightPictures.map((item, index) => {
@@ -56,7 +55,6 @@ function HomeRight() {
             })}
           </div>
         </div>
-        {/* <div className={styles.right} ref={rightRef}> */}
         <div className={styles.right}>
           <img className={styles.gif} src={gif} />
           <Testimonials></Testimonials>

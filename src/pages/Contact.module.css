@@ -190,6 +190,9 @@ textarea::placeholder {
   /* overflow:hidden; */
   z-index:1;
 }
+.fileinputwrapper:hover{
+  background-color: #C58EB6;
+}
 .fileinput {
   opacity:0;
   /* width:100%; */

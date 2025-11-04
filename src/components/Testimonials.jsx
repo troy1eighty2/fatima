@@ -1,7 +1,8 @@
 import styles from "./Testimonials.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import nub from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector.svg"
+import nub from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/ellipse.svg"
+import selected from "../assets/Assets/Assets/Deliverables/Buttons/Web/SVG/Vector1.svg"
 
 function Testimonials() {
 
@@ -29,7 +30,6 @@ function Testimonials() {
   }
   const handleNub = (index) => {
     setCurr(index)
-
   }
 
 
@@ -66,8 +66,13 @@ function Testimonials() {
       </div>
       <div className={styles.selectorbuttons}>
         {testimonials.map((item, index) => (
-          <button key={index} className={`${styles.individualselectorbutton} ${index === curr ? styles.selected : ""}`} onClick={() => handleNub(index)}><img src={nub} /></button>
+          <button key={index} onClick={() => handleNub(index)} className={styles.navButton}>
+            <div className={styles.dotAligner}>
+              <img className={`${styles.nub} ${index == curr ? styles.selected : ""}`} src={index == curr ? selected:nub}/>
+            </div>
+          </button>
         ))}
+
 
       </div>
     </div>

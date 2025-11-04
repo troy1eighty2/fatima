@@ -213,8 +213,8 @@ function App() {
         break;
       default:
         if (url[1] === "shop" && url.length >= 4) {
-          const id = url[2];
-          const product = url[3];
+          // const id = url[2];
+          // const product = url[3];
           setLeftContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
           setMobileContent(<Product cartItems={cartItems} updateCart={updateCart} productID={productID} setProductID={setProductID}></Product>);
         } else {
@@ -239,34 +239,38 @@ function App() {
     verifyToken()
   }, [location, cartItems, authenticated, token, setShowOrderConf])
   return (
-    <motion.div className={styles.page}initial={{y:-500}}animate={{y:0}}transition={{duration:1.5, ease:"easeOut"}}>
-      <PayPalScriptProvider options={initialOptions}>
-        <NavBar cartItems={cartItems}></NavBar>
-        <div className={styles.container} >
-          <div className={styles.left}>
-            <div className={styles.contentleft}>
-              {leftContent}
+    <>
+      {products?
+      <div className={styles.page}>
+        <motion.div className={styles.curtain}initial={{y:0}}animate={{y:4000}}transition={{duration:1, ease:"easeIn"}}></motion.div>
+        <PayPalScriptProvider options={initialOptions}>
+          <NavBar cartItems={cartItems}></NavBar>
+          <div className={styles.container} >
+            <div className={styles.left}>
+              <div className={styles.contentleft}>
+                {leftContent}
+              </div>
+            </div>
+            <div className={styles.right}>
+              <div className={styles.contentright}>
+                {rightContent}
+              </div>
+            </div>
+            <div className={styles.mobileLayout}>
+              <div className={styles.mobileLogo}>
+                <Logo></Logo>
+              </div>
+              <div className={styles.content}>
+                {mobileContent}
+              </div>
             </div>
           </div>
-          <div className={styles.right}>
-            <div className={styles.contentright}>
-              {rightContent}
-            </div>
+          <div className={styles.footer}>
+            <Footer cartItems={cartItems} location={location} rightContent={rightContent} clearCart={clearCart} show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Footer>
           </div>
-          <div className={styles.mobileLayout}>
-            <div className={styles.mobileLogo}>
-              <Logo></Logo>
-            </div>
-            <div className={styles.content}>
-              {mobileContent}
-            </div>
-          </div>
-        </div>
-        <div className={styles.footer}>
-          <Footer cartItems={cartItems} location={location} rightContent={rightContent} clearCart={clearCart} show_order_conf={show_order_conf} setShowOrderConf={setShowOrderConf}></Footer>
-        </div>
-      </PayPalScriptProvider >
-    </motion.div>
+        </PayPalScriptProvider >
+      </div>: null}
+    </>
   )
 }
 
